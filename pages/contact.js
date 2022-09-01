@@ -107,15 +107,17 @@ const contact = () => {
               name="subject"
               onChange={updateForm}
               value={formData.subject}
+              placeholder = 'Subject'
             ></input>
           </div>
           <div className="field line">
             <h5>Message * </h5>
             <textarea
               required
-              name="subject"
+              name="message"
               onChange={updateForm}
-              value={formData.subject}
+              value={formData.message}
+              placeholder = 'Message'
             ></textarea>
           </div>
           <button></button>

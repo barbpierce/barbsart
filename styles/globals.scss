@@ -14,7 +14,10 @@ h6 {
 }
 a {
   text-decoration: none;
-  color:inherit;
+  color: inherit;
+}
+li {
+  list-style-type: none;
 }
 p {
   font-family: Lato;
@@ -100,4 +103,14 @@ p {
   p {
     font-size: 18px;
   }
+}
+
+.light {
+  font-weight: 400;
+}
+.white {
+  color: #fff !important;
+}
+.mar-md {
+  margin-bottom: 128px;
 }

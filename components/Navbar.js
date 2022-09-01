@@ -1,15 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import Dropdown from "./Dropdown";
 const Cont = styled.div`
   display: flex;
   padding-left: 5%;
   padding-right: 5%;
   padding-top: 1rem;
   justify-content: space-between;
+
+  .padding {
+    padding: 8px;
+  }
   .nav-left {
   }
   .nav-right {
@@ -21,31 +24,30 @@ const Cont = styled.div`
 `;
 const Navbar = () => {
   return (
-    <Cont>
+    <Cont className="mar-md">
       <div className="nav-left">
         <Link href="/" passHref>
           <a title="Home Page" rel="noopener noreferrer">
-            <h6>Barbs Art</h6>
+            <h6 className="padding">Barbs Art</h6>
           </a>
         </Link>
       </div>
       <div className="nav-right">
-        <h6>View Art</h6>
-        <FontAwesomeIcon icon={faChevronDown} size="lg" />
+        <Dropdown text="View Art" />
 
-        <Link href="/" passHref>
-          <a title="Home Page" rel="noopener noreferrer">
-            <h6>Commisions</h6>
+        <Link href="/commisions" passHref>
+          <a title="Commisions" rel="noopener noreferrer">
+            <h6 className="padding">Commisions</h6>
           </a>
         </Link>
-        <Link href="/" passHref>
-          <a title="Home Page" rel="noopener noreferrer">
-            <h6>Slideshows</h6>
+        <Link href="/slideshows" passHref>
+          <a title="Slideshows" rel="noopener noreferrer">
+            <h6 className="padding">Slideshows</h6>
           </a>
         </Link>
-        <Link href="/" passHref>
-          <a title="Home Page" rel="noopener noreferrer">
-            <h6>Contact</h6>
+        <Link href="/contact" passHref>
+          <a title="Contact" rel="noopener noreferrer">
+            <h6 className="padding">Contact</h6>
           </a>
         </Link>
       </div>

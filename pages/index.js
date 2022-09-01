@@ -53,9 +53,10 @@ export default function Home() {
       size: "12 x 12",
     },
   ];
-  const imageElems = images.map((image) => {
+  const imageElems = images.map((image, index) => {
     return (
       <Picture
+        key={index}
         url={image.src}
         title={image.title}
         price={image.price}

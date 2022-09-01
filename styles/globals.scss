@@ -1,9 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap");
+
+$darkPurple: #57008c;
+$grey: #cdcdcd;
+$ultra-light-purple: #fcf8ff;
+$ultra-light-blue: #bba4ff;
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 h1,
 h2,
 h3,
@@ -113,4 +119,33 @@ p {
 }
 .mar-md {
   margin-bottom: 128px;
+}
+a {
+  &:hover {
+    text-decoration: underline;
+  }
+  p {
+    color: $darkPurple;
+  }
+}
+
+input {
+  border: 1px solid $grey;
+  font-size: 16px;
+  border-radius: 0.25rem;
+  padding: 8px;
+  background-color: $ultra-light-purple;
+  &:focus {
+    background-color: #fff;
+    outline: none;
+    border: 1px solid black;
+  }
+  &:not(:placeholder-shown) {
+    border: 1px solid $darkPurple;
+    background-color: $ultra-light-blue;
+  }
+}
+
+textarea{
+  
 }

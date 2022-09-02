@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import COLORS from "../Data/colors";
 const Cont = styled.div`
   position: relative;
+  z-index: 5;
   .top {
     cursor: pointer;
     display: flex;

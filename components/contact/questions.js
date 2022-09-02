@@ -4,6 +4,9 @@ import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import COLORS from "../../Data/colors";
 const QuestionElem = styled.div`
+  //grid-area: left;
+  padding:2rem;
+  background-color: ${(props) => props.colors.lightPurple};
   h4 {
     text-decoration-line: underline;
     text-decoration-thickness: 3px;

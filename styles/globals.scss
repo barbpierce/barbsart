@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap");
-
+@import "./buttons.scss";
 $darkPurple: #57008c;
 $grey: #cdcdcd;
 $ultra-light-purple: #fcf8ff;
 $ultra-light-blue: #bba4ff;
+$black: #1a002b;
 * {
   box-sizing: border-box;
   margin: 0;
@@ -111,6 +112,21 @@ p {
   }
 }
 
+.italic {
+  font-style: italic;
+}
+.mar-bottom-1 {
+  margin-bottom: 1rem;
+}
+.mar-bottom-2 {
+  margin-bottom: 2rem;
+}
+.grey {
+  color: $grey;
+}
+.purple {
+  color: $darkPurple;
+}
 .light {
   font-weight: 400;
 }
@@ -119,6 +135,9 @@ p {
 }
 .mar-md {
   margin-bottom: 128px;
+}
+.mar-sm {
+  margin-bottom: 64px;
 }
 a {
   &:hover {
@@ -135,6 +154,7 @@ input {
   border-radius: 0.25rem;
   padding: 8px;
   background-color: $ultra-light-purple;
+  margin-bottom: 1rem;
   &:focus {
     background-color: #fff;
     outline: none;
@@ -150,8 +170,11 @@ textarea {
   resize: none;
   padding: 8px;
   font-size: 16px;
+  width: 100%;
+  height: 160px;
   border: 1px solid $grey;
   background-color: $ultra-light-purple;
+  margin-bottom: 1rem;
   &:focus {
     background-color: #fff;
     outline: none;

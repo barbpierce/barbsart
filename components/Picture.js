@@ -2,6 +2,9 @@ import styled from "styled-components";
 import Image from "next/image";
 import COLORS from "../Data/colors";
 import { useState } from "react";
+import Link from "next/link";
+import Aos from "aos";
+import "aos/dist/aos.css";
 const Cont = styled.div`
   position: relative;
   width: 400px;
@@ -69,23 +72,37 @@ const Picture = ({ url, title, price, size, instock }) => {
     setVisible(false);
   };
   return (
-    <Cont
-      onMouseEnter={showBackground}
-      onMouseLeave={hideBackground}
-      colors={COLORS}
-    >
-      <Image alt={title} src={url} layout="fill" objectFit="cover" />
-      <div className="background-cont" style={{ top: visible ? "0" : "100%" }}>
-        <div className="image-details">
-          <h4>{title}</h4>
-          <div className="price">
-            <h4>${price}</h4>
-          </div>
-          <h5 className="light white">{size}</h5>
-        </div>
-        <div className="background"></div>
-      </div>
-    </Cont>
+    <div data-aos="fade-up">
+      <Link
+        href={{
+          pathname: `/artpiece/${title}`,
+        }}
+        passHref
+      >
+        <a title={title} rel="noopener noreferrer">
+          <Cont
+            onMouseEnter={showBackground}
+            onMouseLeave={hideBackground}
+            colors={COLORS}
+          >
+            <Image alt={title} src={url} layout="fill" objectFit="cover" />
+            <div
+              className="background-cont"
+              style={{ top: visible ? "0" : "100%" }}
+            >
+              <div className="image-details">
+                <h4>{title}</h4>
+                <div className="price">
+                  <h4>${price}</h4>
+                </div>
+                <h5 className="light white">{size}</h5>
+              </div>
+              <div className="background"></div>
+            </div>
+          </Cont>
+        </a>
+      </Link>
+    </div>
   );
 };
 

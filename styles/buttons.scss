@@ -1,0 +1,59 @@
+$darkPurple: #57008c;
+$grey: #cdcdcd;
+$ultra-light-purple: #fcf8ff;
+$ultra-light-blue: #bba4ff;
+
+.submit-btn {
+  cursor: pointer;
+  background-color: $darkPurple;
+  border: 1px solid $darkPurple;
+  border-radius: 0.5rem;
+  padding: 8px;
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $ultra-light-purple;
+  }
+  transition: color 0.25s ease, background-color 0.25s ease;
+  &:hover {
+    background-color: $ultra-light-purple;
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $darkPurple;
+    }
+  }
+}
+
+.base-btn {
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid $darkPurple;
+  padding: 16px 32px;
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $darkPurple;
+  }
+
+  transition: color 0.25s ease, background-color 0.25s ease;
+  &:hover {
+    background-color: $ultra-light-purple;
+  }
+  &:active {
+    background-color: $darkPurple;
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $ultra-light-purple;
+    }
+  }
+}

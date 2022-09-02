@@ -43,7 +43,7 @@ const Navbar = () => {
   const removeHover = () => {};
 
   return (
-    <Cont className="mar-md">
+    <Cont className="mar-sm">
       <div className="nav-left">
         <Link href="/" passHref>
           <a title="Home Page" rel="noopener noreferrer">

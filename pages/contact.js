@@ -5,17 +5,40 @@ import COLORS from "../Data/colors";
 import emailjs, { init } from "@emailjs/browser";
 import Questions from "../components/contact/questions";
 const Cont = styled.div`
-  border: 1px solid black;
-  padding: 2rem;
-
-  .whole-form {
-    max-width: 1200px;
-    height: 600px;
-    margin: 0 auto;
+  .submit-btn {
+    float: right;
+  }
+  .field {
+    h5 {
+      margin-bottom: 8px;
+    }
+  }
+  .right-form {
+    padding: 2rem;
+  }
+  .bottom-form {
+    padding: 2rem;
+    grid-column: 1 / 3;
+    @media only screen and (max-width:790px){
+      grid-column:1;
+    }
   }
 `;
 
-const FormElem = styled.div``;
+const FormElem = styled.div`
+  max-width: 1200px;
+  min-height: 600px;
+
+  margin: 0 auto;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  @media only screen and (max-width: 790px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+`;
 const contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -75,9 +98,9 @@ const contact = () => {
 
   return (
     <Cont colors={COLORS}>
-      <div className="whole-form">
+      <FormElem ref={form}>
         <Questions />
-        <FormElem ref={form}>
+        <div className="right-form">
           <div className="form-line line">
             <div className="field">
               <h5>Name *</h5>
@@ -107,9 +130,12 @@ const contact = () => {
               name="subject"
               onChange={updateForm}
               value={formData.subject}
-              placeholder = 'Subject'
+              placeholder="Subject"
             ></input>
           </div>
+        </div>
+
+        <div className="bottom-form">
           <div className="field line">
             <h5>Message * </h5>
             <textarea
@@ -117,12 +143,14 @@ const contact = () => {
               name="message"
               onChange={updateForm}
               value={formData.message}
-              placeholder = 'Message'
+              placeholder="Message"
             ></textarea>
           </div>
-          <button></button>
-        </FormElem>
-      </div>
+          <button className="submit-btn">
+            <h5>Submit</h5>
+          </button>
+        </div>
+      </FormElem>
     </Cont>
   );
 };

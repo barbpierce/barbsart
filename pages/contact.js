@@ -19,8 +19,8 @@ const Cont = styled.div`
   .bottom-form {
     padding: 2rem;
     grid-column: 1 / 3;
-    @media only screen and (max-width:790px){
-      grid-column:1;
+    @media only screen and (max-width: 790px) {
+      grid-column: 1;
     }
   }
 `;
@@ -39,7 +39,7 @@ const FormElem = styled.div`
     grid-template-rows: 1fr;
   }
 `;
-const contact = () => {
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -155,4 +155,4 @@ const contact = () => {
   );
 };
 
-export default contact;
+export default Contact;

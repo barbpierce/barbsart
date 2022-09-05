@@ -52,7 +52,7 @@ const Slug = () => {
         <div>
           <h4 className="mar-bottom-1">Starry Night</h4>
           <h4 className="mar-bottom-2 purple">$250</h4>
-          <h5 className="mar-bottom-2 italic light ">12" x 12"</h5>
+          <h5 className="mar-bottom-2 italic light ">12&quot; x 12&quot;</h5>
           <p>
             This is the description of the art piece: what it's made with, and
             what makes it special.

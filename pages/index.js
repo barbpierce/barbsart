@@ -20,7 +20,35 @@ const Cont = styled.div`
   }
 `;
 
-export default function Home() {
+export const getStaticProps = async () => {
+  const url = process.env.ENDPOINT;
+  const graphQLClient = new GraphQLClient(url, {
+    header: {
+      Authorization: process.env.GRAPH_CMS_TOKEN,
+    },
+  });
+  const query = gql`
+    query {
+     
+    }
+  `;
+
+  const data = await graphQLClient.request(query);
+  const firstArticles = data.articles;
+  const secondArticles = data.moreArticles;
+
+  const superTags = data.tags;
+
+  const articlesFetch = [...firstArticles, ...secondArticles];
+  return {
+    props: {
+      articlesFetch,
+      superTags,
+    },
+  };
+};
+
+export default function Home({ artPieces }) {
   const images = [
     {
       src: "/images/art1.jpg",
@@ -77,14 +105,8 @@ export default function Home() {
         title={image.title}
         price={image.price}
         size={image.size}
-        
       />
     );
   });
-  return (
-    <Cont>
-      {imageElems}
-      
-    </Cont>
-  );
+  return <Cont>{imageElems}</Cont>;
 }

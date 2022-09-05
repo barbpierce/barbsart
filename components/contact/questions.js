@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import COLORS from "../../Data/colors";
 const QuestionElem = styled.div`
   //grid-area: left;
-  padding:2rem;
+  padding: 2rem;
   background-color: ${(props) => props.colors.lightPurple};
   h4 {
     text-decoration-line: underline;
@@ -52,8 +52,8 @@ const Questions = () => {
             />
           </div>
         </div>
-        <a href="mailto: barb@coachinghorizons.com">
-          <p>Barb@coachinghorizons.ca</p>
+        <a href="mailto: kayakbarb@gmail.com">
+          <p>kayakbarb@gmail.com</p>
         </a>
       </div>
       <div className="line">

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import Picture from "../components/Picture";
+import { gql, GraphQLClient } from "graphql-request";
 import { useEffect } from "react";
 const Cont = styled.div`
   position: relative;

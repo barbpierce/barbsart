@@ -6,6 +6,9 @@ import Image from "next/image";
 import Aos from "aos";
 import "aos/dist/aos.css";
 const Cont = styled.div`
+height:100vh;
+`;
+const Content = styled.div`
   display: flex;
   height: 400px;
   margin: 10% 5% 0;
@@ -42,6 +45,7 @@ const Slug = () => {
   }, []);
   return (
     <Cont>
+      <Content>
       <div data-aos="fade-right" className="image-container">
         <div>
           <Image src="/images/art1.jpg" layout="fill" objectFit="cover" />
@@ -64,6 +68,7 @@ const Slug = () => {
           </button>
         </div>
       </div>
+      </Content>
     </Cont>
   );
 };

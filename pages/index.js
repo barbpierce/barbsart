@@ -20,7 +20,7 @@ const Cont = styled.div`
     margin-bottom: 250px;
   }
 `;
-
+/*
 export const getStaticProps = async () => {
   const url = process.env.ENDPOINT;
   const graphQLClient = new GraphQLClient(url, {
@@ -48,7 +48,7 @@ export const getStaticProps = async () => {
     },
   };
 };
-
+*/
 export default function Home({ artPieces }) {
   const images = [
     {

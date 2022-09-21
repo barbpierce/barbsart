@@ -112,6 +112,20 @@ p {
   }
 }
 
+.mobile {
+  display: none;
+}
+@media only screen and (max-width: 634px) {
+  .tablet {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 634px) {
+  .mobile {
+    display: block;
+  }
+}
 .italic {
   font-style: italic;
 }
@@ -129,6 +143,9 @@ p {
 }
 .light {
   font-weight: 400;
+}
+.bold {
+  font-weight: 700 !important;
 }
 .white {
   color: #fff !important;

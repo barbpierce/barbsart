@@ -7,6 +7,10 @@ import COLORS from "../Data/colors";
 const Cont = styled.div`
   position: relative;
   z-index: 5;
+  a {
+    text-decoration-thickness: 1px !important;
+    text-underline-offset: 1px !important;
+  }
   .top {
     cursor: pointer;
     display: flex;

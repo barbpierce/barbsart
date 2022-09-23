@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import { gql, GraphQLClient } from "graphql-request";
 import COLORS from "../Data/colors";
 import { useState, useRef } from "react";
 import ImageSelect from "../components/slideshow/imageSelect";
@@ -8,7 +9,7 @@ const Cont = styled.div`
   .image-container {
     position: relative;
     max-width: 1000px;
-    height: 500px;
+    height: 600px;
     margin-right: auto;
     margin-left: auto;
     padding: 16px;
@@ -46,12 +47,43 @@ const Cont = styled.div`
   }
 `;
 
-const Slideshows = () => {
+export const getStaticProps = async () => {
+  const url = process.env.ENDPOINT;
+  const graphQLClient = new GraphQLClient(url, {
+    header: {
+      Authorization: process.env.GRAPH_CMS_TOKEN,
+    },
+  });
+  const query = gql`
+    query Artpieces {
+      artPieces(first: 100) {
+        title
+        description
+        image {
+          url
+        }
+        landscape
+        sold
+      }
+    }
+  `;
+
+  const data = await graphQLClient.request(query);
+  const artPieces = data.artPieces;
+
+  return {
+    props: {
+      artPieces,
+    },
+  };
+};
+
+const Slideshows = ({ artPieces }) => {
   const slideCont = useRef();
   const imageWidth = 132;
   const [imageValue, setImageValue] = useState({
     index: 0,
-    src: "/images/art1.jpg",
+    src: artPieces[0].image.url,
   });
   const [left, setLeft] = useState("0px");
   const images = [
@@ -313,7 +345,7 @@ const Slideshows = () => {
     setImageValue((prevValue) => {
       return {
         index: id,
-        src: images[id].src,
+        src: artPieces[id].image.url,
       };
     });
     let realId = id + 1;
@@ -324,14 +356,14 @@ const Slideshows = () => {
     setLeft(leftValue);
   };
 
-  const imageElems = images.map((image, index) => {
+  const imageElems = artPieces.map((artPiece, index) => {
     return (
       <ImageSelect
         updateImage={updateImage}
         key={index}
         index={index}
-        title={image.title}
-        url={image.src}
+        title={artPiece.title}
+        url={artPiece.image.url}
       />
     );
   });
@@ -341,7 +373,7 @@ const Slideshows = () => {
     <Cont colors={COLORS}>
       <div className="mar-sm image-container">
         <div>
-          <Image src={imageValue.src} layout="fill" objectFit="cover" />
+          <Image src={imageValue.src} layout="fill" objectFit="contain" />
         </div>
       </div>
 

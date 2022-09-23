@@ -30,21 +30,23 @@ export const getStaticProps = async () => {
     },
   });
   const query = gql`
-    query Artpieces {
-      artPieces(first: 100) {
+  query Pastel {
+    catagory(where: {title: "Pastel"}) {
+      artPieces {
         title
-        description
+        sold
+        landscape
         image {
           url
         }
-        landscape
-        sold
       }
     }
+  }
+  
   `;
 
   const data = await graphQLClient.request(query);
-  const artPieces = data.artPieces;
+  const artPieces = data.catagory.artPieces;
 
   return {
     props: {

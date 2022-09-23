@@ -8,7 +8,7 @@ const Cont = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
-  align-items:center;
+  align-items: center;
   flex-wrap: wrap;
   @media only screen and (max-width: 905px) {
     justify-content: space-around;
@@ -30,21 +30,22 @@ export const getStaticProps = async () => {
     },
   });
   const query = gql`
-    query Artpieces {
-      artPieces(first: 100) {
-        title
-        description
-        image {
-          url
+    query Watercolour {
+      catagory(where: { title: "Watercolour" }) {
+        artPieces {
+          title
+          sold
+          landscape
+          image {
+            url
+          }
         }
-        landscape
-        sold
       }
     }
   `;
 
   const data = await graphQLClient.request(query);
-  const artPieces = data.artPieces;
+  const artPieces = data.catagory.artPieces;
 
   return {
     props: {
@@ -54,8 +55,6 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ artPieces }) {
- 
-
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);

@@ -37,15 +37,21 @@ const Cont = styled.div`
   }
   .dropdown {
     position: absolute;
+    text-align: center;
     background: #fff;
     border-radius: 0.5rem;
-    padding: 8px;
+    padding: 16px;
+    width: 120px;
+    left: calc(50% - 60px);
+    h6 {
+      margin-left: 0 !important;
+    }
     border: 1px solid ${(props) => props.colors.lightPurple};
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
       rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
       rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     li {
-      margin-bottom: 4px;
+      margin-bottom: 8px;
       &:hover {
         text-decoration: underline;
       }
@@ -90,23 +96,23 @@ const Dropdown = ({ text }) => {
         <div className="dropdown">
           <ul>
             <li>
-              <Link href="/commisions" passHref>
-                <a title="Commisions" rel="noopener noreferrer">
+              <Link href="/watercolour" passHref>
+                <a title="Watercolour" rel="noopener noreferrer">
                   <h6 className="light">Water Colour</h6>
                 </a>
               </Link>
             </li>
             <li>
-              <Link href="/commisions" passHref>
-                <a title="Commisions" rel="noopener noreferrer">
-                  <h6 className="light">Oil Based</h6>
+              <Link href="/pastel" passHref>
+                <a title="Pastel" rel="noopener noreferrer">
+                  <h6 className="light">Pastel</h6>
                 </a>
               </Link>
             </li>
             <li>
-              <Link href="/commisions" passHref>
-                <a title="Commisions" rel="noopener noreferrer">
-                  <h6 className="light">Pencil</h6>
+              <Link href="/pencil" passHref>
+                <a title="Pencil" rel="noopener noreferrer">
+                  <h6 className="light">Pencil Crayon</h6>
                 </a>
               </Link>
             </li>

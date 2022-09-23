@@ -201,3 +201,24 @@ textarea {
     border: 1px solid $darkPurple;
   }
 }
+
+.landscape {
+  width: 474.48px !important;
+  height: 325.52px !important;
+}
+
+.portrait {
+  width: 344.08px !important;
+  height: 455.92px !important;
+}
+
+.tooltip {
+  background-color: rgba(205, 205, 205, 1);
+
+  position: absolute;
+  top: 0;
+  display:flex;
+  align-items:center;
+  text-align:center;
+}
+

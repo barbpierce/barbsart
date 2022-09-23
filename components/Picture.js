@@ -62,7 +62,7 @@ const Cont = styled.div`
   }
 `;
 
-const Picture = ({ url, title, price, size, instock }) => {
+const Picture = ({ url, title, description, price, size, sold, landscape }) => {
   const [visible, setVisible] = useState(false);
   const showBackground = () => {
     setVisible(true);
@@ -76,6 +76,7 @@ const Picture = ({ url, title, price, size, instock }) => {
       <Link
         href={{
           pathname: `/artpiece/${title}`,
+          
         }}
         passHref
       >
@@ -84,6 +85,7 @@ const Picture = ({ url, title, price, size, instock }) => {
             onMouseEnter={showBackground}
             onMouseLeave={hideBackground}
             colors={COLORS}
+            className = {landscape ? 'landscape' : 'portrait'}
           >
             <Image alt={title} src={url} layout="fill" objectFit="cover" />
             <div

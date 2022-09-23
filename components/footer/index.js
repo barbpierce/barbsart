@@ -37,8 +37,11 @@ const Cont = styled.div`
     }
     .email {
       grid-area: email;
+      display: flex;
+      justify-content: center;
     }
     @media only screen and (max-width: 360px) {
+      padding: 24px;
       grid-template-areas:
         "left left"
         "right right"

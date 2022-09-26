@@ -205,11 +205,18 @@ textarea {
 .landscape {
   width: 474.48px !important;
   height: 325.52px !important;
+  @media only screen and (max-width: 500px) {
+    width: 100% !important;
+    height: 240px !important;
+  }
 }
 
 .portrait {
   width: 344.08px !important;
   height: 455.92px !important;
+  @media only screen and (max-width: 500px) {
+    width: 100% !important;
+  }
 }
 
 .tooltip {
@@ -217,8 +224,7 @@ textarea {
 
   position: absolute;
   top: 0;
-  display:flex;
-  align-items:center;
-  text-align:center;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
-

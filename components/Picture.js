@@ -7,7 +7,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 const Cont = styled.div`
   position: relative;
-  width: 400px;
+  width: 100%;
   height: 400px;
   transition: box-shadow 0.25s ease;
   &:hover {
@@ -76,7 +76,6 @@ const Picture = ({ url, title, description, price, size, sold, landscape }) => {
       <Link
         href={{
           pathname: `/artpiece/${title}`,
-          
         }}
         passHref
       >
@@ -85,7 +84,7 @@ const Picture = ({ url, title, description, price, size, sold, landscape }) => {
             onMouseEnter={showBackground}
             onMouseLeave={hideBackground}
             colors={COLORS}
-            className = {landscape ? 'landscape' : 'portrait'}
+            className={landscape ? "landscape" : "portrait"}
           >
             <Image alt={title} src={url} layout="fill" objectFit="cover" />
             <div

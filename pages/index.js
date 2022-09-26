@@ -8,10 +8,14 @@ const Cont = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
-  align-items:center;
+  align-items: center;
   flex-wrap: wrap;
+  width: 100%;
   @media only screen and (max-width: 905px) {
     justify-content: space-around;
+  }
+  @media only screen and (max-width: 500px) {
+    display: block;
   }
   .block {
     background: red;
@@ -54,8 +58,6 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ artPieces }) {
- 
-
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);

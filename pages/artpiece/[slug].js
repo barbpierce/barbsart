@@ -50,6 +50,16 @@ const Cont = styled.div`
         font-size: 40px;
       }
     }
+    @media only screen and (max-width: 600px) {
+      .close {
+        width: 40px;
+        height: 40px;
+        .icon-spec{
+        font-size:20px;
+      }
+      }
+      
+    }
   }
   .fullscreen {
     display: block;
@@ -109,7 +119,6 @@ const Content = styled.div`
       padding-right: 0;
     }
   }
-  
 `;
 export const getServerSideProps = async (pageContext) => {
   const url = process.env.ENDPOINT;

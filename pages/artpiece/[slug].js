@@ -54,13 +54,15 @@ const Cont = styled.div`
   .fullscreen {
     display: block;
     opacity: 1;
-    
   }
 `;
 const Content = styled.div`
   display: flex;
   height: 500px;
   margin-top: 5%;
+  @media only screen and (max-width: 1300px) {
+    height: 400px;
+  }
 
   .image-container {
     flex: 1;
@@ -102,11 +104,12 @@ const Content = styled.div`
   }
   @media only screen and (max-width: 800px) {
     flex-direction: column;
-    height: 800px;
+    height: 600px;
     .image-container {
       padding-right: 0;
     }
   }
+  
 `;
 export const getServerSideProps = async (pageContext) => {
   const url = process.env.ENDPOINT;
@@ -146,9 +149,11 @@ export const getServerSideProps = async (pageContext) => {
 };
 
 const Slug = ({ artPiece }) => {
+  /*
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
+  */
 
   const [fullscreen, setFullscreen] = useState(false);
 
@@ -176,7 +181,6 @@ const Slug = ({ artPiece }) => {
           onClick={() => {
             setFullscreen(true);
           }}
-          data-aos="fade-right"
           className="image-container"
         >
           <div className="image">
@@ -186,7 +190,7 @@ const Slug = ({ artPiece }) => {
             <h5>Click To Fullscreen</h5>
           </div>
         </div>
-        <div data-aos="fade-left" className="description">
+        <div className="description">
           <div></div>
           <div>
             <h4 className="mar-bottom-1">{artPiece.title}</h4>

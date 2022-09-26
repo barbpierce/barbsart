@@ -131,9 +131,15 @@ p {
 }
 .mar-bottom-1 {
   margin-bottom: 1rem;
+  @media only screen and (max-width:500px){
+    margin-bottom:.5rem;
+  }
 }
 .mar-bottom-2 {
   margin-bottom: 2rem;
+  @media only screen and (max-width:500px){
+    margin-bottom: 1rem;
+  }
 }
 .grey {
   color: $grey;

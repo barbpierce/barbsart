@@ -52,10 +52,10 @@ const Cont = styled.div`
     }
     @media only screen and (max-width: 600px) {
       .close {
-        width: 40px;
-        height: 40px;
+        width: 60px;
+        height: 60px;
         .icon-spec{
-        font-size:20px;
+        font-size:30px;
       }
       }
       

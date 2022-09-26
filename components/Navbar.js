@@ -4,7 +4,8 @@ import Link from "next/link";
 import COLORS from "../Data/colors";
 import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import {ShoppingCart} from '../components/ShoppingCart';
 import Navmobile from "./Navmobile";
 import Dropdown from "./Dropdown";
 const Cont = styled.div`
@@ -80,6 +81,9 @@ const Navbar = () => {
             <h6 className="padding">Contact</h6>
           </a>
         </Link>
+        <ShoppingCart>
+          <FontAwesomeIcon icon = {faShoppingCart} size = 'lg'/>
+        </ShoppingCart>
       </div>
       <div className="mobile nav-mobile">
         <Navmobile visible={visible} toggleVisible={toggleVisible} />

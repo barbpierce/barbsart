@@ -7,12 +7,12 @@ import { useEffect } from "react";
 const Cont = styled.div`
   position: relative;
   display: flex;
-  justify-content: space-between;
+  
   align-items: center;
   flex-wrap: wrap;
-  @media only screen and (max-width: 905px) {
+
     justify-content: space-around;
-  }
+
   .block {
     background: red;
     border: 1px solid black;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { gql, GraphQLClient } from "graphql-request";
 import { NextSeo } from "next-seo";
 import styled from "styled-components";
@@ -8,6 +8,8 @@ import "aos/dist/aos.css";
 import COLORS from "../../Data/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { AppContext } from "../../pages/_app";
+import toast, { Toaster } from "react-hot-toast";
 const Cont = styled.div`
   height: 100vh;
 
@@ -54,11 +56,10 @@ const Cont = styled.div`
       .close {
         width: 60px;
         height: 60px;
-        .icon-spec{
-        font-size:30px;
+        .icon-spec {
+          font-size: 30px;
+        }
       }
-      }
-      
     }
   }
   .fullscreen {
@@ -135,6 +136,11 @@ export const getServerSideProps = async (pageContext) => {
       artPiece(where: { title: $pageSlug }) {
         title
         description
+        price
+        dimensions
+        catagory {
+          title
+        }
         image {
           url
         }
@@ -163,11 +169,38 @@ const Slug = ({ artPiece }) => {
     Aos.init({ duration: 2000 });
   }, []);
   */
+  const [context, setContext] = useContext(AppContext);
+  const addToCart = (title, price, url, dimensions, catagory) => {
+    if (context.items.some((item) => item.title === title)) {
+      toast.error("This is already in your cart");
+    } else {
+      toast.success("Added to cart!");
+      setContext((prevContext) => {
+        const items = prevContext.items;
+        items.push({
+          title,
+          price,
+          url,
+          dimensions,
+          catagory,
+        });
+        return {
+          ...prevContext,
+          items: items,
+        };
+      });
+    }
+  };
 
   const [fullscreen, setFullscreen] = useState(false);
+  useEffect(() => {
+    console.log(context);
+  }, [context]);
+  const titleX = artPiece.title;
 
   return (
     <Cont colors={COLORS}>
+      <Toaster />
       <div
         className={
           fullscreen ? "fullscreen fullscreen-image" : "fullscreen-image"
@@ -203,12 +236,25 @@ const Slug = ({ artPiece }) => {
           <div></div>
           <div>
             <h4 className="mar-bottom-1">{artPiece.title}</h4>
-            <h4 className="mar-bottom-2 purple">$250</h4>
-            <h5 className="mar-bottom-2 italic light ">12&quot; x 12&quot;</h5>
+            <h4 className="mar-bottom-2 purple">${artPiece.price}</h4>
+            <h5 className="mar-bottom-2 italic light ">
+              {artPiece.dimensions}
+            </h5>
             <p>{artPiece.description}</p>
           </div>
           <div>
-            <button className="base-btn">
+            <button
+              onClick={() =>
+                addToCart(
+                  artPiece.title,
+                  artPiece.price,
+                  artPiece.image.url,
+                  artPiece.dimensions,
+                  artPiece.catagory.title
+                )
+              }
+              className="base-btn"
+            >
               <h5>Add To Cart</h5>
             </button>
           </div>

@@ -54,7 +54,7 @@ const Cont = styled.div`
   }
 `;
 
-const Item = ({ title, total, catagory, size, image, index }) => {
+const Item = ({ title, total, catagory, size, image, index, removeItem }) => {
   return (
     <Cont colors={COLORS}>
       <h6 className="mar-bottom-1">#{index + 1}</h6>
@@ -81,7 +81,7 @@ const Item = ({ title, total, catagory, size, image, index }) => {
           </div>
         </div>
         <div className="delete">
-          <button>
+          <button onClick = {()=> removeItem(index)}>
             <FontAwesomeIcon icon={faXmark} className="icon-" />
           </button>
         </div>

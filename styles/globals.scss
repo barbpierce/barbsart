@@ -244,6 +244,10 @@ textarea {
   align-items: center;
 }
 
-body {
+body,
+html {
   overflow-x: hidden;
+}
+body {
+  position: relative;
 }

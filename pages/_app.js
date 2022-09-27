@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
     title: "Barbs Art",
     description: "Personal art portfolio",
     keywords: ["art", "art Portfolio", "watercolor art", "art commisions"],
-    
+
     icon: "/favicon.io",
     openGraph: {
       type: "website",
@@ -30,13 +30,12 @@ function MyApp({ Component, pageProps }) {
   };
   return (
     <AppContext.Provider value={[cart, setCart]}>
-      <NextSeo {...SEO}/>
+      <NextSeo {...SEO} />
       <Layout>
         <Head>
-          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta
             name="viewport"
-            content="width=device-width, initial-scale=1.0"
+            content="initial-scale=1.0, width=device-width"
           />
         </Head>
         <Component {...pageProps} />

@@ -114,7 +114,7 @@ const Slideshows = ({ artPieces }) => {
       />
     );
   });
-  const width = images.length * imageWidth + "px";
+  const width = artPieces.length * imageWidth + "px";
 
   return (
     <Cont colors={COLORS}>

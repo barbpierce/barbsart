@@ -123,6 +123,7 @@ const ShoppingCart = ({dropdownActive, showDropdown, hideDropdown }) => {
         size={item.size}
         image={item.image}
         index={index}
+        key = {index}
       />
     );
   });

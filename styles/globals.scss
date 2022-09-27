@@ -2,6 +2,7 @@
 @import "./buttons.scss";
 $darkPurple: #57008c;
 $grey: #cdcdcd;
+$greyPurple: #7b6986;
 $ultra-light-purple: #fcf8ff;
 $ultra-light-blue: #bba4ff;
 $black: #1a002b;
@@ -131,13 +132,13 @@ p {
 }
 .mar-bottom-1 {
   margin-bottom: 1rem;
-  @media only screen and (max-width:500px){
-    margin-bottom:.5rem;
+  @media only screen and (max-width: 500px) {
+    margin-bottom: 0.5rem;
   }
 }
 .mar-bottom-2 {
   margin-bottom: 2rem;
-  @media only screen and (max-width:500px){
+  @media only screen and (max-width: 500px) {
     margin-bottom: 1rem;
   }
 }
@@ -146,6 +147,9 @@ p {
 }
 .purple {
   color: $darkPurple;
+}
+.grey-purple {
+  color: $greyPurple;
 }
 .light {
   font-weight: 400;

@@ -57,3 +57,39 @@ $ultra-light-blue: #bba4ff;
     }
   }
 }
+
+.base-btn-invert{
+  cursor: pointer;
+  background-color: $darkPurple;
+  border: 1px solid $darkPurple;
+  padding: 16px 32px;
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $ultra-light-purple;
+  }
+
+  transition: color 0.25s ease, background-color 0.25s ease;
+  &:hover {
+    background-color: $ultra-light-purple;
+    h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $darkPurple;
+  }
+  }
+  &:active {
+    background-color: $darkPurple;
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $ultra-light-purple;
+    }
+  }
+}

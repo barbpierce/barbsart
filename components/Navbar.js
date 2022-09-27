@@ -4,8 +4,8 @@ import Link from "next/link";
 import COLORS from "../Data/colors";
 import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars} from "@fortawesome/free-solid-svg-icons";
-import ShoppingCart from '../components/ShoppingCart';
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import ShoppingCart from "../components/cart/ShoppingCart";
 import Navmobile from "./Navmobile";
 import Dropdown from "./Dropdown";
 const Cont = styled.div`
@@ -40,7 +40,6 @@ const Cont = styled.div`
   .nav-left {
   }
   .nav-right {
-    position: relative;
     display: flex;
     align-items: center;
     h6 {
@@ -50,9 +49,16 @@ const Cont = styled.div`
 `;
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
-
   const toggleVisible = () => {
     setVisible(!visible);
+  };
+
+  const [dropdownActive, setDropdownActive] = useState(false);
+  const showDropdown = () => {
+    setDropdownActive(true);
+  };
+  const hideDropdown = () => {
+    setDropdownActive(false);
   };
   return (
     <Cont colors={COLORS} className="mar-sm">
@@ -82,19 +88,29 @@ const Navbar = () => {
             <h6 className="padding">Contact</h6>
           </a>
         </Link>
-        <ShoppingCart />
+
+        <ShoppingCart
+          showDropdown={showDropdown}
+          hideDropdown={hideDropdown}
+          dropdownActive={dropdownActive}
+        />
       </div>
       <div className="mobile nav-mobile">
         <Navmobile visible={visible} toggleVisible={toggleVisible} />
-        <div className = 'flex-center'>
-          <ShoppingCart />
-        <FontAwesomeIcon
-        style = {{marginLeft:'32px'}}
-          onClick={toggleVisible}
-          icon={faBars}
-          className="hamburger"
-          size="xl"
-        />
+        <div className="flex-center">
+          <ShoppingCart
+            showDropdown={showDropdown}
+            hideDropdown={hideDropdown}
+            dropdownActive={dropdownActive}
+          />
+
+          <FontAwesomeIcon
+            style={{ marginLeft: "32px" }}
+            onClick={toggleVisible}
+            icon={faBars}
+            className="hamburger"
+            size="xl"
+          />
         </div>
       </div>
     </Cont>

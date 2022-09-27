@@ -28,6 +28,7 @@ const Cont = styled.div`
     width: 400px;
     right: 0;
     top: 0;
+
     border: 2px solid black;
     padding: 16px;
     right: -400px;
@@ -186,8 +187,13 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
           </button>
         </div>
 
-        <div className="items">{itemElems.length === 0 && <p style = {{textAlign:"center"}}>Your cart is empty</p>}{itemElems}</div>
-        
+        <div className="items">
+          {itemElems.length === 0 && (
+            <p style={{ textAlign: "center" }}>Your cart is empty</p>
+          )}
+          {itemElems}
+        </div>
+
         <div className="checkout">
           <h5>Checkout</h5>
           <h6>
@@ -199,11 +205,11 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
           <button onClick={hideDropdown} className="base-btn">
             <h5>Keep Shopping</h5>
           </button>
-          { itemElems.length > 0 &&
-          <button className="base-btn-invert">
-            <h5>Checkout</h5>
-          </button>
-}
+          {itemElems.length > 0 && (
+            <button className="base-btn-invert">
+              <h5>Checkout</h5>
+            </button>
+          )}
         </div>
       </div>
     </Cont>

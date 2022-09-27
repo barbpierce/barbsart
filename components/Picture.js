@@ -36,7 +36,7 @@ const Cont = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: top 0.5s ease;
+    transition: transform 0.5s ease;
   }
   .image-details {
     position: relative;
@@ -89,7 +89,9 @@ const Picture = ({ url, title, description, price, size, sold, landscape }) => {
             <Image alt={title} src={url} layout="fill" objectFit="cover" />
             <div
               className="background-cont"
-              style={{ top: visible ? "0" : "100%" }}
+              style={{
+                transform: visible ? "translateY(0)" : "translateY(100%)",
+              }}
             >
               <div className="image-details">
                 <h4>{title}</h4>

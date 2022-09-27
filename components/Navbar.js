@@ -9,6 +9,7 @@ import ShoppingCart from "../components/cart/ShoppingCart";
 import Navmobile from "./Navmobile";
 import Dropdown from "./Dropdown";
 const Cont = styled.div`
+ 
   display: flex;
   padding-left: 5%;
   padding-right: 5%;

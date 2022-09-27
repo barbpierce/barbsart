@@ -12,7 +12,7 @@ const Cont = styled.div`
   flex-wrap: wrap;
   width: 100%;
   justify-content: space-around;
-  
+
   @media only screen and (max-width: 500px) {
     display: block;
   }

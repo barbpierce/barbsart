@@ -12,4 +12,8 @@ module.exports = {
     domains: ["media.graphassets.com"],
   },
   nextConfig,
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
 };

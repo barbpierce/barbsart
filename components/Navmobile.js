@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import Link from "next/link";
 import COLORS from "../Data/colors";
-import { faChevronCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import { faRightLong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Cont = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
-  right: 100%;
+  left: 100%;
   top: 0;
   text-align: center;
   z-index: 1;
@@ -15,30 +15,34 @@ const Cont = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: right 0.5s ease;
+  transition: left 0.5s ease;
   .icon-spec {
     font-size: 64px;
-    color: ${(props) => props.colors.green};
+    color: white;
     position: absolute;
-    left: 24px;
-    top: 30%;
+    right: 24px;
+    top: 33%;
     cursor: pointer;
-    background: white;
+    background: red;
     border-radius: 50%;
-    transition: color 0.25s ease;
+    transition: color 0.25s ease, background-color .25s ease;
+    box-shadow: rgba(255, 0, 0, 0.25) 0px 54px 55px, rgba(255, 0, 0, 0.12) 0px -12px 30px, rgba(255, 0, 0, 0.12) 0px 4px 6px, rgba(255, 0, 0, 0.17) 0px 12px 13px, rgba(255, 0, 0, 0.09) 0px -3px 5px;
+
+    padding:8px;
     &:hover {
-      color: ${(props) => props.colors.darkGreen};
+      color: red;
+      background-color: white;
     }
   }
   a:hover {
     text-decoration: none;
   }
 
-  background-image: linear-gradient(${(props) => props.colors.blue}, white);
+  background-image: linear-gradient(white, black, white);
   h2,
   h3 {
-    color: ${(props) => props.colors.ultraLightPurple};
-    background-color: ${(props) => props.colors.darkPurple};
+    color: #000;
+    background-color: #fff;
     margin-bottom: 40px;
     padding: 8px 16px;
     border-radius: 16px;
@@ -48,13 +52,22 @@ const Cont = styled.div`
       border: 2px solid ${(props) => props.colors.ultraLightPurple};
     }
   }
+  h2 {
+    border: 4px solid black;
+    &:hover {
+      border: 4px solid white;
+    }
+  }
+  h3 {
+    border: 2px solid black;
+  }
 `;
 const Navmobile = ({ visible, toggleVisible }) => {
   return (
-    <Cont style={{ right: visible ? "0" : "100%" }} colors={COLORS}>
+    <Cont style={{ left: visible ? "0" : "100%" }} colors={COLORS}>
       <FontAwesomeIcon
         onClick={toggleVisible}
-        icon={faChevronCircleLeft}
+        icon={faRightLong}
         className="icon-spec"
       />
 

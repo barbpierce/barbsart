@@ -6,6 +6,7 @@ import styled from "styled-components";
 import COLORS from "../../Data/colors";
 import Item from "./Item";
 import { AppContext } from "../../pages/_app";
+import Link from "next/link";
 
 const Cont = styled.div`
   h6 {
@@ -206,9 +207,13 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
             <h5>Keep Shopping</h5>
           </button>
           {itemElems.length > 0 && (
-            <button className="base-btn-invert">
-              <h5>Checkout</h5>
-            </button>
+            <Link href="/checkout" passHref>
+              <a title="Checkout" rel="noopener noreferrer">
+                <button className="base-btn-invert">
+                  <h5>Checkout</h5>
+                </button>
+              </a>
+            </Link>
           )}
         </div>
       </div>

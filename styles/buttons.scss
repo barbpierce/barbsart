@@ -2,7 +2,8 @@ $darkPurple: #57008c;
 $grey: #cdcdcd;
 $ultra-light-purple: #fcf8ff;
 $ultra-light-blue: #bba4ff;
-
+$lightPurple: #f3dfff;
+$super-ultra-light-purple:#FCF8FF;
 .submit-btn {
   cursor: pointer;
   background-color: $darkPurple;
@@ -58,7 +59,7 @@ $ultra-light-blue: #bba4ff;
   }
 }
 
-.base-btn-invert{
+.base-btn-invert {
   cursor: pointer;
   background-color: $darkPurple;
   border: 1px solid $darkPurple;
@@ -75,12 +76,12 @@ $ultra-light-blue: #bba4ff;
   &:hover {
     background-color: $ultra-light-purple;
     h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: $darkPurple;
-  }
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $darkPurple;
+    }
   }
   &:active {
     background-color: $darkPurple;
@@ -92,4 +93,19 @@ $ultra-light-blue: #bba4ff;
       color: $ultra-light-purple;
     }
   }
+}
+
+.select {
+  border: 1px solid black;
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px 24px;
+  cursor: pointer;
+  display: inline-block;
+  &:hover {
+    background-color: $super-ultra-light-purple;
+  }
+}
+.select-active {
+  border: 4px solid black;
 }

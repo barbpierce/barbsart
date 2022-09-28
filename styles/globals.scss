@@ -5,7 +5,9 @@ $grey: #cdcdcd;
 $greyPurple: #7b6986;
 $ultra-light-purple: #fcf8ff;
 $ultra-light-blue: #bba4ff;
+$super-ultra-light-purple: #fcf8ff;
 $black: #1a002b;
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -142,6 +144,12 @@ p {
     margin-bottom: 1rem;
   }
 }
+.mar-bottom-16 {
+  margin-bottom: 16px;
+}
+.mar-bottom-32 {
+  margin-bottom: 32px;
+}
 .grey {
   color: $grey;
 }
@@ -166,6 +174,7 @@ p {
 .mar-sm {
   margin-bottom: 64px;
 }
+
 a {
   &:hover {
     text-decoration: underline;
@@ -182,6 +191,7 @@ input {
   padding: 8px;
   background-color: $ultra-light-purple;
   margin-bottom: 1rem;
+  width: 100%;
   &:focus {
     background-color: #fff;
     outline: none;
@@ -189,7 +199,19 @@ input {
   }
   &:not(:placeholder-shown) {
     border: 1px solid $darkPurple;
-    background-color: $ultra-light-blue;
+  }
+}
+fieldset {
+  border: none;
+}
+label {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 8px;
   }
 }
 

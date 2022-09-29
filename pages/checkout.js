@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { AppContext } from "./_app";
+import { nanoid } from "nanoid";
 import styled from "styled-components";
 import Delivery from "../components/checkout/information/Delivery";
 import IndexTracker from "../components/checkout/IndexTracker";
@@ -249,6 +250,7 @@ const Checkout = () => {
       updateForm={updateForm}
       formData={formData}
       setRegion={setRegion}
+      key={nanoid()}
     />,
     <Billing
       formData={billing}
@@ -256,6 +258,7 @@ const Checkout = () => {
       updateForm={updateForm}
       sameBilling={sameBilling}
       updateBilling={updateBilling}
+      key={nanoid()}
     />,
   ];
 

@@ -208,7 +208,11 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
           </button>
           {itemElems.length > 0 && (
             <Link href="/checkout" passHref>
-              <a title="Checkout" rel="noopener noreferrer">
+              <a
+                onClick={hideDropdown}
+                title="Checkout"
+                rel="noopener noreferrer"
+              >
                 <button className="base-btn-invert">
                   <h5>Checkout</h5>
                 </button>

@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap");
 @import "./buttons.scss";
+@import "./dropdown.scss";
+@import "./NativeButton.scss";
+
 $darkPurple: #57008c;
 $grey: #cdcdcd;
 $greyPurple: #7b6986;
@@ -8,7 +11,9 @@ $ultra-light-blue: #bba4ff;
 $super-ultra-light-purple: #fcf8ff;
 $black: #1a002b;
 
-* {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -185,20 +190,34 @@ a {
 }
 
 input {
-  border: 1px solid $grey;
-  font-size: 16px;
-  border-radius: 0.25rem;
-  padding: 8px;
-  background-color: $ultra-light-purple;
-  margin-bottom: 1rem;
-  width: 100%;
-  &:focus {
-    background-color: #fff;
-    outline: none;
-    border: 1px solid black;
+  &[type="text"] {
+    border: 1px solid $grey;
+    font-size: 16px;
+    border-radius: 0.25rem;
+    padding: 8px;
+    background-color: $ultra-light-purple;
+    margin-bottom: 1rem;
+    width: 100%;
+    &:focus {
+      background-color: #fff;
+      outline: none;
+      border: 1px solid black;
+    }
+    &:not(:placeholder-shown) {
+      border: 1px solid $darkPurple;
+    }
   }
-  &:not(:placeholder-shown) {
-    border: 1px solid $darkPurple;
+}
+.red {
+  color: red;
+}
+.error {
+  border: 1px solid red !important;
+  background-color: #ffdada;
+  padding: 8px;
+  font-size: 16px;
+  &::placeholder {
+    color: red;
   }
 }
 fieldset {

@@ -9,16 +9,30 @@ const Cont = styled.div`
     margin-bottom: 16px;
   }
   p {
-    margin-bottom: 32px;
+    padding-bottom: 32px;
+  }
+  .index-item {
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+    &:hover {
+      background: ${(props) => props.colors.ultraLightPurple};
+      p {
+        font-weight: 700;
+      }
+    }
   }
 `;
 
-const IndexTracker = ({ cartIndex }) => {
+const IndexTracker = ({ cartIndex, updateIndex }) => {
   const lines = ["Delivery", "Billing", "Payment"].map((line, index) => {
     return (
-      <div>
+      <div
+        onClick={() => updateIndex(index)}
+        className="index-item"
+        key={index}
+      >
         <div className="line"></div>
-        <p className = {index === cartIndex ? 'bold' : ''}>{line}</p>
+        <p className={index === cartIndex.current ? "bold" : ""}>{line}</p>
       </div>
     );
   });

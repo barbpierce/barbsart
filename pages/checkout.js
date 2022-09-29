@@ -33,7 +33,7 @@ const Cont = styled.div`
   }
 `;
 
-const checkout = () => {
+const Checkout = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -275,4 +275,4 @@ const checkout = () => {
   );
 };
 
-export default checkout;
+export default Checkout;

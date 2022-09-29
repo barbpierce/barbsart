@@ -5,7 +5,7 @@ import { NextSeo } from "next-seo";
 import Head from "next/head";
 export const AppContext = createContext("");
 function MyApp({ Component, pageProps }) {
-  const [cart, setCart] = useState({ items: [] });
+  const [cart, setCart] = useState({ items: [], total: 0, shipping: 0 });
   const SEO = {
     title: "Barbs Art",
     description: "Personal art portfolio",

@@ -284,6 +284,10 @@ textarea {
   display: flex;
   align-items: center;
 }
+.flex-seperate {
+  display: flex;
+  justify-content: space-between;
+}
 
 body,
 html {
@@ -291,4 +295,11 @@ html {
 }
 body {
   position: relative;
+}
+
+.line-global {
+  width: 100%;
+  height: 1px;
+  background-color: $greyPurple;
+  margin-top: 8px;
 }

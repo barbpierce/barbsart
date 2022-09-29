@@ -5,8 +5,14 @@ import styled from "styled-components";
 import Delivery from "../components/checkout/information/Delivery";
 import IndexTracker from "../components/checkout/IndexTracker";
 import Billing from "../components/checkout/information/Billing";
+import Summary from "../components/checkout/summary/index";
 const Cont = styled.div`
   display: flex;
+  justify-content: space-around;
+  div {
+    flex: 1;
+    max-width: 440px;
+  }
   section {
     margin-bottom: 48px;
   }
@@ -250,7 +256,7 @@ const Checkout = () => {
       updateForm={updateForm}
       formData={formData}
       setRegion={setRegion}
-      key={nanoid()}
+      key = {1}
     />,
     <Billing
       formData={billing}
@@ -258,7 +264,7 @@ const Checkout = () => {
       updateForm={updateForm}
       sameBilling={sameBilling}
       updateBilling={updateBilling}
-      key={nanoid()}
+      key = {2}
     />,
   ];
 
@@ -273,6 +279,9 @@ const Checkout = () => {
           <h5>Continue</h5>
         </button>
         <IndexTracker updateIndex={updateIndex} cartIndex={index} />
+      </div>
+      <div>
+        <Summary />
       </div>
     </Cont>
   );

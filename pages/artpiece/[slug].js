@@ -184,9 +184,11 @@ const Slug = ({ artPiece }) => {
           dimensions,
           catagory,
         });
+        const total = prevContext.total + price;
         return {
           ...prevContext,
           items: items,
+          total:total
         };
       });
     }

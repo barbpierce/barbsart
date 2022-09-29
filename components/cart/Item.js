@@ -5,9 +5,9 @@ import Image from "next/image";
 import COLORS from "../../Data/colors";
 const Cont = styled.div`
   padding-bottom: 16px;
-  margin-bottom: 16px;
+  
   border-bottom: 1px solid ${(props) => props.colors.lightPurple};
-
+  
   h6 {
     margin-left: 0 !important;
   }
@@ -21,7 +21,7 @@ const Cont = styled.div`
     flex: 1;
     flex-grow: 1;
     flex-shrink: 1;
-    flex-basis:100%;
+    flex-basis: 100%;
   }
   .text {
     flex-grow: 1;
@@ -30,13 +30,13 @@ const Cont = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    flex-basis:100%;
+    flex-basis: 100%;
   }
   .delete {
     flex-grow: 1;
     flex-shrink: 1;
     flex: 1;
-    flex-basis:48px;
+    flex-basis: 48px;
     width: 48px;
     button {
       background-color: ${(props) => props.colors.darkRed};
@@ -81,7 +81,7 @@ const Item = ({ title, total, catagory, size, image, index, removeItem }) => {
           </div>
         </div>
         <div className="delete">
-          <button onClick = {()=> removeItem(index)}>
+          <button onClick={() => removeItem(index)}>
             <FontAwesomeIcon icon={faXmark} className="icon-" />
           </button>
         </div>

@@ -137,10 +137,13 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
   const removeItem = (index) => {
     setContext((prevContext) => {
       const items = prevContext.items;
+      const total = prevContext.total - items[index].price;
       items.splice(index, 1);
+      console.log(total);
       return {
         ...prevContext,
         items: items,
+        total:total
       };
     });
   };

@@ -6,12 +6,17 @@ import Delivery from "../components/checkout/information/Delivery";
 import IndexTracker from "../components/checkout/IndexTracker";
 import Billing from "../components/checkout/information/Billing";
 import Summary from "../components/checkout/summary/index";
+
 const Cont = styled.div`
   display: flex;
   justify-content: space-around;
+  input + p {
+    color: red;
+  }
   div {
     flex: 1;
     max-width: 440px;
+    min-width: 100px;
   }
   section {
     margin-bottom: 48px;
@@ -48,10 +53,21 @@ const Checkout = () => {
     addressTwo: "",
     postal: "",
     city: "",
-    province: "",
+    state: "",
     country: "",
     email: "",
     phone: "",
+  });
+  const [formValid, setFormValid] = useState({
+    firstName: false,
+    lastName: false,
+    addressOne: false,
+    postal: false,
+    city: false,
+    state: false,
+    country: false,
+    email: false,
+    phone: false,
   });
   const [billing, setBilling] = useState({
     firstName: "",
@@ -60,8 +76,17 @@ const Checkout = () => {
     addressTwo: "",
     postal: "",
     city: "",
-    province: "",
+    state: "",
     country: "",
+  });
+  const [billingValid, setBillingValid] = useState({
+    firstName: false,
+    lastName: false,
+    addressOne: false,
+    postal: false,
+    city: false,
+    state: false,
+    country: false,
   });
   const [pickup, setPickup] = useState(false);
   const [index, setIndex] = useState({ current: 0, max: 0 });
@@ -77,19 +102,35 @@ const Checkout = () => {
     }
   }
   function increaseIndex() {
-    setIndex((prevIndex) => {
-      return {
-        ...prevIndex,
-        current: prevIndex.current + 1,
-      };
-    });
-    if (index.current + 1 > index.max) {
+    let valid = false;
+    if (index.current === 0) {
+      if (validateForm(formValid)) {
+        valid = true;
+      }
+    } else if (index.current === 1) {
+      console.log(billingValid);
+      if (sameBilling === true) {
+        valid = true;
+      } else if (validateForm(billingValid)) {
+        valid = true;
+      }
+    }
+
+    if (valid) {
       setIndex((prevIndex) => {
         return {
           ...prevIndex,
-          max: index.current + 1,
+          current: prevIndex.current + 1,
         };
       });
+      if (index.current + 1 > index.max) {
+        setIndex((prevIndex) => {
+          return {
+            ...prevIndex,
+            max: index.current + 1,
+          };
+        });
+      }
     }
   }
 
@@ -109,18 +150,96 @@ const Checkout = () => {
     setFormData((prevData) => {
       return {
         ...prevData,
-        region: value,
+        [region]: value,
       };
     });
+
+    if (region === "country") {
+      setFormData((prevData) => {
+        return {
+          ...prevData,
+          state: "",
+          city: "",
+        };
+      });
+      setFormValid((prevForm) => {
+        return {
+          ...prevForm,
+          country: true,
+          state: false,
+          city: false,
+        };
+      });
+    } else if (region === "state") {
+      setFormData((prevData) => {
+        return {
+          ...prevData,
+          city: "",
+        };
+      });
+      setFormValid((prevForm) => {
+        return {
+          ...prevForm,
+          state: true,
+          city: false,
+        };
+      });
+    } else if (region === "city") {
+      setFormValid((prevData) => {
+        return {
+          ...prevData,
+          city: true,
+        };
+      });
+    }
   }
 
   function setBillingRegion(value, region) {
     setBilling((prevData) => {
       return {
         ...prevData,
-        region: value,
+        [region]: value,
       };
     });
+
+    if (region === "country") {
+      setBilling((prevData) => {
+        return {
+          ...prevData,
+          state: "",
+          city: "",
+        };
+      });
+      setBillingValid((prevForm) => {
+        return {
+          ...prevForm,
+          country: true,
+          state: false,
+          city: false,
+        };
+      });
+    } else if (region === "state") {
+      setBilling((prevData) => {
+        return {
+          ...prevData,
+          city: "",
+        };
+      });
+      setBillingValid((prevForm) => {
+        return {
+          ...prevForm,
+          state: true,
+          city: false,
+        };
+      });
+    } else if (region === "city") {
+      setBillingValid((prevData) => {
+        return {
+          ...prevData,
+          city: true,
+        };
+      });
+    }
   }
 
   function updateForm(e) {
@@ -217,9 +336,119 @@ const Checkout = () => {
         }
         break;
     }
+
+    if (name !== "addressTwo") {
+      if (errorMsg === "") {
+        setFormValid((prevForm) => {
+          return {
+            ...prevForm,
+            [name]: true,
+          };
+        });
+      } else {
+        setFormValid((prevForm) => {
+          return {
+            ...prevForm,
+            [name]: false,
+          };
+        });
+      }
+    }
+    message.innerText = errorMsg;
+  }
+  function updateBillingForm(e) {
+    const value = e.currentTarget.value;
+    const name = e.currentTarget.name;
+    console.log("k");
+    let field;
+    let errorMsg = "";
+    setBilling((prevForm) => {
+      return {
+        ...prevForm,
+        [name]: value,
+      };
+    });
+    let message;
+
+    switch (name) {
+      case "firstName":
+        field = document.getElementById(name);
+
+        message = document.getElementById("firstName").nextSibling;
+        if (value == "") {
+          field.classList.add("error");
+          errorMsg = "Cannot be empty";
+        } else {
+          field.classList.remove("error");
+        }
+        break;
+      case "lastName":
+        field = document.getElementById(name);
+
+        message = document.getElementById("lastName").nextSibling;
+        if (value == "") {
+          field.classList.add("error");
+          errorMsg = "Cannot be empty";
+        } else {
+          field.classList.remove("error");
+        }
+        break;
+      case "addressOne":
+        field = document.getElementById(name);
+        message = document.getElementById("addressOne").nextSibling;
+        if (value == "") {
+          field.classList.add("error");
+          errorMsg = "Cannot be empty";
+        } else {
+          field.classList.remove("error");
+        }
+        break;
+      case "addressTwo":
+        message = document.getElementById("addressTwo").nextSibling;
+        break;
+      case "postal":
+        field = document.getElementById(name);
+        message = document.getElementById("postal").nextSibling;
+        if (value == "") {
+          field.classList.add("error");
+          errorMsg = "Cannot be empty";
+        } else {
+          field.classList.remove("error");
+          console.log(formData.country);
+        }
+        break;
+    }
+
+    if (name !== "addressTwo") {
+      if (errorMsg === "") {
+        setBillingValid((prevForm) => {
+          return {
+            ...prevForm,
+            [name]: true,
+          };
+        });
+      } else {
+        setBillingValid((prevForm) => {
+          return {
+            ...prevForm,
+            [name]: false,
+          };
+        });
+      }
+    }
     message.innerText = errorMsg;
   }
 
+  function validateForm(form) {
+    const state = Object.keys(form).every((key, index) => {
+      return form[key] == true;
+    });
+    return state;
+  }
+
+  useEffect(() => {
+    validateForm(formValid);
+  }, [formValid]);
   function updateZip(e) {
     const value = e.currentTarget.value;
     setZip((prev) => {
@@ -256,15 +485,15 @@ const Checkout = () => {
       updateForm={updateForm}
       formData={formData}
       setRegion={setRegion}
-      key = {1}
+      key={1}
     />,
     <Billing
       formData={billing}
       setRegion={setBillingRegion}
-      updateForm={updateForm}
+      updateForm={updateBillingForm}
       sameBilling={sameBilling}
       updateBilling={updateBilling}
-      key = {2}
+      key={2}
     />,
   ];
 

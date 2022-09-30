@@ -196,7 +196,7 @@ input {
     border-radius: 0.25rem;
     padding: 8px;
     background-color: $ultra-light-purple;
-    margin-bottom: 1rem;
+    margin-bottom: 32px;
     width: 100%;
     &:focus {
       background-color: #fff;
@@ -206,6 +206,13 @@ input {
     &:not(:placeholder-shown) {
       border: 1px solid $darkPurple;
     }
+  }
+}
+.input-field {
+  position: relative;
+  p {
+    position: absolute;
+    top: 68px;
   }
 }
 .red {

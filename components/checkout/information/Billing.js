@@ -14,7 +14,6 @@ const Billing = ({
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [data, setData] = useState([]);
-  const [locations, setLocations] = useState([]);
   const [options, setOptions] = useState([]);
   const [regions, setRegions] = useState([]);
   useEffect(() => {}, [formData.country]);
@@ -45,6 +44,7 @@ const Billing = ({
   }
 
   function updateRegion(location, name) {
+    console.log(name);
     if (name === "country") {
       updateCountry(location, name);
     } else if (name === "state") {
@@ -196,7 +196,7 @@ const Billing = ({
 
             <div className="flex">
               <div>
-                <label htmlFor="province">
+                <label htmlFor="state">
                   <h6>State/Province</h6>
                 </label>
                 <Select

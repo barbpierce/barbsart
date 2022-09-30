@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import Select from "../../Form/Select";
 import axios from "axios";
+
+const Cont = styled.div``;
 const Delivery = ({
   updateForm,
   formData,
@@ -29,6 +31,7 @@ const Delivery = ({
     setStates((prevStates) => {
       return states;
     });
+   
   }
 
   function updateState(value) {
@@ -72,7 +75,7 @@ const Delivery = ({
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div>
+    <Cont>
       <section>
         <h5 className="mar-bottom-32">
           How would you like your order to arrive?
@@ -97,60 +100,66 @@ const Delivery = ({
       </section>
       <section>
         <h5 className="mar-bottom-32">Enter Your information</h5>
+        <div className="input-field">
+          <label htmlFor="firstName">
+            <h6>First Name</h6>
+          </label>
+          <input
+            type="text"
+            name="firstName"
+            id="firstName"
+            onChange={updateForm}
+            value={formData.firstName}
+            placeholder="First Name"
+          />
+          <p></p>
+        </div>
 
-        <label htmlFor="firstName">
-          <h6>First Name</h6>
-        </label>
-        <input
-          type="text"
-          name="firstName"
-          id="firstName"
-          onChange={updateForm}
-          value={formData.firstName}
-          placeholder="First Name"
-        />
-        <p></p>
-
-        <h6>Last Name</h6>
-
-        <input
-          type="text"
-          name="lastName"
-          id="lastName"
-          onChange={updateForm}
-          value={formData.lastName}
-          placeholder="Last Name"
-        />
-        <p></p>
-
-        <label htmlFor="addressOne">
-          <h6>Address Line 1</h6>
-        </label>
-        <input
-          type="text"
-          name="addressOne"
-          id="addressOne"
-          onChange={updateForm}
-          value={formData.addressOne}
-          placeholder="Address Line 1"
-        />
-        <p></p>
-
-        <label htmlFor="addressTwo">
-          <h6>Address Line 2</h6>
-        </label>
-        <input
-          type="text"
-          name="addressTwo"
-          id="addressTwo"
-          onChange={updateForm}
-          value={formData.addressTwo}
-          placeholder="Address Line 2"
-        />
-        <p></p>
+        <div className="input-field">
+          <label htmlFor="lastName">
+            <h6>Last Name</h6>
+          </label>
+          <input
+            type="text"
+            name="lastName"
+            id="lastName"
+            onChange={updateForm}
+            value={formData.lastName}
+            placeholder="Last Name"
+          />
+          <p></p>
+        </div>
+        <div className="input-field">
+          <label htmlFor="addressOne">
+            <h6>Address Line 1</h6>
+          </label>
+          <input
+            type="text"
+            name="addressOne"
+            id="addressOne"
+            onChange={updateForm}
+            value={formData.addressOne}
+            placeholder="Address Line 1"
+          />
+          <p></p>
+        </div>
+        <div className="input-field">
+          <label htmlFor="addressTwo">
+            <h6>Address Line 2</h6>
+          </label>
+          <input
+            type="text"
+            name="addressTwo"
+            id="addressTwo"
+            onChange={updateForm}
+            value={formData.addressTwo}
+            placeholder="Address Line 2"
+          />
+          <p></p>
+        </div>
 
         <div className="flex">
-          <div>
+          <div className="input-field">
             <label htmlFor="postal">
               <h6>Postal/Zip Code</h6>
             </label>
@@ -162,9 +171,9 @@ const Delivery = ({
               value={formData.postal}
               placeholder="Postal/Zip Code"
             />
-            <p className="red" ></p>
+            <p className="red"></p>
           </div>
-          <div>
+          <div className="input-field">
             <label htmlFor="country">
               <h6>Country</h6>
             </label>
@@ -183,7 +192,7 @@ const Delivery = ({
         </div>
 
         <div className="flex">
-          <div>
+          <div className="input-field">
             <label htmlFor="province">
               <h6>State/Province</h6>
             </label>
@@ -198,7 +207,7 @@ const Delivery = ({
             />
             <p></p>
           </div>
-          <div>
+          <div className="input-field">
             <label htmlFor="city">
               <h6>City</h6>
             </label>
@@ -217,33 +226,36 @@ const Delivery = ({
       </section>
       <section>
         <h5 className="mar-bottom-32">What's your contact information?</h5>
-        <label htmlFor="email">
-          <h6>Email</h6>
-        </label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          onChange={updateForm}
-          value={formData.email}
-          placeholder="Email"
-        />
-        <p></p>
-
-        <label htmlFor="phone">
-          <h6>Phone Number</h6>
-        </label>
-        <input
-          type="text"
-          name="phone"
-          id="phone"
-          onChange={updateForm}
-          value={formData.phone}
-          placeholder="Phone Number"
-        />
-        <p></p>
+        <div className="input-field">
+          <label htmlFor="email">
+            <h6>Email</h6>
+          </label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            onChange={updateForm}
+            value={formData.email}
+            placeholder="Email"
+          />
+          <p></p>
+        </div>
+        <div className="input-field">
+          <label htmlFor="phone">
+            <h6>Phone Number</h6>
+          </label>
+          <input
+            type="text"
+            name="phone"
+            id="phone"
+            onChange={updateForm}
+            value={formData.phone}
+            placeholder="Phone Number"
+          />
+          <p></p>
+        </div>
       </section>
-    </div>
+    </Cont>
   );
 };
 

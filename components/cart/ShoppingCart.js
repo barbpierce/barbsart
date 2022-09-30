@@ -9,6 +9,7 @@ import { AppContext } from "../../pages/_app";
 import Link from "next/link";
 
 const Cont = styled.div`
+
   h6 {
     margin-left: 0 !important;
   }
@@ -16,11 +17,15 @@ const Cont = styled.div`
   .checkout {
     border-top: 2px solid black;
     padding-top: 16px;
-
-    & > h5,
-    h6 {
-      margin-bottom: 16px;
+    position:relative;
+    
+    &-text{
+      h5,h6{
+        margin-bottom: 16px;
+      }
     }
+    
+    
   }
   .dropdown {
     z-index: 1;
@@ -29,7 +34,7 @@ const Cont = styled.div`
     width: 400px;
     right: 0;
     top: 0;
-
+    height: 100vh;
     border: 2px solid black;
     padding: 16px;
     right: -400px;
@@ -71,7 +76,7 @@ const Cont = styled.div`
     color: #fff;
   }
   .items {
-    height: 500px;
+    max-height: 50vh;
     overflow-y: scroll;
   }
   .cart-icon-holder {
@@ -143,7 +148,7 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
       return {
         ...prevContext,
         items: items,
-        total:total
+        total: total,
       };
     });
   };
@@ -199,29 +204,33 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
         </div>
 
         <div className="checkout">
-          <h5>Checkout</h5>
-          <h6>
-            <span className="light">Items: </span>({itemElems.length})
-          </h6>
-          <h6>
-            <span className="light">Total: </span> ${sum}
-          </h6>
-          <button onClick={hideDropdown} className="base-btn">
-            <h5>Keep Shopping</h5>
-          </button>
-          {itemElems.length > 0 && (
-            <Link href="/checkout" passHref>
-              <a
-                onClick={hideDropdown}
-                title="Checkout"
-                rel="noopener noreferrer"
-              >
-                <button className="base-btn-invert">
-                  <h5>Checkout</h5>
-                </button>
-              </a>
-            </Link>
-          )}
+          <div className = 'checkout-text'>
+            <h5>Checkout</h5>
+            <h6>
+              <span className="light">Items: </span>({itemElems.length})
+            </h6>
+            <h6>
+              <span className="light">Total: </span> ${sum}
+            </h6>
+          </div>
+          <div>
+            <button onClick={hideDropdown} className="base-btn">
+              <h5>Keep Shopping</h5>
+            </button>
+            {itemElems.length > 0 && (
+              <Link href="/checkout" passHref>
+                <a
+                  onClick={hideDropdown}
+                  title="Checkout"
+                  rel="noopener noreferrer"
+                >
+                  <button className="base-btn-invert">
+                    <h5>Checkout</h5>
+                  </button>
+                </a>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </Cont>

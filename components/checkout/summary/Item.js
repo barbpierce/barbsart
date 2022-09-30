@@ -4,7 +4,7 @@ const Cont = styled.div`
   margin-bottom: 16px;
   height: 160px;
   .frame {
-    width: 50%;
+    width: 40%;
     height: 100%;
     display: inline-block;
     padding: 10px 10px;
@@ -16,14 +16,13 @@ const Cont = styled.div`
     width: 100%;
     height: 100%;
     display: inline-block;
-    
   }
   .text {
     margin-left: 8px;
-
-    display: inline-flex;
-    flex-direction: column;
+    display: inline-block;
     vertical-align: top;
+    word-break: break-word;
+   
   }
 `;
 

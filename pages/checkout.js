@@ -6,7 +6,7 @@ import Delivery from "../components/checkout/information/Delivery";
 import IndexTracker from "../components/checkout/IndexTracker";
 import Billing from "../components/checkout/information/Billing";
 import Summary from "../components/checkout/summary/index";
-
+import FinalCheckout from "../components/checkout/information/FinalCheckout";
 const Cont = styled.div`
   display: flex;
   justify-content: space-around;
@@ -501,12 +501,16 @@ const Checkout = () => {
     <Cont>
       <div>
         {forms[index.current]}
-        <button
-          onClick={increaseIndex}
-          className="base-btn-invert mar-bottom-32"
-        >
-          <h5>Continue</h5>
-        </button>
+        {index.current !== 2 ? (
+          <button
+            onClick={increaseIndex}
+            className="base-btn-invert mar-bottom-32"
+          >
+            <h5>Continue</h5>
+          </button>
+        ) : (
+          <FinalCheckout />
+        )}
         <IndexTracker updateIndex={updateIndex} cartIndex={index} />
       </div>
       <div>

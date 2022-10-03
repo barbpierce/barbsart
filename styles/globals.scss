@@ -18,7 +18,10 @@ $black: #1a002b;
   margin: 0;
   padding: 0;
 }
-
+button {
+  border: none;
+  background: none;
+}
 h1,
 h2,
 h3,
@@ -173,6 +176,9 @@ p {
 .white {
   color: #fff !important;
 }
+.off-white {
+  color: #fcf8ff;
+}
 .mar-md {
   margin-bottom: 128px;
 }
@@ -295,7 +301,15 @@ textarea {
   display: flex;
   justify-content: space-between;
 }
-
+.icon-lg {
+  font-size: 40px;
+}
+.icon-md {
+  font-size: 24px;
+}
+.white {
+  color: white;
+}
 body,
 html {
   overflow-x: hidden;
@@ -309,4 +323,13 @@ body {
   height: 1px;
   background-color: $greyPurple;
   margin-top: 8px;
+}
+
+.accordion-content {
+  overflow-y: scroll;
+  transition: height 0.5s ease;
+  max-height: 800px;
+  @media only screen and (min-width: 600px) {
+    display: none;
+  }
 }

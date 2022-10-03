@@ -32,25 +32,27 @@ const Cont = styled.div`
     justify-content: space-between;
     flex-basis: 100%;
   }
-  .delete {
+  .delete-me {
     flex-grow: 1;
     flex-shrink: 1;
     flex: 1;
     flex-basis: 48px;
     width: 48px;
     button {
-      background-color: ${(props) => props.colors.darkRed};
       width: 48px;
       height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      &:hover, &:active{
+        background-color: ${props=>props.colors.grey};
+      }
     }
   }
   .icon- {
     font-size: 40px;
-    color: #fff;
+    color: black;
   }
 `;
 
@@ -80,7 +82,7 @@ const Item = ({ title, total, catagory, size, image, index, removeItem }) => {
             <p className="grey-purple">{catagory}</p>
           </div>
         </div>
-        <div className="delete">
+        <div className="delete-me">
           <button onClick={() => removeItem(index)}>
             <FontAwesomeIcon icon={faXmark} className="icon-" />
           </button>

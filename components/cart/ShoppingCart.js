@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faXmark, faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import COLORS from "../../Data/colors";
 import Item from "./Item";
@@ -9,7 +9,6 @@ import { AppContext } from "../../pages/_app";
 import Link from "next/link";
 
 const Cont = styled.div`
-
   h6 {
     margin-left: 0 !important;
   }
@@ -17,15 +16,14 @@ const Cont = styled.div`
   .checkout {
     border-top: 2px solid black;
     padding-top: 16px;
-    position:relative;
-    
-    &-text{
-      h5,h6{
+    position: relative;
+
+    &-text {
+      h5,
+      h6 {
         margin-bottom: 16px;
       }
     }
-    
-    
   }
   .dropdown {
     z-index: 1;
@@ -58,10 +56,9 @@ const Cont = styled.div`
   .base-btn-invert {
     width: 100%;
   }
-  button.delete {
-    background-color: black;
-    width: 65px;
-    height: 65px;
+  .delete {
+    width: 63px;
+    height: 63px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,11 +66,18 @@ const Cont = styled.div`
     position: absolute;
     right: -16px;
     top: -16px;
+    &:hover {
+      background-color: ${(props) => props.colors.grey};
+    }
+    @media only screen and (max-width: 600px) {
+      width: 61px;
+      height: 61px;
+    }
   }
 
   .icon-x {
-    font-size: 56px;
-    color: #fff;
+    font-size: 48px;
+    color: black;
   }
   .items {
     max-height: 50vh;
@@ -191,9 +195,9 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
       >
         <div className="title-spec">
           <h5>Shopping Cart</h5>
-          <button onClick={hideDropdown} className="delete">
-            <FontAwesomeIcon icon={faXmark} className="icon-x" />
-          </button>
+          <div onClick={hideDropdown} className="delete">
+            <FontAwesomeIcon icon={faAnglesRight} className="icon-x" />
+          </div>
         </div>
 
         <div className="items">
@@ -204,7 +208,7 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
         </div>
 
         <div className="checkout">
-          <div className = 'checkout-text'>
+          <div className="checkout-text">
             <h5>Checkout</h5>
             <h6>
               <span className="light">Items: </span>({itemElems.length})

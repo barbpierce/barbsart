@@ -3,7 +3,11 @@ import { useState, useEffect } from "react";
 import Select from "../../Form/Select";
 import axios from "axios";
 
-const Cont = styled.div``;
+const Cont = styled.div`
+  h6{
+    word-wrap: break-word;
+  }
+`;
 const Delivery = ({
   updateForm,
   formData,

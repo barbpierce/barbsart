@@ -3,7 +3,7 @@ $grey: #cdcdcd;
 $ultra-light-purple: #fcf8ff;
 $ultra-light-blue: #bba4ff;
 $lightPurple: #f3dfff;
-$super-ultra-light-purple:#FCF8FF;
+$super-ultra-light-purple: #fcf8ff;
 .submit-btn {
   cursor: pointer;
   background-color: $darkPurple;
@@ -27,6 +27,32 @@ $super-ultra-light-purple:#FCF8FF;
     h6 {
       color: $darkPurple;
     }
+  }
+}
+
+.red-btn {
+  cursor: pointer;
+  padding: 16px 32px;
+  background-color: #e50914;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 264px;
+  margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: box-shadow 0.25s ease;
+
+  h5 {
+    color: #fcf8ff;
+    margin-right: 32px;
+  }
+  &:hover {
+    box-shadow: none;
+  }
+  &:active {
+    background-color: #e43941;
   }
 }
 

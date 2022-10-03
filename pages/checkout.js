@@ -26,7 +26,7 @@ const Cont = styled.div`
   }
   .flex {
     display: flex;
-    width: 440px;
+    max-width: 440px;
     div:nth-of-type(1) {
       margin-right: 4px;
     }
@@ -42,6 +42,9 @@ const Cont = styled.div`
     width: 100%;
     max-width: 440px;
     border-radius: 8px;
+  }
+  @media only screen and (max-width: 600px) {
+    flex-direction: column-reverse;
   }
 `;
 
@@ -89,7 +92,7 @@ const Checkout = () => {
     country: false,
   });
   const [pickup, setPickup] = useState(false);
-  const [index, setIndex] = useState({ current: 0, max: 0 });
+  const [index, setIndex] = useState({ current: 2, max: 0 });
   const [sameBilling, setSameBilling] = useState(false);
 
   function updateBilling(e) {

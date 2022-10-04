@@ -32,7 +32,7 @@ const Cont = styled.div`
   }
 `;
 
-const Success = () => {
+const SuccessPopup = () => {
   return (
     <Cont colors={COLORS}>
       <div className="title mar-sm">
@@ -66,4 +66,4 @@ const Success = () => {
   );
 };
 
-export default Success;
+export default SuccessPopup;

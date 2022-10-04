@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { shootFireworks, fetcher } from "./lib/utils";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import Success from "../components/success";
+import SuccessPopup from "../components/success";
 const Cont = styled.div`
   height: 100vh;
   display: flex;
@@ -37,7 +37,7 @@ const Success = () => {
         {" "}
         {JSON.stringify(data) && (
           <div className="mar-top-md">
-            <Success />
+            <SuccessPopup />
           </div>
         )}
       </div>

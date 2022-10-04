@@ -1,27 +1,32 @@
 import Stripe from "stripe";
-
+import { convertToCents } from "../../lib/utils";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
-  const { quantity } = req.body;
-  console.log("mee");
   if (req.method === "POST") {
     try {
       const session = await stripe.checkout.sessions.create({
         mode: "payment",
         payment_method_types: ["card"],
-        line_items: [
-          {
-            price: "price_1LnqJ2IcF0WhTDxadBIwcx6e",
-            quantity,
-          },
-        ],
+        line_items: req.body.items.map((item) => {
+          return {
+            price_data: {
+              currency: "cad",
+              product_data: {
+                name: item.title,
+                images: [item.url],
+              },
+              unit_amount: convertToCents(item.price),
+            },
+            quantity: 1,
+          };
+        }),
         success_url: `${req.headers.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${req.headers.origin}/cart`,
+        cancel_url: `${req.headers.origin}/checkout`,
       });
       res.status(200).json({ sessionId: session.id });
     } catch (err) {
-      res.status(500).json({ statusCode: 500, message: err.message });
+      res.status(500).json({ statusCode: 500, message: "err.message" });
     }
   } else {
     res.setHeader("Allow", "POST");

@@ -181,9 +181,21 @@ p {
 }
 .mar-md {
   margin-bottom: 128px;
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 64px;
+  }
 }
 .mar-sm {
   margin-bottom: 64px;
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 32px;
+  }
+}
+.mar-top-md {
+  margin-top: 128px;
+  @media only screen and (max-width: 600px) {
+    margin-top: 64px;
+  }
 }
 
 a {

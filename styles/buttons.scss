@@ -4,6 +4,7 @@ $ultra-light-purple: #fcf8ff;
 $ultra-light-blue: #bba4ff;
 $lightPurple: #f3dfff;
 $super-ultra-light-purple: #fcf8ff;
+$disabled: #83708e;
 .submit-btn {
   cursor: pointer;
   background-color: $darkPurple;
@@ -83,6 +84,16 @@ $super-ultra-light-purple: #fcf8ff;
       color: $ultra-light-purple;
     }
   }
+  &:disabled {
+    background-color: $disabled;
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: #e1e1e1;
+    }
+  }
 }
 
 .base-btn-invert {
@@ -117,6 +128,16 @@ $super-ultra-light-purple: #fcf8ff;
     h5,
     h6 {
       color: $ultra-light-purple;
+    }
+  }
+  &:disabled {
+    background-color: $disabled;
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: #e1e1e1;
     }
   }
 }

@@ -82,6 +82,7 @@ const Cont = styled.div`
   .items {
     max-height: 50vh;
     overflow-y: scroll;
+    padding-bottom: 16px;
   }
   .cart-icon-holder {
     position: relative;

@@ -43,3 +43,10 @@ export const resetCart = () => {
     return { items: [], total: 0, shipping: 0 };
   });
 };
+
+export const convertToCents = (val) => {
+  if (typeof val === "number") {
+    return val * 100;
+  }
+  return "error";
+};

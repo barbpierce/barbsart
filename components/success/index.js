@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import COLORS from "../../Data/colors";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 const Cont = styled.div`
@@ -7,13 +8,27 @@ const Cont = styled.div`
   border-radius: 16px;
   background: ${(props) => props.colors.ultraLightPurple};
   padding: 32px;
+  .base-btn-invert {
+  }
   .title {
     text-align: center;
   }
   .center {
     display: flex;
     align-items: center;
-    column-gap:32px;
+    column-gap: 32px;
+  }
+  .center-me {
+    text-align: center;
+  }
+  .base-btn-invert {
+    display: inline-block;
+  }
+  @media only screen and (max-width:500px){
+    border:none;
+    border-top:1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 0;
   }
 `;
 
@@ -24,7 +39,7 @@ const Success = () => {
         <h4 className="mar-bottom-16">Thank you for your order!</h4>
         <p>Your order was completed succesfully</p>
       </div>
-      <div className="center">
+      <div className="center mar-sm">
         <FontAwesomeIcon icon={faEnvelope} className="icon-lg purple" />
         <div>
           <p className="mar-bottom-16">
@@ -36,6 +51,16 @@ const Success = () => {
             delivery date and tracking id.
           </p>
         </div>
+      </div>
+
+      <div className="center-me">
+        <Link href="/" passHref>
+          <a title="Home" rel="noopener noreferrer">
+            <div className="base-btn-invert">
+              <h5 className="light">Return To Home</h5>
+            </div>
+          </a>
+        </Link>
       </div>
     </Cont>
   );

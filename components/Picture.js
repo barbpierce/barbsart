@@ -96,11 +96,11 @@ const Picture = ({ url, title, description, price, size, sold, landscape }) => {
               <div className="image-details">
                 <h4>{title}</h4>
                 <div className="price">
-                  <h4>${price}</h4>
+                  <h4 style = {{color:sold ? 'black': ''}}>{sold ? 'Sold' : `$${price}`}</h4>
                 </div>
                 <h5 className="light white">{size}</h5>
               </div>
-              <div className="background"></div>
+              <div style = {{backgroundColor: sold ? 'black' : '#57008C'}}className="background"></div>
             </div>
           </Cont>
         </a>

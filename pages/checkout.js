@@ -10,6 +10,8 @@ import FinalCheckout from "../components/checkout/information/FinalCheckout";
 const Cont = styled.div`
   display: flex;
   justify-content: space-around;
+  height:100vh;
+  column-gap:32px;
   input + p {
     color: red;
   }
@@ -92,7 +94,7 @@ const Checkout = () => {
     country: false,
   });
   const [pickup, setPickup] = useState(false);
-  const [index, setIndex] = useState({ current: 2, max: 0 });
+  const [index, setIndex] = useState({ current: 0, max: 0 });
   const [sameBilling, setSameBilling] = useState(false);
 
   function updateBilling(e) {

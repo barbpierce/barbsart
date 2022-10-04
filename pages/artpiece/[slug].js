@@ -188,7 +188,7 @@ const Slug = ({ artPiece }) => {
         return {
           ...prevContext,
           items: items,
-          total:total
+          total: total,
         };
       });
     }
@@ -238,7 +238,9 @@ const Slug = ({ artPiece }) => {
           <div></div>
           <div>
             <h4 className="mar-bottom-1">{artPiece.title}</h4>
-            <h4 className="mar-bottom-2 purple">${artPiece.price}</h4>
+            <h4 className="mar-bottom-2 purple">
+              {artPiece.sold ? "Sold" : `$${artPiece.price}`}
+            </h4>
             <h5 className="mar-bottom-2 italic light ">
               {artPiece.dimensions}
             </h5>
@@ -246,6 +248,7 @@ const Slug = ({ artPiece }) => {
           </div>
           <div>
             <button
+              disabled={artPiece.sold ? true : false}
               onClick={() =>
                 addToCart(
                   artPiece.title,
@@ -257,7 +260,7 @@ const Slug = ({ artPiece }) => {
               }
               className="base-btn"
             >
-              <h5>Add To Cart</h5>
+              <h5>{artPiece.sold ? "Sold" : "Add To Cart"}</h5>
             </button>
           </div>
         </div>

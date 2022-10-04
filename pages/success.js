@@ -8,7 +8,7 @@ const Cont = styled.div`
   height: 100vh;
   display: flex;
   & > div {
-    margin: 128px auto 0;
+    margin: 0 auto;
   }
 `;
 const success = () => {
@@ -36,7 +36,7 @@ const success = () => {
       <div>
         {" "}
         {JSON.stringify(data) && (
-          <div>
+          <div className = 'mar-top-md'>
             <Success />
           </div>
         )}

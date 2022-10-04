@@ -10,7 +10,7 @@ import FinalCheckout from "../components/checkout/information/FinalCheckout";
 const Cont = styled.div`
   display: flex;
   justify-content: space-around;
-  height:100vh;
+  min-height:100vh;
   column-gap:32px;
   input + p {
     color: red;

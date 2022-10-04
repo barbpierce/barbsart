@@ -51,6 +51,7 @@ const Index = () => {
         dimensions={item.dimensions}
         url={item.url}
         index={index}
+        key={index}
       />
     );
   });

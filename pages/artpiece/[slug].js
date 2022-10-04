@@ -11,7 +11,7 @@ import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { AppContext } from "../../pages/_app";
 import toast, { Toaster } from "react-hot-toast";
 const Cont = styled.div`
-  height: 100vh;
+  min-height: 100vh;
 
   .fullscreen-image {
     z-index: 1;

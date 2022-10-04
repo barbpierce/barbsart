@@ -36,7 +36,7 @@ const success = () => {
       <div>
         {" "}
         {JSON.stringify(data) && (
-          <div className = 'mar-top-md'>
+          <div className="mar-top-md">
             <Success />
           </div>
         )}
@@ -45,4 +45,4 @@ const success = () => {
   );
 };
 
-export default success;
+export default Success;

@@ -37,7 +37,7 @@ const Cont = styled.div`
     transition: transform 0.25s ease;
   }
 `;
-const index = () => {
+const Index = () => {
   const [context, setContext] = useContext(AppContext);
   const [visible, setVisible] = useState(false);
   const [height, setHeight] = useState("0px");
@@ -105,4 +105,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

@@ -37,7 +37,7 @@ export const shootFireworks = () => {
   }, 250);
 };
 
-export const resetCart = () => {
+export default ResetCart = () => {
   const [context, setContext] = useContext(AppContext);
   setContext((prev) => {
     return { items: [], total: 0, shipping: 0 };

@@ -37,12 +37,14 @@ export const shootFireworks = () => {
   }, 250);
 };
 
-export default ResetCart = () => {
+const ResetCart = () => {
   const [context, setContext] = useContext(AppContext);
   setContext((prev) => {
     return { items: [], total: 0, shipping: 0 };
   });
 };
+
+export default ResetCart;
 
 export const convertToCents = (val) => {
   if (typeof val === "number") {

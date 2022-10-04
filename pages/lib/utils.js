@@ -1,10 +1,11 @@
 import axios from "axios";
 import confetti from "canvas-confetti";
-
+import { useContext } from "react";
+import { AppContext } from "../_app";
 export const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export const shootFireworks = () => {
-  const duration = 15 * 1000;
+  const duration = 15 * 300;
   const animationEnd = Date.now() + duration;
   const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
@@ -34,4 +35,11 @@ export const shootFireworks = () => {
       })
     );
   }, 250);
+};
+
+export const resetCart = () => {
+  const [context, setContext] = useContext(AppContext);
+  setContext((prev) => {
+    return { items: [], total: 0, shipping: 0 };
+  });
 };

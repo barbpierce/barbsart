@@ -11,7 +11,7 @@ const Cont = styled.div`
     margin: 0 auto;
   }
 `;
-const success = () => {
+const Success = () => {
   const {
     query: { session_id },
   } = useRouter();

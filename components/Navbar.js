@@ -10,6 +10,7 @@ import Navmobile from "./Navmobile";
 import Dropdown from "./Dropdown";
 const Cont = styled.div`
  
+  
   display: flex;
   padding-left: 5%;
   padding-right: 5%;
@@ -39,8 +40,10 @@ const Cont = styled.div`
     padding: 8px;
   }
   .nav-left {
+    z-index:2;
   }
   .nav-right {
+    z-index:2;
     display: flex;
     align-items: center;
     h6 {

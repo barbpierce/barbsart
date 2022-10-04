@@ -23,6 +23,7 @@ const Cont = styled.div`
     width: 100%;
     height: 100%;
     left: 0;
+    top:0;
     div.image-cont {
       position: relative;
       width: 100%;

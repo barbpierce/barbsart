@@ -60,3 +60,7 @@ export const getLocalStorage = () => {
 export const clearLocalStorage = () => {
   localStorage.setItem("cart", "[]");
 };
+
+export default () => {
+  return "";
+};

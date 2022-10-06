@@ -20,7 +20,7 @@ const Cont = styled.div`
   }
   .items-dropdown {
     display: none;
-    border: 1px solid ${(props) => props.colors.greyPurple};
+    border: 1px solid ${(props) => props.colors.darkPurple};
     padding: 8px 16px;
     border-radius: 8px;
     cursor: pointer;
@@ -87,10 +87,10 @@ const Index = () => {
       <section className="items-visible">{items}</section>
       <div onClick={toggleVisibility} className="mar-bottom-16 items-dropdown">
         <div className="flex-seperate">
-          <h6>View Cart</h6>
+          <h6 className = 'purple'>View Cart</h6>
           <FontAwesomeIcon
             style={{ transform: visible ? "rotate(180deg)" : "rotate(0deg)" }}
-            className="caret"
+            className="caret purple"
             icon={faCaretDown}
           />
         </div>

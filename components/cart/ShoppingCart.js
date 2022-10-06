@@ -176,6 +176,7 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
   });
   const clearCart = () => {
     setContext({ items: [], total: 0, shipping: 0 });
+    localStorage.setItem("cart", "");
   };
   const sum = context.items.reduce((accumulator, item) => {
     return accumulator + item.price;
@@ -206,7 +207,6 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
         </div>
 
         <div className="items">
-          
           {itemElems.length === 0 ? (
             <p style={{ textAlign: "center" }}>Your cart is empty</p>
           ) : (

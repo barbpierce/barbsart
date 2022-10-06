@@ -17,6 +17,7 @@ const Cont = styled.div`
     padding: 10px 10px;
     border: 3px solid #ccc;
     background: #eee;
+    
   }
   .image {
     position: relative;
@@ -48,7 +49,6 @@ const Cont = styled.div`
   .icon-spec {
     width: 32px;
     height: 32px;
-    
   }
 `;
 
@@ -83,7 +83,7 @@ const Item = ({ title, price, url, catagory, dimensions, index }) => {
           <p className="grey-purple">{dimensions}</p>
           <p className="grey-purple">{catagory}</p>
         </div>
-        <div onClick = {()=>removeItem(index)} className="delete-spec">
+        <div onClick={() => removeItem(index)} className="delete-spec">
           <FontAwesomeIcon className="icon-spec" icon={faXmark} size="xl" />
         </div>
       </div>

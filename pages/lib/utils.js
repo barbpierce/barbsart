@@ -37,14 +37,7 @@ export const shootFireworks = () => {
   }, 250);
 };
 
-const ResetCart = () => {
-  const [context, setContext] = useContext(AppContext);
-  setContext((prev) => {
-    return { items: [], total: 0, shipping: 0 };
-  });
-};
 
-export default ResetCart;
 
 export const convertToCents = (val) => {
   if (typeof val === "number") {
@@ -63,4 +56,8 @@ export const getLocalStorage = () => {
   }
   return JSON.parse(localStorage.getItem("cart"));
 };
+
+export const clearLocalStorage  = () => {
+  localStorage.setItem('cart', null);
+}
 

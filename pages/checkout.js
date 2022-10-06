@@ -10,8 +10,9 @@ import FinalCheckout from "../components/checkout/information/FinalCheckout";
 const Cont = styled.div`
   display: flex;
   justify-content: space-around;
-  min-height:100vh;
-  column-gap:32px;
+  min-height: 100vh;
+  column-gap: 32px;
+
   input + p {
     color: red;
   }
@@ -47,6 +48,9 @@ const Cont = styled.div`
   }
   @media only screen and (max-width: 600px) {
     flex-direction: column-reverse;
+  }
+  @media only screen and (max-width: 500px) {
+    margin: 0 5%;
   }
 `;
 

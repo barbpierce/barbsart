@@ -13,6 +13,7 @@ const Cont = styled.div`
   }
   .flex {
     display: flex;
+    
   }
   .image {
     position: relative;

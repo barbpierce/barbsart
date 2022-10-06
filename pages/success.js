@@ -4,7 +4,8 @@ import { shootFireworks, fetcher } from "./lib/utils";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import SuccessPopup from "../components/success";
-import ResetCart from "./lib/utils";
+import {clearLocalStorage} from "./lib/utils";
+
 const Cont = styled.div`
   height: 100vh;
   display: flex;
@@ -28,17 +29,20 @@ const Success = () => {
     if (data && firstLoad) {
       shootFireworks();
       setFirstLoad(false);
+      clearLocalStorage();
       
     }
   }, [data]);
   return (
     <Cont>
       <div>
-        {" "}
-        {JSON.stringify(data) && (
+       
+        {JSON.stringify(data) ? (
           <div className="mar-top-md">
             <SuccessPopup />
           </div>
+        ) : (
+          <p> You aren't supposed to be here </p>
         )}
       </div>
     </Cont>

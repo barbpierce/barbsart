@@ -98,9 +98,9 @@ const Navbar = () => {
       <div className="nav-right tablet">
         <Dropdown text="View Art" />
 
-        <Link href="/commisions" passHref>
-          <a title="Commisions" rel="noopener noreferrer">
-            <h6 className="padding">Commisions</h6>
+        <Link href="/commissions" passHref>
+          <a title="Commissions" rel="noopener noreferrer">
+            <h6 className="padding">Commissions</h6>
           </a>
         </Link>
         <Link href="/slideshows" passHref>

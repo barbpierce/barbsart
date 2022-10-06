@@ -4,6 +4,7 @@ import { shootFireworks, fetcher } from "./lib/utils";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import SuccessPopup from "../components/success";
+import ResetCart from "./lib/utils";
 const Cont = styled.div`
   height: 100vh;
   display: flex;
@@ -24,11 +25,10 @@ const Success = () => {
   );
 
   useEffect(() => {
-    console.log(error);
-    console.log(data);
     if (data && firstLoad) {
       shootFireworks();
       setFirstLoad(false);
+      
     }
   }, [data]);
   return (

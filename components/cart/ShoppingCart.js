@@ -7,6 +7,7 @@ import COLORS from "../../Data/colors";
 import Item from "./Item";
 import { AppContext } from "../../pages/_app";
 import Link from "next/link";
+import { updateLocalStorage } from "../../pages/lib/utils";
 
 const Cont = styled.div`
   h6 {
@@ -156,6 +157,7 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
         total: total,
       };
     });
+    updateLocalStorage(items);
   };
   const [context, setContext] = useContext(AppContext);
   const itemElems = context.items.map((item, index) => {
@@ -172,7 +174,9 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
       />
     );
   });
-
+  const clearCart = () => {
+    setContext({ items: [], total: 0, shipping: 0 });
+  };
   const sum = context.items.reduce((accumulator, item) => {
     return accumulator + item.price;
   }, 0);
@@ -202,10 +206,19 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
         </div>
 
         <div className="items">
-          {itemElems.length === 0 && (
+          
+          {itemElems.length === 0 ? (
             <p style={{ textAlign: "center" }}>Your cart is empty</p>
+          ) : (
+            <>
+              {itemElems}
+              <div className="center-inline mar-bottom-16 mar-top-16">
+                <button onClick={clearCart} className="circle-btn">
+                  <h6>Clear</h6>
+                </button>
+              </div>
+            </>
           )}
-          {itemElems}
         </div>
 
         <div className="checkout">

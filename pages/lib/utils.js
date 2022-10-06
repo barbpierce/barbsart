@@ -52,3 +52,15 @@ export const convertToCents = (val) => {
   }
   return "error";
 };
+
+export const updateLocalStorage = (items) => {
+  localStorage.setItem("cart", JSON.stringify(items));
+};
+
+export const getLocalStorage = () => {
+  if (localStorage.getItem("cart") === null) {
+    return [];
+  }
+  return JSON.parse(localStorage.getItem("cart"));
+};
+

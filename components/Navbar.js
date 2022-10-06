@@ -2,15 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import COLORS from "../Data/colors";
-import { useRef, useState } from "react";
+import { useRef, useState, useContext, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import ShoppingCart from "../components/cart/ShoppingCart";
 import Navmobile from "./Navmobile";
 import Dropdown from "./Dropdown";
+import { AppContext } from "../pages/_app";
+import { getLocalStorage } from "../pages/lib/utils";
+import { parseConstValue } from "graphql";
 const Cont = styled.div`
- 
-  
   display: flex;
   padding-left: 5%;
   padding-right: 5%;
@@ -40,10 +41,10 @@ const Cont = styled.div`
     padding: 8px;
   }
   .nav-left {
-    z-index:2;
+    z-index: 2;
   }
   .nav-right {
-    z-index:2;
+    z-index: 2;
     display: flex;
     align-items: center;
     h6 {
@@ -52,6 +53,22 @@ const Cont = styled.div`
   }
 `;
 const Navbar = () => {
+  const [context, setContext] = useContext(AppContext);
+  useEffect(() => {
+    const cart = getLocalStorage();
+    console.log(cart);
+    const total = cart.reduce((accumulator, cartItem) => {
+      return accumulator + cartItem.price;
+    }, 0);
+    console.log(total);
+    setContext((prevContext) => {
+      return {
+        ...prevContext,
+        items: cart,
+        total: total,
+      };
+    });
+  }, []);
   const [visible, setVisible] = useState(false);
   const toggleVisible = () => {
     setVisible(!visible);

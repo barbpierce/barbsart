@@ -31,6 +31,34 @@ $disabled: #83708e;
   }
 }
 
+.circle-btn {
+  display: inline-block;
+  background: #fff;
+  border: 2px solid $darkPurple;
+  border-radius: 32px;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin: 0 auto;
+  transition: color 0.25s ease, background-color 0.25s ease;
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $darkPurple;
+  }
+  &:hover {
+    background-color: $darkPurple;
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $ultra-light-purple;
+    }
+  }
+}
+
 .red-btn {
   cursor: pointer;
   padding: 16px 32px;

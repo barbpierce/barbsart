@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { AppContext } from "../../pages/_app";
 import toast, { Toaster } from "react-hot-toast";
+import { updateLocalStorage } from "../lib/utils";
 const Cont = styled.div`
   min-height: 100vh;
 
@@ -23,7 +24,7 @@ const Cont = styled.div`
     width: 100%;
     height: 100%;
     left: 0;
-    top:0;
+    top: 0;
     div.image-cont {
       position: relative;
       width: 100%;
@@ -185,6 +186,7 @@ const Slug = ({ artPiece }) => {
           dimensions,
           catagory,
         });
+        updateLocalStorage(items);
         const total = prevContext.total + price;
         return {
           ...prevContext,

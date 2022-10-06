@@ -12,6 +12,9 @@ const Cont = styled.div`
   }
   .title {
     text-align: center;
+    h4{
+      color: #57008C;
+    }
   }
   .center {
     display: flex;

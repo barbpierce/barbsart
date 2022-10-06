@@ -54,12 +54,16 @@ const Cont = styled.div`
 `;
 const Navbar = () => {
   const [context, setContext] = useContext(AppContext);
+  let total,
+    cart = [];
+
   useEffect(() => {
-    const cart = getLocalStorage();
-    console.log(cart);
-    const total = cart.reduce((accumulator, cartItem) => {
-      return accumulator + cartItem.price;
-    }, 0);
+    cart = getLocalStorage();
+    if (cart !== null) {
+      total = cart.reduce((accumulator, cartItem) => {
+        return accumulator + cartItem.price;
+      }, 0);
+    }
     console.log(total);
     setContext((prevContext) => {
       return {

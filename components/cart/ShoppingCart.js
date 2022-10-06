@@ -7,7 +7,7 @@ import COLORS from "../../Data/colors";
 import Item from "./Item";
 import { AppContext } from "../../pages/_app";
 import Link from "next/link";
-import { updateLocalStorage } from "../../pages/lib/utils";
+import { updateLocalStorage, clearLocalStorage } from "../../pages/lib/utils";
 
 const Cont = styled.div`
   h6 {
@@ -176,7 +176,7 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
   });
   const clearCart = () => {
     setContext({ items: [], total: 0, shipping: 0 });
-    localStorage.setItem("cart", "");
+    clearLocalStorage();
   };
   const sum = context.items.reduce((accumulator, item) => {
     return accumulator + item.price;

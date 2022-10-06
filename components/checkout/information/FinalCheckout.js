@@ -5,11 +5,21 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useContext } from "react";
 import { AppContext } from "../../../pages/_app";
 import { useEffect } from "react";
-const Cont = styled.div``;
+import COLORS from "../../../Data/colors";
+const Cont = styled.div`
+  border: 1px solid ${(props) => props.colors.greyPurple};
+  border-radius: 8px;
+  padding: 16px;
+  background-color: ${(props) => props.colors.ultraLightPurple};
+  .title {
+    border-bottom: 2px solid ${(props) => props.colors.greyPurple};
+    padding-bottom: 8px;
+  }
+`;
 
 const FinalCheckout = () => {
   const [context, setContext] = useContext(AppContext);
-  
+
   const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
   const redirectToCheckout = async () => {
@@ -34,14 +44,16 @@ const FinalCheckout = () => {
   //Redirect to checkout
 
   return (
-    <Cont>
-      <h5 className="mar-bottom-32">
-        Click the button below to proceed to checkout.
-      </h5>
-      <button onClick={redirectToCheckout} className="red-btn mar-md">
-        <h5>Purchase</h5>
-        <FontAwesomeIcon icon={faPaperPlane} className="icon-md off-white" />
-      </button>
+    <Cont className = 'mar-md' colors={COLORS}>
+      <div className="title mar-bottom-32">
+        <h5 className="">Click the button below to proceed to checkout.</h5>
+      </div>
+      <div>
+        <button onClick={redirectToCheckout} className="red-btn mar-top-sm">
+          <h5>Purchase</h5>
+          <FontAwesomeIcon icon={faPaperPlane} className="icon-md off-white" />
+        </button>
+      </div>
     </Cont>
   );
 };

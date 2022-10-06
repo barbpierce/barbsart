@@ -37,8 +37,6 @@ export const shootFireworks = () => {
   }, 250);
 };
 
-
-
 export const convertToCents = (val) => {
   if (typeof val === "number") {
     return val * 100;
@@ -51,13 +49,14 @@ export const updateLocalStorage = (items) => {
 };
 
 export const getLocalStorage = () => {
-  if (localStorage.getItem("cart") === null) {
+  if (typeof window === "undefined") {
+    return [];
+  } else if (localStorage.getItem("cart") === null) {
     return [];
   }
   return JSON.parse(localStorage.getItem("cart"));
 };
 
-export const clearLocalStorage  = () => {
-  localStorage.setItem('cart', null);
-}
-
+export const clearLocalStorage = () => {
+  localStorage.setItem("cart", "[]");
+};

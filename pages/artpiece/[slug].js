@@ -72,7 +72,11 @@ const Cont = styled.div`
 const Content = styled.div`
   display: flex;
   height: 500px;
-  margin-top: 5%;
+  margin: 5%;
+  
+  @media only screen and (max-width: 500px) {
+    margin: 0;
+  }
   @media only screen and (max-width: 1300px) {
     height: 400px;
   }
@@ -83,6 +87,8 @@ const Content = styled.div`
     height: 100%;
     position: relative;
     width: 100%;
+    min-height: 400px;
+    margin-bottom: 32px;
     div.image {
       position: relative;
       transition: box-shadow 0.25s ease;
@@ -110,6 +116,7 @@ const Content = styled.div`
   }
   .description {
     flex: 1;
+
     padding-left: 32px;
     display: flex;
     flex-direction: column;
@@ -117,7 +124,7 @@ const Content = styled.div`
   }
   @media only screen and (max-width: 800px) {
     flex-direction: column;
-    height: 600px;
+
     .image-container {
       padding-right: 0;
     }

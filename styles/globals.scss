@@ -260,7 +260,21 @@ a {
     color: $darkPurple;
   }
 }
-
+.purple-form {
+  background: rgb(150, 113, 255);
+  background: radial-gradient(
+    circle,
+    rgba(150, 113, 255, 1) 0%,
+    rgba(150, 113, 255, 1) 21%,
+    rgba(127, 71, 213, 1) 50%,
+    rgba(87, 0, 140, 1) 73%,
+    rgba(87, 0, 140, 1) 100%
+  );
+  h6 {
+    color: $ultra-light-purple;
+    text-shadow: 3px 8px 7px rgba(0, 0, 0, 0.61);
+  }
+}
 input {
   &[type="text"],
   &[type="email"] {

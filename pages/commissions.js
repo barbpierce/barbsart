@@ -29,7 +29,7 @@ const Cont = styled.div`
   }
   position: relative;
   .parallax-one {
-    min-height: 600px;
+    min-height: 800px;
     width: 100%;
     background-attachment: fixed;
     background-image: url("/commissions/lola.jpg");
@@ -39,7 +39,7 @@ const Cont = styled.div`
     z-index: -5;
   }
   .parallax-two {
-    min-height: 600px;
+    min-height: 800px;
     width: 100%;
     background-attachment: fixed;
     background-image: url("/commissions/krispy.jpg");
@@ -61,7 +61,7 @@ const Cont = styled.div`
     }
   }
 
-  .base-btn-invert {
+  .base-btn {
     display: inline-block;
     border-radius: 8px;
   }
@@ -272,7 +272,7 @@ const Commissions = () => {
       <div className="parallax-one"></div>
       <div className="flex mar-top-xl mar-xl">
         <div className="flex-one">
-          <div className=" commission-pricing-image">
+          <div className="box-shadow commission-pricing-image">
             <Image
               src="/commissions/pet_portrait_pricing.jpeg"
               objectFit="contain"
@@ -283,7 +283,7 @@ const Commissions = () => {
         </div>
         <div className="grid flex-one">
           <section className="form-spec">
-            <form onSubmit={submitForm}>
+            <form onSubmit={submitForm} className=" box-shadow purple-form">
               <div className="input-field">
                 <label htmlFor="Name">
                   <h6>Name</h6>
@@ -370,13 +370,15 @@ const Commissions = () => {
                 {files}
               </div>
 
-              <button className="base-btn-invert">
+              <button className="base-btn">
                 <h5 type="submit">Submit</h5>
               </button>
             </form>
           </section>
         </div>
       </div>
+      {/*End of flex*/}
+      <div className="parallax-two"></div>
     </Cont>
   );
 };

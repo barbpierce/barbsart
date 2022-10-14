@@ -2,13 +2,13 @@ import Navbar from "./Navbar";
 import Footer from "../components/footer/index";
 import styled from "styled-components";
 const Cont = styled.div`
-  
+  height: 100%;
+
   overflow: hidden;
   @media only screen and (max-width: 500px) {
     margin: 0;
   }
 `;
-
 
 const Layout = ({ children }) => {
   return (

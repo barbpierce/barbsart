@@ -1,13 +1,54 @@
 import styled from "styled-components";
 import Image from "next/image";
 import COLORS from "../Data/colors";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownLong, faUpload } from "@fortawesome/free-solid-svg-icons";
 import File from "../components/commissions/form/file";
 import toast, { Toaster } from "react-hot-toast";
 import Commission from "../components/commissions/before/commission";
 const Cont = styled.div`
+  height: 100%;
+  .flex {
+    justify-content: center;
+    align-items: center;
+    column-gap: 32px;
+    //row-gap: 32px;
+    @media only screen and (max-width: 900px) {
+      flex-direction: column;
+    }
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+  .flex-one {
+  }
+  .commission-pricing-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  position: relative;
+  .parallax-one {
+    min-height: 600px;
+    width: 100%;
+    background-attachment: fixed;
+    background-image: url("/commissions/lola.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -5;
+  }
+  .parallax-two {
+    min-height: 600px;
+    width: 100%;
+    background-attachment: fixed;
+    background-image: url("/commissions/krispy.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -5;
+  }
+
   form {
     max-width: 865px;
     margin: 0 auto;
@@ -19,25 +60,16 @@ const Cont = styled.div`
       border-radius: 0;
     }
   }
-  .grid {
-    display: grid;
-    grid-template-areas: "left left left right";
-    grid-template-rows: auto auto;
-    column-gap: 32px;
-    row-gap: 128px;
-    @media only screen and (max-width: 600px) {
-      grid-template-areas:
-        "left left left left"
-        "right right right right";
-    }
-  }
+
   .base-btn-invert {
     display: inline-block;
     border-radius: 8px;
   }
   .header {
-    grid-area: top;
     text-align: center;
+    z-index: 5;
+    background: #fff;
+    padding-bottom: 48px;
     h2 {
       max-width: 1000px;
       margin-right: auto;
@@ -45,90 +77,8 @@ const Cont = styled.div`
     }
   }
   .form-spec {
-    grid-area: left;
-    margin-left: 32px;
     @media only screen and (max-width: 600px) {
       margin-left: 0;
-    }
-  }
-  .commissions {
-    grid-area: right;
-    h3 {
-      background-color: ${(props) => props.colors.lightPurple};
-      padding: 16px;
-    }
-  }
-  .frame {
-    max-width: 1000px;
-    height: 500px;
-    margin: 0 auto;
-    border: 50px solid ${(props) => props.colors.darkPurple};
-    border-style: ridge;
-    //padding:25px;
-  }
-  .inner-frame {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-  .header-two {
-    text-align: center;
-    background: ${(props) => props.colors.darkPurple};
-    padding-top: 48px;
-    padding-bottom: 48px;
-    @media only screen and (max-width: 600px) {
-      padding-top: 24px;
-      padding-bottom: 24px;
-    }
-    h2 {
-      color: ${(props) => props.colors.ultraLightPurple};
-    }
-  }
-  .header-three {
-    margin-bottom: 32px;
-
-    & > div {
-      border: 4px solid ${(props) => props.colors.darkPurple};
-    }
-    @media only screen and (max-width: 600px) {
-      margin-left: 0;
-      & > div {
-        border-radius: 0;
-        border: none;
-        border-top: 4px solid ${(props) => props.colors.darkPurple};
-        border-bottom: 4px solid ${(props) => props.colors.darkPurple};
-      }
-    }
-  }
-
-  .icon- {
-    font-size: 64px;
-    color: ${(props) => props.colors.ultraLightPurple};
-  }
-  .content-box {
-    display: inline-block;
-    text-align: left;
-    li {
-      margin-left: 16px;
-    }
-    h4 {
-      text-decoration: underline;
-      text-decoration-color: ${(props) => props.colors.darkPurple};
-      text-underline-offset: 4px;
-    }
-    p::before {
-      content: "•";
-      color: ${(props) => props.colors.darkPurple};
-      font-weight: bold;
-      display: inline-block;
-      width: 1em;
-      margin-left: -1em;
-    }
-  }
-  .remove-style {
-    p {
-      position: relative;
-      top: 0;
     }
   }
 `;
@@ -313,162 +263,119 @@ const Commissions = () => {
   return (
     <Cont colors={COLORS}>
       <Toaster />
-      <section className="header mar-lg">
-        <h2 className="purple mar-bottom-32">Personal Art Commissions</h2>
-        <div className="frame">
-          <div className="inner-frame">
+
+      <section className="header  box-shadow">
+        <h2 className="purple mar-bottom-32 text-shadow">
+          Personal Art Commissions
+        </h2>
+      </section>
+      <div className="parallax-one"></div>
+      <div className="flex mar-top-xl mar-xl">
+        <div className="flex-one">
+          <div className=" commission-pricing-image">
             <Image
-              objectFit="cover"
-              alt="Dog face"
-              src="/commissions/dogcopy.jpg"
-              layout="fill"
+              src="/commissions/pet_portrait_pricing.jpeg"
+              objectFit="contain"
+              width="961px"
+              height="1243px"
             />
           </div>
         </div>
-      </section>
-      <div className="header-two mar-md">
-        <h2 className="mar-bottom-16">Commission Form</h2>
-        <FontAwesomeIcon icon={faDownLong} className="icon-" />
-      </div>
-      <div className="grid">
-        <section className="form-spec">
-          <div className="center-inline header-three">
-            <div className="content-box">
-              <h3 className="purple mar-bottom-32 center-inline">
-                What To Include?
-              </h3>
-              <ul>
-                <li>
-                  <p>
-                    Picture of drawing you’d like done. (Pets, family, friends,
-                    wildlife, nature)
-                  </p>
-                </li>
-                <li>
-                  <p>What type of artwork (Watercolor, colored pencil)</p>
-                </li>
-
-                <li>
-                  <p>
-                    Anything you would like changed in the photo (background,
-                    removal of imperfections)
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <form onSubmit={submitForm}>
-            <div className="input-field">
-              <label htmlFor="Name">
-                <h6>Name</h6>
-              </label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                onChange={updateForm}
-                value={formData.name}
-                placeholder="Name"
-              />
-              <p className="red"></p>
-            </div>
-
-            <div className="input-field">
-              <label htmlFor="email">
-                <h6>Email</h6>
-              </label>
-              <input
-                type="text"
-                name="email"
-                id="email"
-                onChange={updateForm}
-                value={formData.email}
-                placeholder="Email"
-              />
-              <p className="red"></p>
-            </div>
-            <div className="input-field">
-              <label htmlFor="phone">
-                <h6>Phone</h6>
-              </label>
-              <input
-                type="text"
-                name="phone"
-                id="phone"
-                onChange={updateForm}
-                value={formData.phone}
-                placeholder="Phone"
-              />
-              <p className="red"></p>
-            </div>
-            <div className="input-field">
-              <label htmlFor="description">
-                <h6>Description</h6>
-                <h6 className="light grey-purple">
-                  What do you want your art piece to look like, etc?
-                </h6>
-              </label>
-
-              <textarea
-                type="text"
-                name="description"
-                id="description"
-                onChange={updateForm}
-                value={formData.description}
-                placeholder="Description"
-              ></textarea>
-              <p className="red"></p>
-            </div>
-            <div className="input-field remove-style mar-bottom-32">
-              <label htmlFor="files">
-                <h6>Images or other files</h6>
-                <h6 className="light grey-purple">
-                  Attach image files or word documents, photoshop to provide
-                  more info.
-                </h6>
-              </label>
-              <input
-                type="file"
-                name="files"
-                id="files"
-                onChange={renderFile}
-              />
-              <div onClick={uploadFile} className=" mar-bottom-16 image-upload">
-                <FontAwesomeIcon icon={faUpload} className="purple" />
-                <p>Upload</p>
+        <div className="grid flex-one">
+          <section className="form-spec">
+            <form onSubmit={submitForm}>
+              <div className="input-field">
+                <label htmlFor="Name">
+                  <h6>Name</h6>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  onChange={updateForm}
+                  value={formData.name}
+                  placeholder="Name"
+                />
+                <p className="red"></p>
               </div>
-              <p></p>
-              {files}
-            </div>
 
-            <button className="base-btn-invert">
-              <h5 type="submit">Submit</h5>
-            </button>
-          </form>
-        </section>
-        <section className="commissions">
-          <h3 className=" mar-bottom-32 center-inline purple">
-            Before & After
-          </h3>
-          <Commission
-            imageOne={"/commissions/dogcopy.jpg"}
-            imageTwo={"/commissions/dogcopy.jpg"}
-            price="120"
-          />
+              <div className="input-field">
+                <label htmlFor="email">
+                  <h6>Email</h6>
+                </label>
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  onChange={updateForm}
+                  value={formData.email}
+                  placeholder="Email"
+                />
+                <p className="red"></p>
+              </div>
+              <div className="input-field">
+                <label htmlFor="phone">
+                  <h6>Phone</h6>
+                </label>
+                <input
+                  type="text"
+                  name="phone"
+                  id="phone"
+                  onChange={updateForm}
+                  value={formData.phone}
+                  placeholder="Phone"
+                />
+                <p className="red"></p>
+              </div>
+              <div className="input-field">
+                <label htmlFor="description">
+                  <h6>Description</h6>
+                  <h6 className="light grey-purple">
+                    What do you want your art piece to look like, etc?
+                  </h6>
+                </label>
 
-          <Commission
-            imageOne={"/commissions/dogcopy.jpg"}
-            imageTwo={"/commissions/dogcopy.jpg"}
-            price="120"
-          />
+                <textarea
+                  type="text"
+                  name="description"
+                  id="description"
+                  onChange={updateForm}
+                  value={formData.description}
+                  placeholder="Description"
+                ></textarea>
+                <p className="red"></p>
+              </div>
+              <div className="input-field remove-style mar-bottom-32">
+                <label htmlFor="files">
+                  <h6>Images or other files</h6>
+                  <h6 className="light grey-purple">
+                    Attach image files or word documents, photoshop to provide
+                    more info.
+                  </h6>
+                </label>
+                <input
+                  type="file"
+                  name="files"
+                  id="files"
+                  onChange={renderFile}
+                />
+                <div
+                  onClick={uploadFile}
+                  className=" mar-bottom-16 image-upload"
+                >
+                  <FontAwesomeIcon icon={faUpload} className="purple" />
+                  <p>Upload</p>
+                </div>
+                <p></p>
+                {files}
+              </div>
 
-          <Commission
-            imageOne={"/commissions/dogcopy.jpg"}
-            imageTwo={"/commissions/dogcopy.jpg"}
-            price="120"
-          />
-        </section>
+              <button className="base-btn-invert">
+                <h5 type="submit">Submit</h5>
+              </button>
+            </form>
+          </section>
+        </div>
       </div>
     </Cont>
   );

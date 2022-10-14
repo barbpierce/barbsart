@@ -5,6 +5,7 @@ import COLORS from "../Data/colors";
 import emailjs, { init } from "@emailjs/browser";
 import Questions from "../components/contact/questions";
 const Cont = styled.div`
+  margin-bottom: 128px;
   .submit-btn {
     float: right;
   }
@@ -28,15 +29,19 @@ const Cont = styled.div`
 const FormElem = styled.div`
   max-width: 1200px;
   min-height: 600px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
   margin: 0 auto;
-  border: 1px solid black;
+  border: 1px solid ${(props) => props.colors.offGrey};
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   @media only screen and (max-width: 790px) {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  }
+  & > div {
+    margin-bottom: 64px;
   }
 `;
 const Contact = () => {
@@ -98,7 +103,7 @@ const Contact = () => {
 
   return (
     <Cont colors={COLORS}>
-      <FormElem ref={form}>
+      <FormElem colors={COLORS} ref={form}>
         <Questions />
         <div className="right-form">
           <div className="form-line line">
@@ -131,6 +136,7 @@ const Contact = () => {
               onChange={updateForm}
               value={formData.subject}
               placeholder="Subject"
+              type="text"
             ></input>
           </div>
         </div>

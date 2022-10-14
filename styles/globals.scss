@@ -11,7 +11,8 @@ $ultra-light-purple: #fcf8ff;
 $ultra-light-blue: #bba4ff;
 $super-ultra-light-purple: #fcf8ff;
 $black: #1a002b;
-
+$offGrey: #bdbdbd;
+$orange: #ff000e;
 *,
 *:before,
 *:after {
@@ -133,6 +134,9 @@ h4 {
 .mobile {
   display: none;
 }
+.text-shadow {
+  text-shadow: 3px 8px 7px rgba(0, 0, 0, 0.61);
+}
 @media only screen and (max-width: 634px) {
   .tablet {
     display: none !important;
@@ -183,6 +187,9 @@ h4 {
 .grey-purple {
   color: $greyPurple;
 }
+.box-shadow {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
 .light {
   font-weight: 400;
 }
@@ -195,7 +202,19 @@ h4 {
 .off-white {
   color: #fcf8ff;
 }
-.mar-lg{
+.mar-xl {
+  margin-bottom: 256px;
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 128px;
+  }
+}
+.mar-top-xl {
+  margin-top: 256px;
+  @media only screen and (max-width: 600px) {
+    margin-top: 128px;
+  }
+}
+.mar-lg {
   margin-bottom: 160px;
   @media only screen and (max-width: 600px) {
     margin-bottom: 80px;
@@ -219,6 +238,13 @@ h4 {
     margin-top: 64px;
   }
 }
+.info-box {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: $super-ultra-light-purple;
+  border: 1px solid $offGrey;
+  padding: 16px;
+  position: absolute;
+}
 .mar-top-sm {
   margin-top: 64px;
   @media only screen and (max-width: 600px) {
@@ -236,7 +262,8 @@ a {
 }
 
 input {
-  &[type="text"] {
+  &[type="text"],
+  &[type="email"] {
     border: 1px solid $grey;
     font-size: 16px;
     border-radius: 0.25rem;
@@ -350,10 +377,18 @@ textarea {
 .white {
   color: white;
 }
+.flex {
+  display: flex;
+}
+.flex-one {
+  flex: 1;
+}
 body,
 html {
   overflow-x: hidden;
+  height: 100%;
 }
+
 body {
   position: relative;
 }

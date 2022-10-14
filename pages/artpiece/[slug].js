@@ -13,7 +13,9 @@ import toast, { Toaster } from "react-hot-toast";
 import { updateLocalStorage } from "../lib/utils";
 const Cont = styled.div`
   min-height: 100vh;
-
+  @media only screen and (max-width: 500px) {
+    margin-bottom: 200px;
+  }
   .fullscreen-image {
     z-index: 1;
     display: none;
@@ -54,6 +56,7 @@ const Cont = styled.div`
         font-size: 40px;
       }
     }
+
     @media only screen and (max-width: 600px) {
       .close {
         width: 60px;
@@ -73,9 +76,9 @@ const Content = styled.div`
   display: flex;
   height: 500px;
   margin: 5%;
-  
+
   @media only screen and (max-width: 500px) {
-    margin: 0;
+    margin: 5% 0;
   }
   @media only screen and (max-width: 1300px) {
     height: 400px;

@@ -27,7 +27,7 @@ const Cont = styled.div`
     }
   }
   .dropdown {
-    z-index: 1;
+    z-index: 5;
     background: #fff;
     position: absolute;
     width: 400px;
@@ -45,7 +45,7 @@ const Cont = styled.div`
       margin-bottom: 16px;
       position: relative;
     }
-    @media only screen and (max-width: 417px) {
+    @media only screen and (max-width: 400px) {
       width: 100%;
     }
   }

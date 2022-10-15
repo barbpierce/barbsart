@@ -57,6 +57,7 @@ const Cont = styled.div`
   .flex {
     display: flex;
     align-items: center;
+    flex-direction: column;
   }
   .flex-two {
     display: flex;
@@ -137,30 +138,22 @@ const index = () => {
           </a>
         </Link>
       </div>
-      <div className="flex social">
-        <Link href="/" passHref>
-          <a title="Contact" rel="noopener noreferrer">
-            <FontAwesomeIcon className="icon-spec" icon={faFacebook} />
-          </a>
-        </Link>
+      <div className="social flex">
         <Link href="https://www.instagram.com/barbpierceart/" passHref>
           <a target="_blank" title="Contact" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faInstagram} className="icon-spec" />
+            <FontAwesomeIcon
+              icon={faInstagram}
+              className="icon-spec mar-bottom-32"
+            />
           </a>
         </Link>
-      </div>
-      <div className="flex phone">
-        <a className="flex-two" href="tel: 613-220-1173">
-          <FontAwesomeIcon icon={faPhone} className="icon-spec-sm" />
-          <p>613-220-1173</p>
-        </a>
-      </div>
-      <div className="flex email">
         <a className="flex-two" href="mailto: kayakbarb@gmail.com">
           <FontAwesomeIcon icon={faEnvelope} className="icon-spec-sm" />
           <p>kayakbarb@gmail.com</p>
         </a>
       </div>
+
+      <div className="email"></div>
     </Cont>
   );
 };

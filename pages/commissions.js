@@ -292,6 +292,7 @@ const Commissions = () => {
                   type="text"
                   name="name"
                   id="name"
+                  className="box-shadow"
                   onChange={updateForm}
                   value={formData.name}
                   placeholder="Name"
@@ -305,6 +306,7 @@ const Commissions = () => {
                 </label>
                 <input
                   type="text"
+                  className="box-shadow"
                   name="email"
                   id="email"
                   onChange={updateForm}
@@ -319,6 +321,7 @@ const Commissions = () => {
                 </label>
                 <input
                   type="text"
+                  className="box-shadow"
                   name="phone"
                   id="phone"
                   onChange={updateForm}
@@ -338,6 +341,7 @@ const Commissions = () => {
                 <textarea
                   type="text"
                   name="description"
+                  className="box-shadow"
                   id="description"
                   onChange={updateForm}
                   value={formData.description}
@@ -361,7 +365,7 @@ const Commissions = () => {
                 />
                 <div
                   onClick={uploadFile}
-                  className=" mar-bottom-16 image-upload"
+                  className=" mar-bottom-16 box-shadow image-upload"
                 >
                   <FontAwesomeIcon icon={faUpload} className="purple" />
                   <p>Upload</p>
@@ -370,7 +374,7 @@ const Commissions = () => {
                 {files}
               </div>
 
-              <button className="base-btn">
+              <button className="base-btn box-shadow">
                 <h5 type="submit">Submit</h5>
               </button>
             </form>

@@ -10,6 +10,11 @@ const Cont = styled.div`
   padding: 16px;
   border-radius: 8px;
   margin-bottom: 16px;
+  background: #fff;
+  p {
+    position: relative;
+    top: 0;
+  }
   .flex-center {
     column-gap: 8px;
   }
@@ -23,7 +28,7 @@ const Cont = styled.div`
 `;
 const File = ({ name, removeFile, index }) => {
   return (
-    <Cont colors={COLORS}>
+    <Cont colors={COLORS} className="box-shadow">
       <div className="flex-center">
         <FontAwesomeIcon icon={faFile} className="icon-lg" />
         <p className="grey-purple">{name}</p>

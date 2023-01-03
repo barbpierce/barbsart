@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import COLORS from "../Data/colors";
 import { useEffect, useState, useRef } from "react";
+import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownLong, faUpload } from "@fortawesome/free-solid-svg-icons";
 import File from "../components/commissions/form/file";
@@ -9,6 +10,11 @@ import toast, { Toaster } from "react-hot-toast";
 import Commission from "../components/commissions/before/commission";
 const Cont = styled.div`
   height: 100%;
+  .cont {
+    @media only screen and (max-width: 600px) {
+      padding: 0 !important;
+    }
+  }
   .flex {
     justify-content: center;
     align-items: center;
@@ -58,6 +64,9 @@ const Cont = styled.div`
       border-top: 2px solid ${(props) => props.colors.darkPurple};
       border-bottom: 2px solid ${(props) => props.colors.darkPurple};
       border-radius: 0;
+    }
+    @media only screen and (max-width: 400px) {
+      padding: 8px;
     }
   }
 
@@ -260,130 +269,162 @@ const Commissions = () => {
     );
   });
 
+  const meta = {
+    title: "Art Commissions",
+    description:
+      "Ottawa, Carp local art for sale online and art comissions, art commisions for pets, friends or anything you like",
+    link: "",
+    type: "website",
+    date: "2022-11-16 6:45:00:000",
+    image: "",
+    keywords:
+      "ottawa art, local art, art comissions, online art gallery, art carp, art ottawa, art comissions carp, art commission ottawa, animal art, landscape art",
+  };
   return (
-    <Cont colors={COLORS}>
-      <Toaster />
+    <>
+      <Head>
+        <title>{meta.title}</title>
+        <meta name="robots" content="follow, index" />
+        <meta property="og:type" content={meta.type} />
+        <meta property="og:site_name" content="Barb Pierce Art" />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:image" content={meta.image} />
+        <meta property="article:published_time" content={meta.date} />
+        <link rel="canonical" href={meta.link} />
+        <meta property="og:url" content={meta.link} />
+        <meta name="keywords" content={meta.keywords} />
 
-      <section className="header  box-shadow">
-        <h2 className="purple mar-bottom-32 text-shadow">
-          Personal Art Commissions
-        </h2>
-      </section>
-      <div className="parallax-one"></div>
-      <div className="flex mar-top-xl mar-xl">
-        <div className="flex-one">
-          <div className="box-shadow commission-pricing-image">
-            <Image
-              src="/commissions/pet_portrait_pricing.jpeg"
-              objectFit="contain"
-              width="961px"
-              height="1243px"
-            />
+        <meta name="description" content={meta.description} />
+      </Head>
+      <Cont colors={COLORS}>
+        <Toaster />
+
+        <section className="header  box-shadow">
+          <h2 className="purple mar-bottom-32 text-shadow word-wrap">
+            Personal Art Commissions
+          </h2>
+        </section>
+        <div className="parallax-one"></div>
+        <div className="flex cont mar-top-xl mar-xl">
+          <div className="flex-one">
+            <div className="box-shadow commission-pricing-image">
+              <Image
+                src="/commissions/pet_portrait_pricing.jpeg"
+                objectFit="contain"
+                width="961px"
+                height="1243px"
+              />
+            </div>
+          </div>
+          <div className="grid flex-one">
+            <section className="form-spec">
+              <form onSubmit={submitForm} className=" box-shadow purple-form">
+                <div className="input-field">
+                  <label htmlFor="Name">
+                    <h6>Name</h6>
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    className="box-shadow"
+                    onChange={updateForm}
+                    value={formData.name}
+                    placeholder="Name"
+                  />
+                  <p className="red"></p>
+                </div>
+
+                <div className="input-field">
+                  <label htmlFor="email">
+                    <h6>Email</h6>
+                  </label>
+                  <input
+                    type="text"
+                    className="box-shadow"
+                    name="email"
+                    id="email"
+                    onChange={updateForm}
+                    value={formData.email}
+                    placeholder="Email"
+                  />
+                  <p className="red"></p>
+                </div>
+                <div className="input-field">
+                  <label htmlFor="phone">
+                    <h6>Phone</h6>
+                  </label>
+                  <input
+                    type="text"
+                    className="box-shadow"
+                    name="phone"
+                    id="phone"
+                    onChange={updateForm}
+                    value={formData.phone}
+                    placeholder="Phone"
+                  />
+                  <p className="red"></p>
+                </div>
+                <div className="input-field">
+                  <label htmlFor="description">
+                    <h6>Description</h6>
+                    <h6 className="light grey-purple">
+                      What do you want your art piece to look like, etc?
+                    </h6>
+                  </label>
+
+                  <textarea
+                    type="text"
+                    name="description"
+                    className="box-shadow"
+                    id="description"
+                    onChange={updateForm}
+                    value={formData.description}
+                    placeholder="Description"
+                  ></textarea>
+                  <p className="red"></p>
+                </div>
+                <div className="input-field remove-style mar-bottom-32">
+                  <label htmlFor="files">
+                    <h6>Images or other files</h6>
+                    <h6 className="light grey-purple">
+                      Attach image files or word documents, photoshop to provide
+                      more info.
+                    </h6>
+                  </label>
+                  <input
+                    type="file"
+                    name="files"
+                    id="files"
+                    onChange={renderFile}
+                  />
+                  <div
+                    onClick={uploadFile}
+                    className=" mar-bottom-16 box-shadow image-upload"
+                  >
+                    <FontAwesomeIcon
+                      icon={faUpload}
+                      size="1x"
+                      className="purple icon-sm"
+                    />
+                    <p>Upload</p>
+                  </div>
+                  <p></p>
+                  {files}
+                </div>
+
+                <button className="base-btn box-shadow">
+                  <h5 type="submit">Submit</h5>
+                </button>
+              </form>
+            </section>
           </div>
         </div>
-        <div className="grid flex-one">
-          <section className="form-spec">
-            <form onSubmit={submitForm} className=" box-shadow purple-form">
-              <div className="input-field">
-                <label htmlFor="Name">
-                  <h6>Name</h6>
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  className="box-shadow"
-                  onChange={updateForm}
-                  value={formData.name}
-                  placeholder="Name"
-                />
-                <p className="red"></p>
-              </div>
-
-              <div className="input-field">
-                <label htmlFor="email">
-                  <h6>Email</h6>
-                </label>
-                <input
-                  type="text"
-                  className="box-shadow"
-                  name="email"
-                  id="email"
-                  onChange={updateForm}
-                  value={formData.email}
-                  placeholder="Email"
-                />
-                <p className="red"></p>
-              </div>
-              <div className="input-field">
-                <label htmlFor="phone">
-                  <h6>Phone</h6>
-                </label>
-                <input
-                  type="text"
-                  className="box-shadow"
-                  name="phone"
-                  id="phone"
-                  onChange={updateForm}
-                  value={formData.phone}
-                  placeholder="Phone"
-                />
-                <p className="red"></p>
-              </div>
-              <div className="input-field">
-                <label htmlFor="description">
-                  <h6>Description</h6>
-                  <h6 className="light grey-purple">
-                    What do you want your art piece to look like, etc?
-                  </h6>
-                </label>
-
-                <textarea
-                  type="text"
-                  name="description"
-                  className="box-shadow"
-                  id="description"
-                  onChange={updateForm}
-                  value={formData.description}
-                  placeholder="Description"
-                ></textarea>
-                <p className="red"></p>
-              </div>
-              <div className="input-field remove-style mar-bottom-32">
-                <label htmlFor="files">
-                  <h6>Images or other files</h6>
-                  <h6 className="light grey-purple">
-                    Attach image files or word documents, photoshop to provide
-                    more info.
-                  </h6>
-                </label>
-                <input
-                  type="file"
-                  name="files"
-                  id="files"
-                  onChange={renderFile}
-                />
-                <div
-                  onClick={uploadFile}
-                  className=" mar-bottom-16 box-shadow image-upload"
-                >
-                  <FontAwesomeIcon icon={faUpload} className="purple" />
-                  <p>Upload</p>
-                </div>
-                <p></p>
-                {files}
-              </div>
-
-              <button className="base-btn box-shadow">
-                <h5 type="submit">Submit</h5>
-              </button>
-            </form>
-          </section>
-        </div>
-      </div>
-      {/*End of flex*/}
-      <div className="parallax-two"></div>
-    </Cont>
+        {/*End of flex*/}
+        <div className="parallax-two"></div>
+      </Cont>
+    </>
   );
 };
 

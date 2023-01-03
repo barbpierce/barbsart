@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faXmark, faAnglesRight } from "@fortawesome/free-solid-svg-icons";
@@ -75,6 +75,16 @@ const Cont = styled.div`
       height: 61px;
     }
   }
+  .circle-btn {
+    h6 {
+      transition: background-color 0.25s ease;
+    }
+    &:hover {
+      h6 {
+        background-color: ${(props) => props.colors.darkPurple};
+      }
+    }
+  }
 
   .icon-x {
     font-size: 48px;
@@ -111,6 +121,7 @@ const Cont = styled.div`
 `;
 
 const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
+  const [context, setContext] = useContext(AppContext);
   const items = [
     {
       title: "I Am Wired",
@@ -157,9 +168,12 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
         total: total,
       };
     });
-    updateLocalStorage(items);
+    
   };
-  const [context, setContext] = useContext(AppContext);
+  useEffect(()=>{
+    updateLocalStorage(context.items);
+  },[context])
+  
   const itemElems = context.items.map((item, index) => {
     return (
       <Item
@@ -189,11 +203,7 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
             <p>{context.items.length}</p>
           </div>
         )}
-        <FontAwesomeIcon
-          icon={faShoppingCart}
-          className="icon-spec"
-          size="lg"
-        />
+        <FontAwesomeIcon icon={faShoppingCart} className="icon-spec icon-md" />
       </div>
       <div
         className="dropdown"
@@ -202,7 +212,7 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
         <div className="title-spec">
           <h5>Shopping Cart</h5>
           <div onClick={hideDropdown} className="delete">
-            <FontAwesomeIcon icon={faAnglesRight} className="icon-x" />
+            <FontAwesomeIcon icon={faAnglesRight} className="icon-x icon-lg" />
           </div>
         </div>
 

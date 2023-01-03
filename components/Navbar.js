@@ -51,6 +51,11 @@ const Cont = styled.div`
       margin-left: 1rem;
     }
   }
+  h6 {
+    background: #fff;
+    padding: 8px;
+    border-radius: 8px;
+  }
 `;
 const Navbar = () => {
   const [context, setContext] = useContext(AppContext);
@@ -133,8 +138,7 @@ const Navbar = () => {
             style={{ marginLeft: "32px" }}
             onClick={toggleVisible}
             icon={faBars}
-            className="hamburger"
-            size="xl"
+            className="hamburger icon-lg"
           />
         </div>
       </div>

@@ -4,16 +4,16 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 const Cont = styled.div`
-  border: 1px solid black;
+  border: 1px solid ${(props) => props.colors.grey};
   border-radius: 16px;
-  background: ${(props) => props.colors.ultraLightPurple};
+  background: #fff;
   padding: 32px;
   .base-btn-invert {
   }
   .title {
     text-align: center;
-    h4{
-      color: #57008C;
+    h4 {
+      color: #57008c;
     }
   }
   .center {
@@ -27,9 +27,9 @@ const Cont = styled.div`
   .base-btn-invert {
     display: inline-block;
   }
-  @media only screen and (max-width:500px){
-    border:none;
-    border-top:1px solid black;
+  @media only screen and (max-width: 500px) {
+    border: none;
+    border-top: 1px solid black;
     border-bottom: 1px solid black;
     border-radius: 0;
   }
@@ -37,10 +37,18 @@ const Cont = styled.div`
 
 const SuccessPopup = () => {
   return (
-    <Cont colors={COLORS}>
+    <Cont colors={COLORS} className="box-shadow">
       <div className="title mar-sm">
         <h4 className="mar-bottom-16">Thank you for your order!</h4>
-        <p>Your order was completed succesfully</p>
+        <p className="bold mar-bottom-16">
+          Your order was completed succesfully
+        </p>
+        <p>
+          Reach me at{" "}
+          <a href="mailto:kayakbarb@gmail.com">
+            <p className="bold">Kayakbarb@gmail.com</p>
+          </a>
+        </p>
       </div>
       <div className="center mar-sm">
         <FontAwesomeIcon icon={faEnvelope} className="icon-lg purple" />

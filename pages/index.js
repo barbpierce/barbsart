@@ -1,9 +1,21 @@
 import styled from "styled-components";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import Head from "next/head";
 import Picture from "../components/Picture";
 import { gql, GraphQLClient } from "graphql-request";
 import { useEffect } from "react";
+import {
+  createUser,
+  updateUser,
+  fetchUser,
+  fetchUserExists,
+  createOrder,
+  fetchOrder,
+  createItem,
+  createItems,
+  clearOrder,
+} from "../utils/SupabaseFunctions";
 const Cont = styled.div`
   position: relative;
   display: flex;
@@ -76,5 +88,40 @@ export default function Home({ artPieces }) {
       />
     );
   });
-  return <Cont>{imageElems}</Cont>;
+
+  const meta = {
+    title: "Barb's Art Gallery",
+    description:
+      "Ottawa/Carp art gallery, water colour, pastel, pencil crayon. Commissions included for pets, family, friends, landscape and anything else.",
+    link: "",
+    type: "website",
+    date: "2022-11-16 6:45:00:000",
+    image: "",
+    keywords:
+      "art gallery, local art gallery, online art, ottawa art gallery, art website, carp art commissions, water color art, pencil crayon art, pastel art",
+  };
+
+  
+
+
+  return (
+    <>
+      <Head>
+        <title>{meta.title}</title>
+        <meta name="robots" content="follow, index" />
+        <meta property="og:type" content={meta.type} />
+        <meta property="og:site_name" content="Barb Pierce Art" />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:image" content={meta.image} />
+        <meta property="article:published_time" content={meta.date} />
+        <link rel="canonical" href={meta.link} />
+        <meta property="og:url" content={meta.link} />
+        <meta name="keywords" content={meta.keywords} />
+
+        <meta name="description" content={meta.description} />
+      </Head>
+      <Cont>{imageElems}</Cont>
+    </>
+  );
 }

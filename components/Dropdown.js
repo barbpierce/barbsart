@@ -20,7 +20,7 @@ const Cont = styled.div`
     transition: background-color 0.25s ease;
     h6 {
       margin-right: 0.5rem;
-      transition: color 0.25s ease;
+      transition: color 0.25s ease, background-color 0.25s ease;
     }
     .icon-spec {
       transition: transform 0.25s ease;
@@ -32,6 +32,7 @@ const Cont = styled.div`
       }
       h6 {
         color: #fff;
+        background-color: #000;
       }
     }
   }
@@ -95,6 +96,13 @@ const Dropdown = ({ text }) => {
       {visible && (
         <div className="dropdown">
           <ul>
+            <li>
+              <Link href="/" passHref>
+                <a title="View All" rel="noopener noreferrer">
+                  <h6 className="light">View All</h6>
+                </a>
+              </Link>
+            </li>
             <li>
               <Link href="/watercolour" passHref>
                 <a title="Watercolour" rel="noopener noreferrer">

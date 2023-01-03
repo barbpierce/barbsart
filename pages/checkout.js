@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { AppContext } from "./_app";
 import { nanoid } from "nanoid";
+import Head from "next/head";
 import styled from "styled-components";
 import Delivery from "../components/checkout/information/Delivery";
 import IndexTracker from "../components/checkout/IndexTracker";
@@ -13,6 +14,15 @@ const Cont = styled.div`
   min-height: 100vh;
   column-gap: 32px;
 
+  .left-content {
+    padding-left: 32px;
+    @media only screen and (max-width: 800px) {
+      padding-left: 16px;
+    }
+    @media only screen and (max-width: 500px) {
+      padding-left: 0;
+    }
+  }
   input + p {
     color: red;
   }
@@ -506,26 +516,54 @@ const Checkout = () => {
     />,
   ];
 
+  const meta = {
+    title: "Checkout",
+    description:
+      "Watercolour art pieces for sale in Ottawa/Carp, available online with worldwide shipping.",
+    link: "",
+    type: "website",
+    date: "2022-11-16 6:45:00:000",
+    image: "",
+    keywords:
+      "watercolour art, art commissions, art carp, art ottawa, art for sale online, online art gallery, online art gallery carp, online art gallery ottawa",
+  };
   return (
-    <Cont>
-      <div>
-        {forms[index.current]}
-        {index.current !== 2 ? (
-          <button
-            onClick={increaseIndex}
-            className="base-btn-invert mar-bottom-32"
-          >
-            <h5>Continue</h5>
-          </button>
-        ) : (
-          <FinalCheckout />
-        )}
-        <IndexTracker updateIndex={updateIndex} cartIndex={index} />
-      </div>
-      <div>
-        <Summary />
-      </div>
-    </Cont>
+    <>
+      <Head>
+        <title>{meta.title}</title>
+        <meta name="robots" content="follow, index" />
+        <meta property="og:type" content={meta.type} />
+        <meta property="og:site_name" content="Barb Pierce Art" />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:image" content={meta.image} />
+        <meta property="article:published_time" content={meta.date} />
+        <link rel="canonical" href={meta.link} />
+        <meta property="og:url" content={meta.link} />
+        <meta name="keywords" content={meta.keywords} />
+
+        <meta name="description" content={meta.description} />
+      </Head>
+      <Cont>
+        <div className="left-content">
+          {forms[index.current]}
+          {index.current !== 2 ? (
+            <button
+              onClick={increaseIndex}
+              className="base-btn-invert mar-bottom-32"
+            >
+              <h5>Continue</h5>
+            </button>
+          ) : (
+            <FinalCheckout formData={formData} />
+          )}
+          <IndexTracker updateIndex={updateIndex} cartIndex={index} />
+        </div>
+        <div>
+          <Summary />
+        </div>
+      </Cont>
+    </>
   );
 };
 

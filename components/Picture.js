@@ -10,6 +10,7 @@ const Cont = styled.div`
   width: 100%;
   height: 400px;
   transition: box-shadow 0.25s ease;
+  margin-bottom: 8px !important;
   &:hover {
     box-shadow: none;
   }
@@ -96,15 +97,24 @@ const Picture = ({ url, title, description, price, size, sold, landscape }) => {
               <div className="image-details">
                 <h4>{title}</h4>
                 <div className="price">
-                  <h4 style = {{color:sold ? 'black': ''}}>{sold ? 'Sold' : `$${price}`}</h4>
+                  <h4 style={{ color: sold ? "black" : "" }}>
+                    {sold ? "Sold" : `$${price}`}
+                  </h4>
                 </div>
                 <h5 className="light white">{size}</h5>
               </div>
-              <div style = {{backgroundColor: sold ? 'black' : '#57008C'}}className="background"></div>
+              <div
+                style={{ backgroundColor: sold ? "black" : "#57008C" }}
+                className="background"
+              ></div>
             </div>
           </Cont>
         </a>
       </Link>
+      <div className="flex mar-left-8 mar-bottom-32">
+        <p className="mar-right-8 bold purple">${`${price}`}</p>
+        {sold && <p className="grey-purple">(Sold)</p>}
+      </div>
     </div>
   );
 };

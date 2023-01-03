@@ -19,6 +19,7 @@ const Cont = styled.div`
   .fullscreen-image {
     z-index: 1;
     display: none;
+
     opacity: 0;
     transition: opacity 0.25s ease;
     position: absolute;
@@ -26,7 +27,7 @@ const Cont = styled.div`
     width: 100%;
     height: 100%;
     left: 0;
-    top: 0;
+    top: 0px;
     div.image-cont {
       position: relative;
       width: 100%;
@@ -37,8 +38,8 @@ const Cont = styled.div`
       z-index: 5;
       width: 80px;
       height: 80px;
-      position: relative;
-      top: 40%;
+      position: absolute;
+      top: 300px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -63,6 +64,15 @@ const Cont = styled.div`
         height: 60px;
         .icon-spec {
           font-size: 30px;
+        }
+      }
+    }
+    @media only screen and (max-width: 400px) {
+      .close {
+        width: 40px;
+        height: 40px;
+        .icon-lg {
+          width: 30px;
         }
       }
     }
@@ -222,14 +232,20 @@ const Slug = ({ artPiece }) => {
         }
       >
         <div className="image-cont">
-          <Image src={artPiece.image.url} layout="fill" objectFit="contain" />
+          <Image
+            src={artPiece.image.url}
+            layout="fill"
+            objectFit="contain"
+            objectPosition="top"
+          />
+
           <div
             onClick={() => {
               setFullscreen(false);
             }}
             className="close"
           >
-            <FontAwesomeIcon className="icon-spec" icon={faLeftLong} />
+            <FontAwesomeIcon className="icon-spec icon-lg" icon={faLeftLong} />
           </div>
         </div>
       </div>
@@ -243,6 +259,7 @@ const Slug = ({ artPiece }) => {
           <div className="image">
             <Image src={artPiece.image.url} layout="fill" objectFit="cover" />
           </div>
+
           <div className="tooltip">
             <h5>Click To Fullscreen</h5>
           </div>

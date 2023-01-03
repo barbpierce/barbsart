@@ -5,15 +5,14 @@ import Image from "next/image";
 import COLORS from "../../Data/colors";
 const Cont = styled.div`
   padding-bottom: 16px;
-  
+
   border-bottom: 1px solid ${(props) => props.colors.lightPurple};
-  
+
   h6 {
     margin-left: 0 !important;
   }
   .flex {
     display: flex;
-    
   }
   .image {
     position: relative;
@@ -46,8 +45,9 @@ const Cont = styled.div`
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      &:hover, &:active{
-        background-color: ${props=>props.colors.grey};
+      &:hover,
+      &:active {
+        background-color: ${(props) => props.colors.grey};
       }
     }
   }
@@ -85,7 +85,7 @@ const Item = ({ title, total, catagory, size, image, index, removeItem }) => {
         </div>
         <div className="delete-me">
           <button onClick={() => removeItem(index)}>
-            <FontAwesomeIcon icon={faXmark} className="icon-" />
+            <FontAwesomeIcon icon={faXmark} className="icon- icon-md" />
           </button>
         </div>
       </div>

@@ -163,6 +163,19 @@ h4 {
     margin-bottom: 1rem;
   }
 }
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+.mar-right-8 {
+  margin-right: 8px;
+}
+.mar-left-8 {
+  margin-left: 8px;
+}
+.mar-bottom-8 {
+  margin-bottom: 8px;
+}
 .mar-bottom-16 {
   margin-bottom: 16px;
 }
@@ -384,9 +397,15 @@ textarea {
 }
 .icon-lg {
   font-size: 40px;
+  width: 40px;
 }
 .icon-md {
   font-size: 24px;
+  width: 24px;
+}
+.icon-sm {
+  width: 20px;
+  height: 20px;
 }
 .white {
   color: white;
@@ -465,4 +484,8 @@ input[type="file"] {
   &:active {
     border: 2px solid $darkPurple;
   }
+}
+
+.word-wrap {
+  word-wrap: break-word;
 }

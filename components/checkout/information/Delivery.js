@@ -4,7 +4,7 @@ import Select from "../../Form/Select";
 import axios from "axios";
 
 const Cont = styled.div`
-  h6{
+  h6 {
     word-wrap: break-word;
   }
 `;
@@ -35,7 +35,6 @@ const Delivery = ({
     setStates((prevStates) => {
       return states;
     });
-   
   }
 
   function updateState(value) {

@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import Select from "../../Form/Select";
-const Cont = styled.div``;
+const Cont = styled.div`
+  input[type="radio"] {
+    cursor: pointer;
+  }
+`;
 const Billing = ({
   formData,
   setRegion,

@@ -7,7 +7,19 @@ import COLORS from "../../../Data/colors";
 import Item from "./Item";
 const Cont = styled.div`
   width: 100%;
+  padding-right: 32px;
   position: relative;
+  @media only screen and (max-width: 800px) {
+    padding-right: 16px;
+  }
+  @media only screen and (max-width: 600px) {
+    padding-right: 0px;
+    padding-left: 16px;
+  }
+  @media only screen and (max-width: 500px) {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
   .delete {
     position: absolute;
   }
@@ -87,10 +99,10 @@ const Index = () => {
       <section className="items-visible">{items}</section>
       <div onClick={toggleVisibility} className="mar-bottom-16 items-dropdown">
         <div className="flex-seperate">
-          <h6 className = 'purple'>View Cart</h6>
+          <h6 className="purple">View Cart</h6>
           <FontAwesomeIcon
             style={{ transform: visible ? "rotate(180deg)" : "rotate(0deg)" }}
-            className="caret purple"
+            className="caret purple icon-sm"
             icon={faCaretDown}
           />
         </div>

@@ -92,6 +92,7 @@ const Cont = styled.div`
     &-sm {
       color: ${(props) => props.colors.ultraLightPurple};
       font-size: 32px;
+      margin: 0 auto;
     }
   }
 `;
@@ -143,17 +144,15 @@ const index = () => {
           <a target="_blank" title="Contact" rel="noopener noreferrer">
             <FontAwesomeIcon
               icon={faInstagram}
-              className="icon-spec mar-bottom-32"
+              className="icon-spec icon-lg mar-bottom-32"
             />
           </a>
         </Link>
         <a className="flex-two" href="mailto: kayakbarb@gmail.com">
-          <FontAwesomeIcon icon={faEnvelope} className="icon-spec-sm" />
+          <FontAwesomeIcon icon={faEnvelope} className="icon-spec-sm icon-lg" />
           <p>kayakbarb@gmail.com</p>
         </a>
       </div>
-
-      <div className="email"></div>
     </Cont>
   );
 };

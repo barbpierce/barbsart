@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Head from "next/head";
 import { useState, useRef } from "react";
 import COLORS from "../Data/colors";
 import emailjs, { init } from "@emailjs/browser";
@@ -100,64 +101,91 @@ const Contact = () => {
       };
     });
   }
+  const meta = {
+    title: "Contage Page",
+    description: "Contact me for art commissions in Ottawa. Shipping worldwipe",
+    link: "",
+    type: "website",
+    date: "2022-11-16 6:45:00:000",
+    image: "",
+    keywords:
+      "Contact page, contact me, barb pierce art contact, barbpierceart contact page, art, local art, ottawa art, online art gallery, carp art",
+  };
 
   return (
-    <Cont colors={COLORS}>
-      <FormElem colors={COLORS} ref={form}>
-        <Questions />
-        <div className="right-form">
-          <div className="form-line line">
-            <div className="field">
-              <h5>Name *</h5>
-              <input
-                type="text"
-                name="name"
-                onChange={updateForm}
-                value={formData.name}
-                placeholder="Name"
-              />
-            </div>
-            <div className="field">
-              <h5>Email *</h5>
-              <input
-                type="email"
-                name="email"
-                onChange={updateForm}
-                value={formData.email}
-                placeholder="Email"
-              />
-            </div>
-          </div>
-          <div className="field line">
-            <h5>Subject </h5>
-            <input
-              required
-              name="subject"
-              onChange={updateForm}
-              value={formData.subject}
-              placeholder="Subject"
-              type="text"
-            ></input>
-          </div>
-        </div>
+    <>
+      <Head>
+        <title>{meta.title}</title>
+        <meta name="robots" content="follow, index" />
+        <meta property="og:type" content={meta.type} />
+        <meta property="og:site_name" content="Barb Pierce Art" />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:image" content={meta.image} />
+        <meta property="article:published_time" content={meta.date} />
+        <link rel="canonical" href={meta.link} />
+        <meta property="og:url" content={meta.link} />
+        <meta name="keywords" content={meta.keywords} />
 
-        <div className="bottom-form">
-          <div className="field line">
-            <h5>Message * </h5>
-            <textarea
-              required
-              name="message"
-              onChange={updateForm}
-              value={formData.message}
-              placeholder="Message"
-            ></textarea>
+        <meta name="description" content={meta.description} />
+      </Head>
+      <Cont colors={COLORS}>
+        <FormElem colors={COLORS} ref={form}>
+          <Questions />
+          <div className="right-form">
+            <div className="form-line line">
+              <div className="field">
+                <h5>Name *</h5>
+                <input
+                  type="text"
+                  name="name"
+                  onChange={updateForm}
+                  value={formData.name}
+                  placeholder="Name"
+                />
+              </div>
+              <div className="field">
+                <h5>Email *</h5>
+                <input
+                  type="email"
+                  name="email"
+                  onChange={updateForm}
+                  value={formData.email}
+                  placeholder="Email"
+                />
+              </div>
+            </div>
+            <div className="field line">
+              <h5>Subject </h5>
+              <input
+                required
+                name="subject"
+                onChange={updateForm}
+                value={formData.subject}
+                placeholder="Subject"
+                type="text"
+              ></input>
+            </div>
           </div>
-          <button className="submit-btn">
-            <h5>Submit</h5>
-          </button>
-        </div>
-      </FormElem>
-    </Cont>
+
+          <div className="bottom-form">
+            <div className="field line">
+              <h5>Message * </h5>
+              <textarea
+                required
+                name="message"
+                onChange={updateForm}
+                value={formData.message}
+                placeholder="Message"
+              ></textarea>
+            </div>
+            <button className="submit-btn">
+              <h5>Submit</h5>
+            </button>
+          </div>
+        </FormElem>
+      </Cont>
+    </>
   );
 };
 

@@ -5,11 +5,19 @@ const Cont = styled.div`
   width: 120px;
   height: 120px;
   position: relative;
-  margin-right: 0.25rem;
-  margin-left: 0.25rem;
+  margin-right: 4px;
+  margin-left: 4px;
   float: left;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: box-shadow 0.25s ease;
+  &:hover {
+    box-shadow: none;
+  }
+  @media only screen and (max-width: 400px) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 const imageSelect = ({ title, url, index, updateImage }) => {

@@ -4,10 +4,15 @@ import COLORS from "../Data/colors";
 import { useEffect, useState, useRef } from "react";
 import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownLong, faUpload } from "@fortawesome/free-solid-svg-icons";
+import {
+  faDownLong,
+  faUpload,
+  faEnvelope,
+} from "@fortawesome/free-solid-svg-icons";
 import File from "../components/commissions/form/file";
 import toast, { Toaster } from "react-hot-toast";
 import Commission from "../components/commissions/before/commission";
+
 const Cont = styled.div`
   height: 100%;
   .cont {
@@ -58,7 +63,8 @@ const Cont = styled.div`
   form {
     max-width: 865px;
     margin: 0 auto;
-
+    padding: 32px;
+    border: 1px solid #7b6986;
     @media only screen and (max-width: 600px) {
       border: none;
       border-top: 2px solid ${(props) => props.colors.darkPurple};
@@ -301,7 +307,7 @@ const Commissions = () => {
         <Toaster />
 
         <section className="header  box-shadow">
-          <h2 className="purple mar-bottom-32 text-shadow word-wrap">
+          <h2 className="purple mar-bottom-32text-shadow word-wrap">
             Personal Art Commissions
           </h2>
         </section>
@@ -320,6 +326,15 @@ const Commissions = () => {
           <div className="grid flex-one">
             <section className="form-spec">
               <form onSubmit={submitForm} className=" box-shadow purple-form">
+                <div className="mar-bottom-32">
+                  <h2 className="light-purple inline mar-right-8 mar-bottom-32  text-shadow">
+                    I will get back to you soon!
+                  </h2>
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    className=" inline white icon-lg"
+                  />
+                </div>
                 <div className="input-field">
                   <label htmlFor="Name">
                     <h6>Name</h6>
@@ -389,8 +404,8 @@ const Commissions = () => {
                   <label htmlFor="files">
                     <h6>Images or other files</h6>
                     <h6 className="light grey-purple">
-                      Attach image files or word documents, photoshop to provide
-                      more info.
+                      Attach images, word documents, photoshop files and/or any
+                      other files to provide more info.
                     </h6>
                   </label>
                   <input

@@ -126,7 +126,7 @@ const Navmobile = ({ visible, toggleVisible }) => {
           <h4 className="art">Pencil</h4>
         </a>
       </Link>
-      <Link href="/commisions" passHref>
+      <Link href="/commissions" passHref>
         <a onClick={toggleVisible} title="Commisions" rel="noopener noreferrer">
           <h4>Commisions</h4>
         </a>

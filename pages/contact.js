@@ -27,7 +27,7 @@ const Cont = styled.div`
   }
 `;
 
-const FormElem = styled.div`
+const FormElem = styled.form`
   max-width: 1200px;
   min-height: 600px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -71,10 +71,10 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        "service_3hso67w",
-        "template_cxvs4sn",
+        "service_aa4i949",
+        "template_h56wm3s",
         form.current,
-        "VuMtr83gozV6G7IIc"
+        "cVubv2J7duBYJW66b"
       )
       .then(
         (result) => {
@@ -123,14 +123,14 @@ const Contact = () => {
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />
         <meta property="article:published_time" content={meta.date} />
-        <link rel="canonical" href={meta.link} />
+        <link rel="canonical" href={meta.image} />
         <meta property="og:url" content={meta.link} />
         <meta name="keywords" content={meta.keywords} />
 
         <meta name="description" content={meta.description} />
       </Head>
       <Cont colors={COLORS}>
-        <FormElem colors={COLORS} ref={form}>
+        <FormElem onSubmit={submitSuggestion} colors={COLORS} ref={form}>
           <Questions />
           <div className="right-form">
             <div className="form-line line">

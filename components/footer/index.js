@@ -123,7 +123,7 @@ const index = () => {
         </Link>
       </div>
       <div className="right">
-        <Link href="/commisions" passHref>
+        <Link href="/commissions" passHref>
           <a title="Commisions" rel="noopener noreferrer">
             <h6>Commisions</h6>
           </a>

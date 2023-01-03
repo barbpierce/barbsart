@@ -52,7 +52,7 @@ h4 {
 
 @media only screen and (min-width: 1201px) {
   html {
-    font-size: 21px;
+    font-size: 16px;
   }
   h1 {
     font-size: 5.653rem;
@@ -79,7 +79,7 @@ h4 {
 // Tablet view, base px 21, multiplier of 1.414
 @media only screen and (min-width: 601px) and (max-width: 1200px) {
   html {
-    font-size: 18px;
+    font-size: 16px;
   }
   h1 {
     font-size: 5.653rem;
@@ -106,7 +106,7 @@ h4 {
 // Mobile view, base px 18, multiplier of 1.25
 @media only screen and (max-width: 600px) {
   html {
-    font-size: 18px;
+    font-size: 16px;
   }
   h1 {
     font-size: 3.052rem;
@@ -200,9 +200,17 @@ h4 {
 .grey-purple {
   color: $greyPurple;
 }
+.light-purple {
+  color: $light-purple;
+}
 .box-shadow {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+.inline {
+  display: inline;
+}
+
 .light {
   font-weight: 400;
 }
@@ -221,6 +229,7 @@ h4 {
     margin-bottom: 128px;
   }
 }
+
 .mar-top-xl {
   margin-top: 256px;
   @media only screen and (max-width: 600px) {
@@ -263,6 +272,10 @@ h4 {
   @media only screen and (max-width: 600px) {
     margin-top: 32px;
   }
+}
+
+.pad-top-4 {
+  padding-top: 4px;
 }
 
 a {
@@ -445,12 +458,6 @@ body {
   background: #fff;
   border-radius: 8px;
   border: 1px solid $greyPurple;
-}
-
-form {
-  padding: 32px;
-  border: 1px solid $greyPurple;
-  border-radius: 8px;
 }
 
 input[type="file"] {

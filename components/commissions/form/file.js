@@ -7,10 +7,11 @@ const Cont = styled.div`
   display: flex;
   justify-content: space-between;
   border: 1px solid ${(props) => props.colors.lightGrey};
-  padding: 16px;
+  padding: 8px;
   border-radius: 8px;
   margin-bottom: 16px;
   background: #fff;
+  align-items: center;
   p {
     position: relative;
     top: 0;
@@ -30,13 +31,13 @@ const File = ({ name, removeFile, index }) => {
   return (
     <Cont colors={COLORS} className="box-shadow">
       <div className="flex-center">
-        <FontAwesomeIcon icon={faFile} className="icon-lg" />
+        <FontAwesomeIcon icon={faFile} className="icon-sm" />
         <p className="grey-purple">{name}</p>
       </div>
       <FontAwesomeIcon
         onClick={() => removeFile(index)}
         icon={faClose}
-        className="icon-lg delete-icon"
+        className="icon-sm delete-icon"
       />
     </Cont>
   );

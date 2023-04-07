@@ -91,6 +91,7 @@ const Checkout = () => {
     email: false,
     phone: false,
   });
+  /*
   const [billing, setBilling] = useState({
     firstName: "",
     lastName: "",
@@ -109,11 +110,11 @@ const Checkout = () => {
     city: false,
     state: false,
     country: false,
-  });
+  }); */
   const [pickup, setPickup] = useState(false);
   const [index, setIndex] = useState({ current: 0, max: 0 });
-  const [sameBilling, setSameBilling] = useState(false);
-
+  //const [sameBilling, setSameBilling] = useState(false);
+  /*
   function updateBilling(e) {
     const value = e.currentTarget.value;
 
@@ -122,7 +123,7 @@ const Checkout = () => {
     } else {
       setSameBilling(false);
     }
-  }
+  } */
   function increaseIndex() {
     let valid = false;
     if (index.current === 0) {
@@ -215,7 +216,7 @@ const Checkout = () => {
       });
     }
   }
-
+  /*
   function setBillingRegion(value, region) {
     setBilling((prevData) => {
       return {
@@ -262,7 +263,7 @@ const Checkout = () => {
         };
       });
     }
-  }
+  } */
 
   console.log(pickup);
   function updateForm(e) {
@@ -379,6 +380,7 @@ const Checkout = () => {
     }
     message.innerText = errorMsg;
   }
+  /*
   function updateBillingForm(e) {
     const value = e.currentTarget.value;
     const name = e.currentTarget.name;
@@ -461,7 +463,7 @@ const Checkout = () => {
     }
     message.innerText = errorMsg;
   }
-
+ */
   function validateForm(form) {
     const state = Object.keys(form).every((key, index) => {
       return form[key] == true;
@@ -529,14 +531,6 @@ const Checkout = () => {
       formData={formData}
       setRegion={setRegion}
       key={1}
-    />,
-    <Billing
-      formData={billing}
-      setRegion={setBillingRegion}
-      updateForm={updateBillingForm}
-      sameBilling={sameBilling}
-      updateBilling={updateBilling}
-      key={2}
     />,
   ];
 

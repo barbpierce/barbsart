@@ -24,14 +24,13 @@ const Cont = styled.div`
     transition: opacity 0.25s ease;
     position: absolute;
     background: #fff;
-    width: 100%;
-    height: 100%;
+
     left: 0;
     top: 0px;
     div.image-cont {
       position: relative;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
     }
     .close {
       background: ${(props) => props.colors.grey};
@@ -102,12 +101,12 @@ const Content = styled.div`
     width: 100%;
     min-height: 400px;
     margin-bottom: 32px;
+    box-shadow: none !important;
     div.image {
       position: relative;
       transition: box-shadow 0.25s ease;
       width: 100%;
       height: 100%;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
     cursor: pointer;
     .tooltip {
@@ -254,7 +253,7 @@ const Slug = ({ artPiece }) => {
           className="image-container"
         >
           <div className="image">
-            <Image src={artPiece.image.url} layout="fill" objectFit="cover" />
+            <Image src={artPiece.image.url} layout="fill" objectFit="contain" />
           </div>
 
           <div className="tooltip">

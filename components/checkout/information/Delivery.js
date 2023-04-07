@@ -18,7 +18,9 @@ const Delivery = ({
 }) => {
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
+  const [statesDup, setStatesDup] = useState([]);
   const [cities, setCities] = useState([]);
+  const [citiesDup, setCitiesDup] = useState([]);
   const [data, setData] = useState([]);
   const [locations, setLocations] = useState([]);
   const [options, setOptions] = useState([]);
@@ -27,13 +29,17 @@ const Delivery = ({
 
   function updateCountry(value) {
     setRegion(value, "country");
-    let states = data.filter((item) => {
+    let statesX = data.filter((item) => {
       return item.country === value;
     });
-    states = [...new Set(states.map((item) => item.subcountry))];
-    states.sort();
+
+    statesX = [...new Set(statesX.map((item) => item.subcountry))];
+    statesX.sort();
+    setStatesDup((prev) => {
+      return statesX;
+    });
     setStates((prevStates) => {
-      return states;
+      return statesX;
     });
   }
 
@@ -43,6 +49,7 @@ const Delivery = ({
     let cities = data.filter((city) => city.subcountry === value);
     cities = cities.map((city) => city.name);
     cities.sort();
+    setCitiesDup(cities);
     setCities(cities);
   }
 
@@ -221,8 +228,8 @@ const Delivery = ({
             <Select
               title={"Enter State"}
               regions={states}
-              options={states}
-              setOptions={setStates}
+              options={statesDup}
+              setOptions={setStatesDup}
               value={formData.state}
               updateValue={updateRegion}
               name="state"
@@ -236,8 +243,8 @@ const Delivery = ({
             <Select
               title={"Enter City"}
               regions={cities}
-              options={cities}
-              setOptions={setCities}
+              options={citiesDup}
+              setOptions={setCitiesDup}
               value={formData.city}
               updateValue={updateRegion}
               name="city"

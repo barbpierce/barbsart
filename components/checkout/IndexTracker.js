@@ -2,7 +2,7 @@ import styled from "styled-components";
 import COLORS from "../../Data/colors";
 const Cont = styled.div`
   width: 100%;
-  
+
   .line {
     width: 100%;
     height: 1px;
@@ -25,7 +25,7 @@ const Cont = styled.div`
 `;
 
 const IndexTracker = ({ cartIndex, updateIndex }) => {
-  const lines = ["Delivery", "Billing", "Payment"].map((line, index) => {
+  const lines = ["Delivery", "Payment"].map((line, index) => {
     return (
       <div
         onClick={() => updateIndex(index)}

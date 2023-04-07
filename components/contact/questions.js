@@ -37,7 +37,7 @@ const Questions = () => {
   return (
     <QuestionElem colors={COLORS}>
       <div className="image-container">
-        <Image src="/images/barb-180.jpg" layout="fill" objectFit="cover" />
+        <Image src="/images/barb-180.jpg" layout="fill" objectFit="contain" />
       </div>
       <div className="info-box">
         <h5 className="purple mar-bottom-16">Ask me about my art!</h5>

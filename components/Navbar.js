@@ -64,12 +64,12 @@ const Navbar = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       getLocalStorage();
-      setContext(prev=> {
+      setContext((prev) => {
         return {
           ...prev,
-          items: getLocalStorage()
-        }
-      })
+          items: getLocalStorage(),
+        };
+      });
     }
   }, []);
   /*
@@ -107,7 +107,7 @@ const Navbar = () => {
       <div className="nav-left">
         <Link href="/" passHref>
           <a title="Home Page" rel="noopener noreferrer">
-            <h6 className="padding">Barbs Art</h6>
+            <h6 className="padding">Barb's Art</h6>
           </a>
         </Link>
       </div>

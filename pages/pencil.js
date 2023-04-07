@@ -8,7 +8,7 @@ import { useEffect } from "react";
 const Cont = styled.div`
   position: relative;
   display: flex;
-
+  min-height: 100vh;
   align-items: center;
   flex-wrap: wrap;
 
@@ -37,6 +37,8 @@ export const getStaticProps = async () => {
           title
           sold
           landscape
+          dimensions
+          price
           image {
             url
           }
@@ -78,8 +80,8 @@ export default function Home({ artPieces }) {
         url={artPiece.image.url}
         title={artPiece.title}
         description={artPiece.description}
-        price="250"
-        size="12 x 12"
+        price={artPiece.price}
+        size={artPiece.dimesions}
         sold={artPiece.sold}
         landscape={artPiece.landscape}
       />

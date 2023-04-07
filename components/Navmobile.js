@@ -113,7 +113,7 @@ const Navmobile = ({ visible, toggleVisible }) => {
           <h3 className="bold box-shadow">View All Art</h3>
         </a>
       </Link>
-      <Link href="/watercolour" passHref>
+      <Link href="/watercolor" passHref>
         <a
           onClick={toggleVisible}
           title="Water colour"
@@ -122,9 +122,9 @@ const Navmobile = ({ visible, toggleVisible }) => {
           <h4 className="art box-shadow">Water Colour</h4>
         </a>
       </Link>
-      <Link href="/oilbased" passHref>
+      <Link href="/pastel" passHref>
         <a onClick={toggleVisible} title="Oil based" rel="noopener noreferrer">
-          <h4 className="art box-shadow">Oil Based</h4>
+          <h4 className="art box-shadow">Pastel</h4>
         </a>
       </Link>
       <Link href="/pencil" passHref>

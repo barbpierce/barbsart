@@ -104,7 +104,7 @@ const Dropdown = ({ text }) => {
               </Link>
             </li>
             <li>
-              <Link href="/watercolour" passHref>
+              <Link href="/watercolor" passHref>
                 <a title="Watercolour" rel="noopener noreferrer">
                   <h6 className="light">Water Colour</h6>
                 </a>

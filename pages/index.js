@@ -55,6 +55,7 @@ export const getStaticProps = async () => {
         price
         landscape
         sold
+        dimensions
       }
     }
   `;
@@ -75,6 +76,7 @@ export default function Home({ artPieces }) {
   }, []);
 
   const imageElems = artPieces.map((artPiece, index) => {
+    console.log(artPiece);
     return (
       <Picture
         key={index}
@@ -82,7 +84,7 @@ export default function Home({ artPieces }) {
         title={artPiece.title}
         description={artPiece.description}
         price={artPiece.price}
-        size="12 x 12"
+        size={artPiece.dimensions}
         sold={artPiece.sold}
         landscape={artPiece.landscape}
       />
@@ -100,9 +102,6 @@ export default function Home({ artPieces }) {
     keywords:
       "art gallery, local art gallery, online art, ottawa art gallery, art website, carp art commissions, water color art, pencil crayon art, pastel art",
   };
-
-  
-
 
   return (
     <>

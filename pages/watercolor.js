@@ -37,6 +37,8 @@ export const getStaticProps = async () => {
           title
           sold
           landscape
+          dimensions
+          price
           image {
             url
           }
@@ -67,8 +69,8 @@ export default function Home({ artPieces }) {
         url={artPiece.image.url}
         title={artPiece.title}
         description={artPiece.description}
-        price="250"
-        size="12 x 12"
+        price={artPiece.price}
+        size={artPiece.dimensions}
         sold={artPiece.sold}
         landscape={artPiece.landscape}
       />
@@ -77,7 +79,8 @@ export default function Home({ artPieces }) {
 
   const meta = {
     title: "Watercolour Art",
-    description: "Watercolour art pieces for sale in Ottawa/Carp, available online with worldwide shipping.",
+    description:
+      "Watercolour art pieces for sale in Ottawa/Carp, available online with worldwide shipping.",
     link: "",
     type: "website",
     date: "2022-11-16 6:45:00:000",

@@ -61,9 +61,21 @@ const Navbar = () => {
   const [context, setContext] = useContext(AppContext);
   let total,
     cart = [];
-
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      getLocalStorage();
+      setContext(prev=> {
+        return {
+          ...prev,
+          items: getLocalStorage()
+        }
+      })
+    }
+  }, []);
+  /*
   useEffect(() => {
     cart = getLocalStorage();
+    console.log(getLocalStorage());
     if (cart !== null) {
       total = cart.reduce((accumulator, cartItem) => {
         return accumulator + cartItem.price;
@@ -77,7 +89,7 @@ const Navbar = () => {
         total: total,
       };
     });
-  }, []);
+  }, []); */
   const [visible, setVisible] = useState(false);
   const toggleVisible = () => {
     setVisible(!visible);

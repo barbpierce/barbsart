@@ -93,20 +93,23 @@ export const createUser = async (
     if (error) throw error;
     return true;
   } catch (error) {
+    console.log(error.message);
     return false;
   }
 };
 
-export const createOrder = async (placed, fulfilled, user_id) => {
+export const createOrder = async (placed, fulfilled, user_id, delivery) => {
   try {
     const { data, error } = await supabase.from("orders").insert({
       placed,
       fulfilled,
       user_id,
+      delivery,
     });
     if (error) throw error;
     return true;
   } catch (error) {
+    console.log(error.message);
     return false;
   }
 };
@@ -141,11 +144,11 @@ export const fetchOrder = async (user_id) => {
   }
 };
 
-export const setOrderFulfilled = async (order_id) => {
+export const setOrderFulfilled = async (order_id, stripe_id, order_total) => {
   try {
     const { data, error } = await supabase
       .from("orders")
-      .update({ fulfilled: true })
+      .update({ fulfilled: true, stripe_id, order_total })
       .eq("id", order_id);
     if (error) throw error;
     return true;
@@ -198,6 +201,37 @@ export const clearOrder = async (order_id) => {
     if (error) throw error;
     return true;
   } catch (error) {
+    return false;
+  }
+};
+
+export const createCommission = async (
+  name,
+  email,
+  phone,
+  description,
+  files
+) => {
+  try {
+    const { data, error } = await supabase
+      .from("commissions")
+      .insert({ name, email, phone, description, files });
+    if (error) throw error;
+  } catch (error) {
+    console.log(error.message);
+    return false;
+  }
+};
+
+export const uploadFileToServer = async (filePath, file) => {
+  try {
+    const { data, error } = await supabase.storage
+      .from("files")
+      .upload(filePath, file);
+    if (error) throw error;
+    return true;
+  } catch (error) {
+    console.log(error.message);
     return false;
   }
 };

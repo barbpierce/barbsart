@@ -49,11 +49,10 @@ export const updateLocalStorage = (items) => {
 };
 
 export const getLocalStorage = () => {
-  if (typeof window === "undefined") {
-    return [];
-  } else if (localStorage.getItem("cart") === null) {
+  if (localStorage.getItem("cart") === null) {
     return [];
   }
+
   return JSON.parse(localStorage.getItem("cart"));
 };
 

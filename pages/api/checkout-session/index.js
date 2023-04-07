@@ -9,6 +9,30 @@ export default async function handler(req, res) {
         customer_email: req.body.email,
         mode: "payment",
         payment_method_types: ["card"],
+        shipping_address_collection: { allowed_countries: ["US", "CA"] },
+        shipping_options: [
+          {
+            shipping_rate_data: {
+              type: "fixed_amount",
+              fixed_amount: {
+                amount:
+                  req.body.shipping > 0 ? convertToCents(req.body.shipping) : 0,
+                currency: "cad",
+              },
+              display_name: "Ground Shipping",
+              delivery_estimate: {
+                minimum: {
+                  unit: "business_day",
+                  value: 2,
+                },
+                maximum: {
+                  unit: "business_day",
+                  value: 7,
+                },
+              },
+            },
+          },
+        ],
         line_items: req.body.items.map((item) => {
           return {
             price_data: {
@@ -22,6 +46,7 @@ export default async function handler(req, res) {
             quantity: 1,
           };
         }),
+
         success_url: `${req.headers.origin}/success?session_id={CHECKOUT_SESSION_ID}&email=${req.body.email}`,
         cancel_url: `${req.headers.origin}/checkout`,
       });

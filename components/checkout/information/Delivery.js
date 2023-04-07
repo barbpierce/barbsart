@@ -68,37 +68,56 @@ const Delivery = ({
         setData((prevData) => {
           return res.data;
         });
+
         setRegions((prevData) => {
-          return [...new Set(res.data.map((item) => item.country))].sort();
+          return ["Canada", "United States"];
+          //return [...new Set(res.data.map((item) => item.country))].sort();
         });
         setOptions((prevData) => {
-          return [...new Set(res.data.map((item) => item.country))].sort();
+          return ["Canada", "United States"];
+          //return [...new Set(res.data.map((item) => item.country))].sort();
         });
       })
       .catch((err) => console.log(err));
   }, []);
+
   return (
     <Cont>
       <section>
-        <h5 className="mar-bottom-32">
-          How would you like your order to arrive?
-        </h5>
+        <h5>How would you like your order to arrive?</h5>
+        <p>
+          You can pick it up from{" "}
+          <a
+            className="purple underline"
+            href="https://www.google.com/maps/place/159+Country+Meadow+Dr,+Carp,+ON+K0A+1L0/data=!4m2!3m1!1s0x4cd20304b6a0e607:0x2bb4a3b98e457323?sa=X&ved=2ahUKEwjC-IHHoZj-AhX0lIkEHbEmC_AQ8gF6BAgTEAI"
+          >
+            159 Country Meadow Dr, Ottawa, Ontario.
+          </a>
+        </p>
+        <p className="small mar-bottom-16">Or we can arrange to meet you.</p>
         <div
           onClick={setPickupTrue}
           className={
             pickup
-              ? "mar-bottom-16 select select-active"
+              ? "mar-bottom-16 select select-active "
               : "mar-bottom-16 select"
           }
         >
           <h5 className="light">Pickup</h5>
         </div>
         <br />
-        <div
-          onClick={setPickupFalse}
-          className={!pickup ? "select select-active" : "select"}
-        >
-          <h5 className="light">Deliver</h5>
+        <div className="flex-inline align-center">
+          <div
+            onClick={setPickupFalse}
+            className={
+              !pickup
+                ? "select select-active mar-right-16"
+                : "select mar-right-16"
+            }
+          >
+            <h5 className="light">Deliver</h5>
+          </div>
+          <p className={!pickup ? "purple" : "contrast"}>($15)</p>
         </div>
       </section>
       <section>

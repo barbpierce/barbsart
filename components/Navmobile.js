@@ -10,6 +10,9 @@ const Cont = styled.div`
   top: 0;
   text-align: center;
   z-index: 2;
+  @media only screen and (max-width: 400px) {
+    padding: 0;
+  }
   padding: 24px;
   transition: right 0.5s ease;
   .return {
@@ -76,6 +79,9 @@ const Cont = styled.div`
     &:hover {
       border: 2px solid ${(props) => props.colors.ultraLightPurple};
     }
+    @media only screen and (max-width: 400px) {
+      border-radius: 0;
+    }
   }
   h3 {
     border: 4px solid black;
@@ -104,7 +110,7 @@ const Navmobile = ({ visible, toggleVisible }) => {
           title="View all art"
           rel="noopener noreferrer"
         >
-          <h3 className="bold">View All Art</h3>
+          <h3 className="bold box-shadow">View All Art</h3>
         </a>
       </Link>
       <Link href="/watercolour" passHref>
@@ -113,32 +119,32 @@ const Navmobile = ({ visible, toggleVisible }) => {
           title="Water colour"
           rel="noopener noreferrer"
         >
-          <h4 className="art">Water Colour</h4>
+          <h4 className="art box-shadow">Water Colour</h4>
         </a>
       </Link>
       <Link href="/oilbased" passHref>
         <a onClick={toggleVisible} title="Oil based" rel="noopener noreferrer">
-          <h4 className="art">Oil Based</h4>
+          <h4 className="art box-shadow">Oil Based</h4>
         </a>
       </Link>
       <Link href="/pencil" passHref>
         <a onClick={toggleVisible} title="Pencil" rel="noopener noreferrer">
-          <h4 className="art">Pencil</h4>
+          <h4 className="art box-shadow">Pencil</h4>
         </a>
       </Link>
       <Link href="/commissions" passHref>
         <a onClick={toggleVisible} title="Commisions" rel="noopener noreferrer">
-          <h4>Commisions</h4>
+          <h4 className=" box-shadow">Commisions</h4>
         </a>
       </Link>
       <Link href="/slideshows" passHref>
         <a onClick={toggleVisible} title="Slideshows" rel="noopener noreferrer">
-          <h4>Slideshows</h4>
+          <h4 className=" box-shadow">Slideshows</h4>
         </a>
       </Link>
       <Link href="/contact" passHref>
         <a onClick={toggleVisible} title="Contact" rel="noopener noreferrer">
-          <h4>Contact</h4>
+          <h4 className=" box-shadow">Contact</h4>
         </a>
       </Link>
     </Cont>

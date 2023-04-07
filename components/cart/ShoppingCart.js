@@ -161,19 +161,16 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
       const items = prevContext.items;
       const total = prevContext.total - items[index].price;
       items.splice(index, 1);
-      console.log(total);
+      
+      localStorage.setItem("cart", JSON.stringify(items));
       return {
         ...prevContext,
         items: items,
         total: total,
       };
     });
-    
   };
-  useEffect(()=>{
-    updateLocalStorage(context.items);
-  },[context])
-  
+
   const itemElems = context.items.map((item, index) => {
     return (
       <Item

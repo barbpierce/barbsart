@@ -12,7 +12,12 @@ import {
 import File from "../components/commissions/form/file";
 import toast, { Toaster } from "react-hot-toast";
 import Commission from "../components/commissions/before/commission";
-
+import { nanoid } from "nanoid";
+import emailjs, { init } from "@emailjs/browser";
+import {
+  uploadFileToServer,
+  createCommission,
+} from "../utils/SupabaseFunctions";
 const Cont = styled.div`
   height: 100%;
   .cont {
@@ -99,6 +104,7 @@ const Cont = styled.div`
 `;
 
 const Commissions = () => {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -106,7 +112,7 @@ const Commissions = () => {
     description: "",
     files: [],
   });
-
+  const [fileUrls, setFileUrls] = useState("");
   const [formValid, setFormValid] = useState({
     name: false,
     email: false,
@@ -121,12 +127,42 @@ const Commissions = () => {
     return state;
   };
 
-  const submitForm = (e) => {
+  const uploadFiles = async () => {
+    if (formData.files.length === 0) {
+      return;
+    }
+    const urls = [];
+    formData.files.forEach((file) => {
+      const filePath = `${formData.email}-${file.name}-${nanoid()}`;
+      uploadFileToServer(filePath, file.file);
+
+      urls.push(filePath);
+    });
+
+    createCommission(
+      formData.name,
+      formData.email,
+      formData.phone,
+      formData.description,
+      urls
+    );
+    setFileUrls((prev) => {
+      let newUrls = urls.map(
+        (url) =>
+          `https://olownjalltvhavnccxgh.supabase.co/storage/v1/object/public/files/${url}`
+      );
+      return newUrls.join(", ");
+    });
+  };
+
+  const submitForm = async (e) => {
     const invalidFields = [];
     e.preventDefault();
     if (validateForm(formValid)) {
-      clearForm();
       toast.success("Commission Submitted!");
+      uploadFiles().then((res) => sendEmail());
+
+      clearForm();
     } else {
       toast.error("Form not complete");
       Object.keys(formValid).map((key, index) => {
@@ -248,6 +284,29 @@ const Commissions = () => {
     });
   };
 
+  const sendEmail = () => {
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID_2,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_2,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          description: formData.description,
+          files: fileUrls,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_KEY_2
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
   const renderFile = (e) => {
     if (e.target.files.length !== 0) {
       const files = formData.files;

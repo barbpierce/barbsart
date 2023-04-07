@@ -35,9 +35,21 @@ const Success = () => {
     router.query.session_id ? `/api/checkout-session/${session_id}` : null,
     (url) => fetch(url).then((res) => res.json())
   );
-  //console.log(data);
-
-  const updateUserData = (user, order) => {
+  const updateArtPiece = async (title) => {
+    const res = await fetch("/api/graphcms/soldArtpiece", {
+      method: "POST",
+      body: title,
+    });
+    return await res.json();
+  };
+  const updateUserData = async (user, order) => {
+    let res = await Promise.all(
+      order.items.map((item) => {
+        return updateArtPiece(item.title);
+      })
+    );
+    console.log("res---");
+    console.log(res);
     setUserData({
       artPieces: order.items.map((item) => item.title).toString(),
       prices: order.items.map((item) => item.price).toString(),
@@ -52,32 +64,38 @@ const Success = () => {
       delivery: "filler",
       userId: user.id,
       orderId: order.id,
+      order_total: order.order_total,
     });
   };
 
   useEffect(() => {
-    emailjs
-      .send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        userData,
-        process.env.NEXT_PUBLIC_PUBLIC_EMAILJS_KEY
-      )
-      .then(
-        (result) => {
-          console.log(result);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    if (firstLoad) {
+      emailjs
+        .send(
+          "service_aa4i949",
+          "template_0b86moe",
+          userData,
+          "cVubv2J7duBYJW66b"
+        )
+        .then(
+          (result) => {
+            console.log(result);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+    }
   }, [userData]);
+
   useEffect(() => {
     if (data && firstLoad) {
       shootFireworks();
       setFirstLoad(false);
       fetchUser(email).then((res) =>
-        fetchOrder(res[0].id).then((res2) => setOrderFulfilled(res2[0].id))
+        fetchOrder(res[0].id).then((res2) =>
+          setOrderFulfilled(res2[0].id, data.id, data.amount_total / 100)
+        )
       );
       // Send email
       fetchUser(email).then((res) =>

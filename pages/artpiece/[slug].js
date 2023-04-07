@@ -218,9 +218,7 @@ const Slug = ({ artPiece }) => {
   };
 
   const [fullscreen, setFullscreen] = useState(false);
-  useEffect(() => {
-    console.log(context);
-  }, [context]);
+
   const titleX = artPiece.title;
 
   return (

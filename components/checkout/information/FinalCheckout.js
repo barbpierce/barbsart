@@ -49,7 +49,7 @@ const Cont = styled.div`
   }
 `;
 
-const FinalCheckout = ({ formData }) => {
+const FinalCheckout = ({ formData, billing, pickup }) => {
   const [context, setContext] = useContext(AppContext);
   const [loading, setLoading] = useState(false);
 
@@ -62,7 +62,7 @@ const FinalCheckout = ({ formData }) => {
 
       const order = fetchUser(formData.email).then((res) =>
         // create order based on id, bools are placed, fulfilled
-        createOrder(true, false, res[0].id).then((res2) =>
+        createOrder(true, false, res[0].id, !pickup).then((res2) =>
           fetchOrder(res[0].id)
         )
       );
@@ -116,7 +116,11 @@ const FinalCheckout = ({ formData }) => {
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify({ items: context.items, email: formData.email }),
+        body: JSON.stringify({
+          items: context.items,
+          email: formData.email,
+          shipping: context.shipping,
+        }),
       }).then((res) => res.json(res));
 
       const stripe = await stripePromise;

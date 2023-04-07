@@ -8,6 +8,7 @@ import IndexTracker from "../components/checkout/IndexTracker";
 import Billing from "../components/checkout/information/Billing";
 import Summary from "../components/checkout/summary/index";
 import FinalCheckout from "../components/checkout/information/FinalCheckout";
+
 const Cont = styled.div`
   display: flex;
   justify-content: space-around;
@@ -65,6 +66,8 @@ const Cont = styled.div`
 `;
 
 const Checkout = () => {
+  const [context, setContext] = useContext(AppContext);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -261,6 +264,7 @@ const Checkout = () => {
     }
   }
 
+  console.log(pickup);
   function updateForm(e) {
     const value = e.currentTarget.value;
     const name = e.currentTarget.name;
@@ -496,6 +500,26 @@ const Checkout = () => {
     setPickup(false);
   };
 
+  useEffect(() => {
+    if (pickup) {
+      setContext((prev) => {
+        return {
+          ...prev,
+          shipping: 0,
+        };
+      });
+    } else {
+      if (context.items.length > 0) {
+        setContext((prev) => {
+          return {
+            ...prev,
+            shipping: 15,
+          };
+        });
+      }
+    }
+  }, [pickup]);
+
   const forms = [
     <Delivery
       pickup={pickup}
@@ -555,7 +579,11 @@ const Checkout = () => {
               <h5>Continue</h5>
             </button>
           ) : (
-            <FinalCheckout formData={formData} />
+            <FinalCheckout
+              formData={formData}
+              billing={billing}
+              pickup={pickup}
+            />
           )}
           <IndexTracker updateIndex={updateIndex} cartIndex={index} />
         </div>

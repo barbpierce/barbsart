@@ -7,6 +7,7 @@ import emailjs, { init } from "@emailjs/browser";
 import Questions from "../components/contact/questions";
 const Cont = styled.div`
   margin-bottom: 128px;
+  display: block;
   .submit-btn {
     float: right;
   }

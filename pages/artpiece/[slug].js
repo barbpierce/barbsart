@@ -219,8 +219,6 @@ const Slug = ({ artPiece }) => {
 
   const [fullscreen, setFullscreen] = useState(false);
 
-  const titleX = artPiece.title;
-
   return (
     <Cont colors={COLORS}>
       <Toaster />
@@ -235,6 +233,7 @@ const Slug = ({ artPiece }) => {
             layout="fill"
             objectFit="contain"
             objectPosition="top"
+            alt={artPiece.title}
           />
 
           <div

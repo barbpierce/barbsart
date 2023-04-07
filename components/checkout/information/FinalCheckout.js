@@ -159,7 +159,7 @@ const FinalCheckout = ({ formData, billing, pickup }) => {
           </button>
         ) : (
           <div className="place-icon">
-            <div class="lds-circle">
+            <div className="lds-circle">
               <div></div>
             </div>
           </div>

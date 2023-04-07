@@ -379,6 +379,7 @@ const Commissions = () => {
                 objectFit="contain"
                 width="961px"
                 height="1243px"
+                alt="pricing chart"
               />
             </div>
           </div>

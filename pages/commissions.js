@@ -26,6 +26,13 @@ const Cont = styled.div`
       padding: 0 !important;
     }
   }
+  input {
+    margin-bottom: 16px;
+  }
+  .red {
+    position: relative;
+    top: -12px;
+  }
   .flex {
     justify-content: center;
     align-items: center;
@@ -112,14 +119,10 @@ const Commissions = () => {
     setValue,
     formState: { errors },
   } = useForm();
+  const name = watch("name", false);
+  const email = watch("email", false);
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    description: "",
-    files: [],
-  });
+  const [filesObj, setFilesObj] = useState([]);
   const [fileUrls, setFileUrls] = useState("");
   const [formValid, setFormValid] = useState({
     name: false,
@@ -135,13 +138,13 @@ const Commissions = () => {
     return state;
   };
 
-  const uploadFiles = async () => {
-    if (formData.files.length === 0) {
+  const uploadFiles = async (formData) => {
+    if (filesObj.length === 0) {
       return;
     }
     const urls = [];
-    formData.files.forEach((file) => {
-      const filePath = `${formData.email}-${file.name}-${nanoid()}`;
+    filesObj.forEach((file) => {
+      const filePath = `${email}-${file.name}-${nanoid()}`;
       uploadFileToServer(filePath, file.file);
 
       urls.push(filePath);
@@ -164,123 +167,32 @@ const Commissions = () => {
   };
 
   const submitForm = handleSubmit(async (formData) => {
-    e.preventDefault();
-    alert("worked");
-    //uploadFiles().then((res) => sendEmail());
+    uploadFiles(formData).then((res) => sendEmail(formData));
 
-    // clearForm();
+    clearForm();
+    alert("Thank you for you submission");
   });
 
   const clearForm = () => {
-    setFormData({ name: "", email: "", phone: "", description: "", files: [] });
+    setValue("name", "");
+    setValue("email", "");
+    setValue("phone", "");
+    setValue("description", "");
+    setFilesObj([]);
   };
-  function updateForm(e) {
-    const value = e.currentTarget.value;
-    const name = e.currentTarget.name;
-    let field;
-    let errorMsg = "";
-    setFormData((prevForm) => {
-      return {
-        ...prevForm,
-        [name]: value,
-      };
-    });
-    let message;
-    switch (name) {
-      case "name":
-        field = document.getElementById(name);
-
-        message = document.getElementById("name").nextSibling;
-        if (value == "") {
-          field.classList.add("error");
-          errorMsg = "Cannot be empty";
-        } else {
-          field.classList.remove("error");
-        }
-        break;
-
-      case "email":
-        field = document.getElementById(name);
-        message = document.getElementById("email").nextSibling;
-        if (value == "") {
-          field.classList.add("error");
-          errorMsg = "Cannot be empty";
-        }
-        if (
-          !/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(
-            value
-          )
-        ) {
-          field.classList.add("error");
-          errorMsg = "Invalid Email";
-        } else {
-          field.classList.remove("error");
-        }
-        break;
-      case "phone":
-        field = document.getElementById(name);
-        message = document.getElementById("phone").nextSibling;
-        if (value == "") {
-          field.classList.add("error");
-          errorMsg = "Cannot be empty";
-        }
-        if (
-          !/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/.test(value)
-        ) {
-          field.classList.add("error");
-          errorMsg = "Invalid Phone Number";
-        } else {
-          field.classList.remove("error");
-        }
-        break;
-      case "description":
-        field = document.getElementById(name);
-        message = document.getElementById("description").nextSibling;
-        if (value == "") {
-          field.classList.add("error");
-          errorMsg = "Cannot be empty";
-        } else {
-          field.classList.remove("error");
-        }
-        break;
-    }
-
-    if (errorMsg === "") {
-      setFormValid((prevForm) => {
-        return {
-          ...prevForm,
-          [name]: true,
-        };
-      });
-    } else {
-      setFormValid((prevForm) => {
-        return {
-          ...prevForm,
-          [name]: false,
-        };
-      });
-    }
-    message.innerText = errorMsg;
-  }
 
   const uploadFile = () => {
     document.getElementById("files").click();
   };
   const removeFile = (index) => {
-    const files = formData.files.filter((file, fileIndex) => {
-      console.log(index);
+    const files = filesObj.filter((file, fileIndex) => {
       return fileIndex !== index;
     });
 
-    setFormData((prevData) => {
-      return {
-        ...prevData,
-        files: files,
-      };
-    });
+    setFilesObj(files);
   };
 
-  const sendEmail = () => {
+  const sendEmail = (formData) => {
     emailjs
       .send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID_2,
@@ -305,21 +217,18 @@ const Commissions = () => {
   };
   const renderFile = (e) => {
     if (e.target.files.length !== 0) {
-      const files = formData.files;
+      const files = filesObj;
       const file = e.target.files[0];
       const name = file.name;
       //files.push({ name: "name" });
 
-      setFormData((prevData) => {
-        return {
-          ...prevData,
-          files: [...files, { file: file, name: name }],
-        };
+      setFilesObj((prevData) => {
+        return [...prevData, { file: file, name: name }];
       });
     }
   };
 
-  const files = formData.files.map((file, index) => {
+  const files = filesObj.map((file, index) => {
     return (
       <File
         name={file.name}
@@ -336,7 +245,7 @@ const Commissions = () => {
       "Ottawa, Carp local art for sale online and art comissions, art commisions for pets, friends or anything you like",
     link: "",
     type: "website",
-    date: "2022-11-16 6:45:00:000",
+    date: "2023-04-07 6:45:00:000",
     image: "",
     keywords:
       "ottawa art, local art, art comissions, online art gallery, art carp, art ottawa, art comissions carp, art commission ottawa, animal art, landscape art",

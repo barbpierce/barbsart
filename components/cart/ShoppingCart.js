@@ -122,46 +122,13 @@ const Cont = styled.div`
 
 const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
   const [context, setContext] = useContext(AppContext);
-  const items = [
-    {
-      title: "I Am Wired",
-      total: 250,
-      shipping: 20,
-      catagory: "Pastel",
-      size: '12" x 12"',
-      image: "/images/art1.jpg",
-    },
-    {
-      title: "I Am Wired",
-      total: 250,
-      shipping: 20,
-      catagory: "Pastel",
-      size: '12" x 12"',
-      image: "/images/art2.jpg",
-    },
-    {
-      title: "I Am Wired",
-      total: 250,
-      shipping: 20,
-      catagory: "Pastel",
-      size: '12" x 12"',
-      image: "/images/art3.jpg",
-    },
-    {
-      title: "I Am Wired",
-      total: 250,
-      shipping: 20,
-      catagory: "Pastel",
-      size: '12" x 12"',
-      image: "/images/dog.jpg",
-    },
-  ];
+
   const removeItem = (index) => {
     setContext((prevContext) => {
       const items = prevContext.items;
       const total = prevContext.total - items[index].price;
       items.splice(index, 1);
-      
+
       localStorage.setItem("cart", JSON.stringify(items));
       return {
         ...prevContext,

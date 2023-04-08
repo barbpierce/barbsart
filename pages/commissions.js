@@ -18,6 +18,7 @@ import {
   uploadFileToServer,
   createCommission,
 } from "../utils/SupabaseFunctions";
+import { useForm } from "react-hook-form";
 const Cont = styled.div`
   height: 100%;
   .cont {
@@ -104,6 +105,13 @@ const Cont = styled.div`
 `;
 
 const Commissions = () => {
+  const {
+    handleSubmit,
+    register,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -155,26 +163,14 @@ const Commissions = () => {
     });
   };
 
-  const submitForm = async (e) => {
-    const invalidFields = [];
+  const submitForm = handleSubmit(async (formData) => {
     e.preventDefault();
-    if (validateForm(formValid)) {
-      toast.success("Commission Submitted!");
-      uploadFiles().then((res) => sendEmail());
+    alert("worked");
+    //uploadFiles().then((res) => sendEmail());
 
-      clearForm();
-    } else {
-      toast.error("Form not complete");
-      Object.keys(formValid).map((key, index) => {
-        if (formValid[key] === false) {
-          invalidFields.push(key);
-        }
-      });
-      const elementField = document.getElementById(invalidFields[0]);
-      elementField.focus();
-      elementField.nextSibling.innerText = "Cannot be empty";
-    }
-  };
+    // clearForm();
+  });
+
   const clearForm = () => {
     setFormData({ name: "", email: "", phone: "", description: "", files: [] });
   };
@@ -404,11 +400,14 @@ const Commissions = () => {
                     name="name"
                     id="name"
                     className="box-shadow"
-                    onChange={updateForm}
-                    value={formData.name}
+                    {...register("name", {
+                      required: true,
+                    })}
                     placeholder="Name"
                   />
-                  <p className="red"></p>
+                  {errors.name?.type === "required" && (
+                    <p className="red">*Name is required</p>
+                  )}
                 </div>
 
                 <div className="input-field">
@@ -420,11 +419,14 @@ const Commissions = () => {
                     className="box-shadow"
                     name="email"
                     id="email"
-                    onChange={updateForm}
-                    value={formData.email}
+                    {...register("email", {
+                      required: true,
+                    })}
                     placeholder="Email"
                   />
-                  <p className="red"></p>
+                  {errors.email?.type === "required" && (
+                    <p className="red">*Email is required</p>
+                  )}
                 </div>
                 <div className="input-field">
                   <label htmlFor="phone">
@@ -435,8 +437,9 @@ const Commissions = () => {
                     className="box-shadow"
                     name="phone"
                     id="phone"
-                    onChange={updateForm}
-                    value={formData.phone}
+                    {...register("phone", {
+                      required: false,
+                    })}
                     placeholder="Phone"
                   />
                   <p className="red"></p>
@@ -454,11 +457,14 @@ const Commissions = () => {
                     name="description"
                     className="box-shadow"
                     id="description"
-                    onChange={updateForm}
-                    value={formData.description}
+                    {...register("description", {
+                      required: true,
+                    })}
                     placeholder="Description"
                   ></textarea>
-                  <p className="red"></p>
+                  {errors.description?.type === "required" && (
+                    <p className="red">*Description is required</p>
+                  )}
                 </div>
                 <div className="input-field remove-style mar-bottom-32">
                   <label htmlFor="files">

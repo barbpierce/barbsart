@@ -31,6 +31,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-fontawesome": "^1.7.1",
+    "react-hook-form": "^7.43.9",
     "react-hot-toast": "^2.4.0",
     "sass": "^1.54.8",
     "stripe": "^10.12.0",

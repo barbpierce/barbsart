@@ -111,9 +111,9 @@ const index = () => {
             <h6>Water Colour</h6>
           </a>
         </Link>
-        <Link href="/oilbased" passHref>
-          <a title="Oil based" rel="noopener noreferrer">
-            <h6>Oil Based</h6>
+        <Link href="/pastel" passHref>
+          <a title="Pastel" rel="noopener noreferrer">
+            <h6>Pastel</h6>
           </a>
         </Link>
         <Link href="/pencil" passHref>

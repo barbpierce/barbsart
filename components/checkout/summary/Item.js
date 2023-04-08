@@ -17,7 +17,6 @@ const Cont = styled.div`
     padding: 10px 10px;
     border: 3px solid #ccc;
     background: #eee;
-    
   }
   .image {
     position: relative;
@@ -60,7 +59,7 @@ const Item = ({ title, price, url, catagory, dimensions, index }) => {
       const items = prevContext.items;
       const total = prevContext.total - items[index].price;
       items.splice(index, 1);
-      console.log(total);
+      localStorage.setItem("cart", JSON.stringify(items));
       return {
         ...prevContext,
         items: items,

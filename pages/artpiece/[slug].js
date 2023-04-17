@@ -32,6 +32,7 @@ const Cont = styled.div`
       width: 100vw;
       height: 100vh;
     }
+
     .close {
       background: ${(props) => props.colors.grey};
       z-index: 5;
@@ -83,7 +84,7 @@ const Cont = styled.div`
 `;
 const Content = styled.div`
   display: flex;
-  height: 500px;
+  height: 60vh;
   margin: 5%;
 
   @media only screen and (max-width: 500px) {
@@ -92,7 +93,18 @@ const Content = styled.div`
   @media only screen and (max-width: 1300px) {
     height: 400px;
   }
+  .image-inner-cont {
+    cursor: pointer;
+    position: relative;
+    padding: 32px;
+    background: #fff;
 
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5) inset;
+    border: 10px solid ${(props) => props.colors.black};
+    @media only screen and (max-width: 400px) {
+      padding: 12px 8px;
+    }
+  }
   .image-container {
     flex: 1;
     padding-right: 32px;
@@ -102,20 +114,33 @@ const Content = styled.div`
     min-height: 400px;
     margin-bottom: 32px;
     box-shadow: none !important;
+    display: flex;
+    justify-content: center;
+
     div.image {
       position: relative;
       transition: box-shadow 0.25s ease;
       width: 100%;
       height: 100%;
-    }
-    cursor: pointer;
-    .tooltip {
-      width: 180px;
-      height: 100px;
-      left: calc(50% - 90px);
-      top: calc(50% - 50px);
-      opacity: 0;
-      transition: opacity 0.25s ease;
+
+      border: 1px solid transparent;
+      &:hover {
+        border: 1px solid black;
+      }
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5) inset;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
     }
     &:hover {
       div {
@@ -123,9 +148,19 @@ const Content = styled.div`
       }
       .tooltip {
         opacity: 1;
+        cursor: pointer;
       }
     }
   }
+  .tooltip {
+    width: 180px;
+    height: 100px;
+    left: calc(50% - 90px);
+    top: calc(50% - 50px);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
   .description {
     flex: 1;
 
@@ -245,15 +280,17 @@ const Slug = ({ artPiece }) => {
           </div>
         </div>
       </div>
-      <Content>
+      <Content colors={COLORS}>
         <div
           onClick={() => {
             setFullscreen(true);
           }}
           className="image-container"
         >
-          <div className="image">
-            <Image src={artPiece.image.url} layout="fill" objectFit="contain" />
+          <div className="image-inner-cont">
+            <div className="image">
+              <img src={artPiece.image.url} alt={artPiece.title} />
+            </div>
           </div>
 
           <div className="tooltip">

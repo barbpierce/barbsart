@@ -112,7 +112,7 @@ const Picture = ({ url, title, description, price, size, sold, landscape }) => {
         </a>
       </Link>
       <div className="flex mar-left-8 mar-bottom-32">
-        <p className="mar-right-8 bold purple">${`${price}`}</p>
+        <p className="mar-right-8 bold purple">{sold ? "" : `$${price}`}</p>
         {sold && <p className="grey-purple">(Sold)</p>}
       </div>
     </div>

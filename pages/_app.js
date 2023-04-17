@@ -1,8 +1,9 @@
+import Head from "next/head";
 import "../styles/globals.scss";
 import Layout from "../components/Layout";
 import { useState, createContext } from "react";
 import { NextSeo } from "next-seo";
-import Head from "next/head";
+import { Analytics } from "@vercel/analytics/react";
 export const AppContext = createContext("");
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({ items: [], total: 0, shipping: 0 });
@@ -39,6 +40,7 @@ function MyApp({ Component, pageProps }) {
           />
         </Head>
         <Component {...pageProps} />
+        <Analytics />
       </Layout>
     </AppContext.Provider>
   );

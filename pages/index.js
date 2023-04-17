@@ -76,7 +76,6 @@ export default function Home({ artPieces }) {
   }, []);
 
   const imageElems = artPieces.map((artPiece, index) => {
-    console.log(artPiece);
     return (
       <Picture
         key={index}
@@ -95,10 +94,10 @@ export default function Home({ artPieces }) {
     title: "Barb's Art Gallery",
     description:
       "Ottawa/Carp art gallery, water colour, pastel, pencil crayon. Commissions included for pets, family, friends, landscape and anything else.",
-    link: "",
+    link: "https://www.barbpierceart.com/",
     type: "website",
-    date: "2022-11-16 6:45:00:000",
-    image: "",
+    date: "2023-04-17 6:45:00:000",
+    image: "/seo/viewall_preview.png",
     keywords:
       "art gallery, local art gallery, online art, ottawa art gallery, art website, carp art commissions, water color art, pencil crayon art, pastel art",
   };

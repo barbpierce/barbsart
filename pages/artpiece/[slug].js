@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useEffect, useState, useContext } from "react";
 import { gql, GraphQLClient } from "graphql-request";
 import { NextSeo } from "next-seo";
@@ -252,9 +253,33 @@ const Slug = ({ artPiece }) => {
   };
 
   const [fullscreen, setFullscreen] = useState(false);
-
+  const meta = {
+    title: artPiece.title,
+    description: `View or purchase the artpiece, ${artPiece.title} with dimensions ${artPiece.dimensions} for a price of ${artPiece.price}.`,
+    link: `https://www.barbpierceart.com/artpiece/${artPiece.title}`,
+    type: "website",
+    date: "2023-04-17 6:45:00:000",
+    image: artPiece.image.url,
+    keywords:
+      "art gallery, local art gallery, online art, ottawa art gallery, art website, carp art commissions, water color art, pencil crayon art, pastel art",
+  };
   return (
     <Cont colors={COLORS}>
+      <Head>
+        <title>{meta.title}</title>
+        <meta name="robots" content="follow, index" />
+        <meta property="og:type" content={meta.type} />
+        <meta property="og:site_name" content="Barb Pierce Art" />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:image" content={meta.image} />
+        <meta property="article:published_time" content={meta.date} />
+        <link rel="canonical" href={meta.link} />
+        <meta property="og:url" content={meta.link} />
+        <meta name="keywords" content={meta.keywords} />
+
+        <meta name="description" content={meta.description} />
+      </Head>
       <Toaster />
       <div
         className={

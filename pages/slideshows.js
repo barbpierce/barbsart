@@ -238,11 +238,12 @@ const Slideshows = ({ artPieces }) => {
 
   const meta = {
     title: "Art Slideshow",
-    description: "",
-    link: "",
+    description:
+      "View my art pieces in this slideshow. Pet pictures, pastel, pencil crayon and watercolour art pieces for sale.",
+    link: "https://www.barbpierceart.com/slideshows",
     type: "website",
-    date: "2022-11-16 6:45:00:000",
-    image: "",
+    date: "2023-04-17 6:45:00:00",
+    image: "/seo/slideshows_preview.png",
     keywords:
       "art slideshow, online art slideshow, ottawa art, local art, art comissions",
   };

@@ -242,11 +242,11 @@ const Commissions = () => {
   const meta = {
     title: "Art Commissions",
     description:
-      "Ottawa, Carp local art for sale online and art comissions, art commisions for pets, friends or anything you like",
-    link: "",
+      "Ottawa, Carp local art for sale online and art commissions, art commissions for pets, friends or anything you like",
+    link: "https://www.barbpierceart.com/commissions",
     type: "website",
-    date: "2023-04-07 6:45:00:000",
-    image: "",
+    date: "2023-04-17 6:45:00:00",
+    image: "/seo/commissions_preview.png",
     keywords:
       "ottawa art, local art, art comissions, online art gallery, art carp, art ottawa, art comissions carp, art commission ottawa, animal art, landscape art",
   };

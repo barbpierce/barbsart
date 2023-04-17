@@ -540,8 +540,8 @@ const Checkout = () => {
       "Watercolour art pieces for sale in Ottawa/Carp, available online with worldwide shipping.",
     link: "",
     type: "website",
-    date: "2022-11-16 6:45:00:000",
-    image: "",
+    date: "2023-04-17 6:45:00:00",
+    image: "seo/checkout_preview.png",
     keywords:
       "watercolour art, art commissions, art carp, art ottawa, art for sale online, online art gallery, online art gallery carp, online art gallery ottawa",
   };

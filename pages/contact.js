@@ -105,10 +105,10 @@ const Contact = () => {
   const meta = {
     title: "Contage Page",
     description: "Contact me for art commissions in Ottawa. Shipping worldwipe",
-    link: "",
+    link: "https://www.barbpierceart.com/contact",
     type: "website",
-    date: "2022-11-16 6:45:00:000",
-    image: "",
+    date: "2023-04-17 6:45:00:000",
+    image: "/seo/contact_preview.png",
     keywords:
       "Contact page, contact me, barb pierce art contact, barbpierceart contact page, art, local art, ottawa art, online art gallery, carp art",
   };

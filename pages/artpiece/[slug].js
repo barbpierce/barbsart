@@ -104,6 +104,15 @@ const Content = styled.div`
     @media only screen and (max-width: 400px) {
       padding: 12px 8px;
     }
+    &:hover {
+      div {
+        box-shadow: none;
+      }
+      .tooltip {
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
   }
   .image-container {
     flex: 1;
@@ -140,15 +149,6 @@ const Content = styled.div`
         width: 100%;
         height: 100%;
         object-fit: contain;
-      }
-    }
-    &:hover {
-      div {
-        box-shadow: none;
-      }
-      .tooltip {
-        opacity: 1;
-        cursor: pointer;
       }
     }
   }
@@ -291,10 +291,9 @@ const Slug = ({ artPiece }) => {
             <div className="image">
               <img src={artPiece.image.url} alt={artPiece.title} />
             </div>
-          </div>
-
-          <div className="tooltip">
-            <h5>Click To Fullscreen</h5>
+            <div className="tooltip">
+              <h5>Click To Fullscreen</h5>
+            </div>
           </div>
         </div>
         <div className="description">
